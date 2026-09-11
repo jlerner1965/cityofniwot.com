@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 Niwot Incorporation Election | TownofNiwot.com</title>
+<meta name="description" content="Neutral voter information on the November 3, 2026 Niwot incorporation election: the ballot questions, fiscal issues, what happens next, and official resources.">
+<link rel="canonical" href="https://townofniwot.com/civic/incorporation-election/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TownofNiwot.com">
+<meta property="og:title" content="2026 Niwot Incorporation Election | TownofNiwot.com">
+<meta property="og:description" content="Neutral voter information on the November 3, 2026 Niwot incorporation election: the ballot questions, fiscal issues, what happens next, and official resources.">
+<meta property="og:url" content="https://townofniwot.com/civic/incorporation-election/">
+<meta property="og:image" content="https://townofniwot.com/assets/photos/niwot-gateway-sculpture.jpg">
+<meta property="og:image:width" content="1700">
+<meta property="og:image:height" content="1112">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="The Vintage Colorado Niwot gateway sculpture at the highway edge">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#24483A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/guide.d3b5b76211.css">
+<script src="/assets/js/guide.4009e6369c.js" defer></script>
+<style>/* This page carries no red or green accents: on a ballot page those colors
+   read as oppose and support. Evergreen, charcoal, soft white and muted
+   blue only. */
+.n-civic .n-label{color:#35617D}
+.n-civic .n-link{color:#35617D}
+/* The deep blue is unreadable on the evergreen band, so lift it there. */
+.n-civic .n-bg-green .n-label{color:var(--n-sky-lt)}
+.n-civic .n-bg-green .n-link{color:var(--n-sky-lt)}
+.n-civic .n-link:hover{color:#24483A}
+.n-civic .n-btn:hover{background:#3E6E8C;border-color:#3E6E8C}
+/* The default focus ring is caboose red. Keep this page free of it: muted
+   blue on the light grounds, and the lightened sky on the dark ones, where
+   the blue would be 1.8:1 against evergreen. */
+.n-civic :where(a,button,input,select,textarea,summary):focus-visible{outline-color:#3E6E8C}
+/* The masthead is light and the skip link's ring falls on the page ground,
+   so both take the muted blue; the footer and the evergreen band are dark
+   and take the lightened sky. */
+.n-civic .n-head :where(a,button):focus-visible,.n-civic .n-skip:focus-visible{outline-color:#3E6E8C}
+.n-civic .n-foot :where(a,button):focus-visible,.n-civic .n-bg-green :where(a,button,input,select,textarea,summary):focus-visible{outline-color:var(--n-sky-lt)}
+.n-civic .n-head{border-bottom-color:#3E6E8C}
+.n-tasks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,32px)}
+.n-tasks>div{padding:18px 20px;background:#FAF8F2;border-left:3px solid #24483A}
+.n-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px clamp(16px,2vw,32px);margin:clamp(18px,2.4vw,30px) 0 0;padding-top:14px;border-top:1px solid #7FA9C2}
+.n-strip>div{margin:0}
+.n-toc{display:flex;flex-wrap:wrap;gap:8px 22px;list-style:none;margin:0;padding:0}
+/* The ballot lists sit in columns on a wide screen so the page reads in a
+   few screens rather than a long scroll; they stack again on a phone. */
+.n-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.5vw,40px);list-style:none;margin:clamp(20px,2.5vw,32px) 0 0;padding:0}
+.n-cols>li{padding-top:14px;border-top:2px solid #24483A}
+/* Each fiscal issue is a <details>, written open. page-civic.js closes
+   them on a phone, where five long cells would be one very long column;
+   the title is then the control. */
+.n-fiscal summary{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:start;min-height:44px;list-style:none;cursor:pointer}
+.n-fiscal summary::-webkit-details-marker{display:none}
+.n-fiscal summary .n-gmark{display:none;width:11px;height:11px;margin-top:6px;border-right:2px solid #24483A;border-bottom:2px solid #24483A;transform:rotate(45deg);transition:transform .18s ease}
+.n-fiscal[open] summary .n-gmark{transform:rotate(-135deg)}
+.n-fiscal summary:hover h3{color:#3E6E8C}
+.n-log summary{cursor:pointer;color:#35617D;font-size:.9375rem;font-weight:500}
+.n-log summary:hover{color:#24483A}
+@media (max-width:1080px){.n-log summary{padding-top:12px;padding-bottom:12px}}
+@media (max-width:640px){.n-fiscal summary .n-gmark{display:block}}
+.n-civic [data-official]{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 14px;align-items:baseline;padding:12px 0;border-top:1px solid var(--n-rule);font-size:1rem;color:#24483A;text-decoration:none}
+.n-civic [data-official]:hover{color:#3E6E8C}
+.n-civic [data-official] small{display:block;grid-column:1/-1;font-size:.875rem;color:var(--n-muted)}
+@media (max-width:1000px){.n-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.n-tasks{grid-template-columns:minmax(0,1fr)}.n-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.n-cols{grid-template-columns:minmax(0,1fr)}.n-strip{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://townofniwot.com/"},{"@type":"ListItem","position":2,"name":"2026 Incorporation Election","item":"https://townofniwot.com/civic/incorporation-election/"}]}</script>
+</head>
+<body>
+<div class="n-civic">
+<a class="n-skip" href="#main">Skip to main content</a>
+<header class="n-head"><noscript><style>@media (max-width:1080px){.n-burger{display:none}.n-nav{display:flex;position:static;padding:0 0 12px;border-bottom:0}}</style></noscript>
+<div class="n-wrap n-head-in">
+<a class="n-mark" href="/">NIWOT<small>Independent community guide</small></a>
+<button class="n-burger" type="button" aria-expanded="false" aria-controls="n-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+<nav class="n-nav" id="n-menu" aria-label="Primary">
+<a href="/explore/">Explore</a>
+<a href="/eat-shop/">Eat &amp; Shop</a>
+<a href="/events/">Events</a>
+<a href="/community/">Community</a>
+<a class="n-on" aria-current="page" href="/civic/incorporation-election/">2026 Election</a>
+</nav>
+</div>
+</header>
+<nav class="n-crumbs" aria-label="Breadcrumb">
+<div class="n-wrap">
+<ol>
+<li><a href="/">Home</a></li>
+<li><span aria-current="page">2026 Incorporation Election</span></li>
+</ol>
+</div>
+</nav>
+<main id="main">
+<section class="n-bg-white" aria-labelledby="title-h">
+<div class="n-wrap" style="padding-top:clamp(28px,4vw,60px);padding-bottom:clamp(20px,2.5vw,36px)">
+<div class="n-g2-wide" style="align-items:end">
+<div>
+<div class="n-label">Civic information</div>
+<h1 class="n-display" id="title-h" style="margin-top:14px;font-size:clamp(1.875rem,1.4rem + 1.9vw,2.875rem);line-height:1.05;max-width:24ch;color:#24483A">2026 Niwot Incorporation Election</h1>
+</div>
+<div>
+<p class="n-lead" style="margin:0;max-width:52ch">A neutral voter-information page: what is on the ballot, who may vote and where the official resources are. It does not argue for or against incorporation, and the certified ballot text controls wherever this summary differs from it.</p>
+<nav aria-label="On this page" style="margin-top:18px">
+<ul class="n-toc">
+<li><a class="n-link" href="#meaning">What it decides</a></li>
+<li><a class="n-link" href="#ballot">Three questions</a></li>
+<li><a class="n-link" href="#fiscal">Five fiscal issues</a></li>
+<li><a class="n-link" href="#after">What happens next</a></li>
+<li><a class="n-link" href="#official">Official resources</a></li>
+<li><a class="n-link" href="#changes">Changes to this page</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</section><section class="n-bg-sky n-pad-sm" id="tasks" aria-labelledby="tasks-h" style="border-top:1px solid #7FA9C2;border-bottom:1px solid #7FA9C2">
+<div class="n-wrap">
+<h2 class="n-label" id="tasks-h" style="margin:0 0 18px">Before you vote</h2>
+<div class="n-tasks">
+<div>
+<div style="font-family:var(--n-serif);font-size:1.375rem;line-height:1.2;color:#24483A">Check the proposed boundary</div>
+<p class="n-small" style="margin:8px 0 0;color:#252B27">The Commission’s FAQ: the boundary is the one described in the petition’s Exhibits A and B. An address-lookup tool run by a campaign is not official material.</p>
+<a class="n-link" href="https://niwotelection.org/faq" rel="noopener" style="display:inline-block;margin-top:12px">Commission FAQ <span aria-hidden="true">&#8599;</span></a>
+</div>
+<div>
+<div style="font-family:var(--n-serif);font-size:1.375rem;line-height:1.2;color:#24483A">Read the ballot</div>
+<p class="n-small" style="margin:8px 0 0;color:#252B27">The certified ballot content, on the Commission’s own site.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px">Official ballot content <span aria-hidden="true">&#8599;</span></a>
+</div>
+<div>
+<div style="font-family:var(--n-serif);font-size:1.375rem;line-height:1.2;color:#24483A">Voter registration and ballot help</div>
+<p class="n-small" style="margin:8px 0 0;color:#252B27">Register, update an address, and find ballot drop-off and voting locations.</p>
+<a class="n-link" href="https://bouldercounty.gov/elections/" rel="noopener" style="display:inline-block;margin-top:12px">Boulder County Elections <span aria-hidden="true">&#8599;</span></a>
+</div>
+</div>
+<dl class="n-strip">
+<div>
+<dt class="n-label n-label--quiet" style="color:#252B27">Election date</dt>
+<dd style="margin:6px 0 0;font-family:var(--n-serif);font-size:1.25rem;line-height:1.2;color:#24483A">November 3, 2026</dd>
+<dd class="n-small" style="margin:4px 0 0;font-size:.875rem;color:#252B27">A coordinated mail-ballot election held with other Boulder County contests.</dd>
+</div>
+<div>
+<dt class="n-label n-label--quiet" style="color:#252B27">Who may vote</dt>
+<dd style="margin:6px 0 0;font-family:var(--n-serif);font-size:1.25rem;line-height:1.2;color:#24483A">Registered electors</dd>
+<dd class="n-small" style="margin:4px 0 0;font-size:.875rem;color:#252B27">Those residing within the proposed boundary.</dd>
+</div>
+<div>
+<dt class="n-label n-label--quiet" style="color:#252B27">Ballot content and procedure</dt>
+<dd style="margin:6px 0 0;font-family:var(--n-serif);font-size:1.25rem;line-height:1.2;color:#24483A">Niwot Election Commission</dd>
+<dd class="n-small" style="margin:4px 0 0;font-size:.875rem;color:#252B27">Appointed by the Boulder County District Court. The Boulder County Clerk and Recorder conducts the coordinated election itself.</dd>
+</div>
+<div>
+<dt class="n-label n-label--quiet" style="color:#252B27">Last verified</dt>
+<dd style="margin:6px 0 0;font-family:var(--n-serif);font-size:1.25rem;line-height:1.2;color:#24483A">September 10, 2026</dd>
+<dd class="n-small" style="margin:4px 0 0;font-size:.875rem;color:#252B27">Checked against official sources on this date. The official text controls.</dd>
+</div>
+</dl>
+</div>
+</section><section class="n-bg-white n-pad-sm" id="meaning" aria-labelledby="m-h">
+<div class="n-wrap">
+<div class="n-g2-wide">
+<div>
+<div class="n-label">In plain language</div>
+<h2 class="n-h2" id="m-h" style="margin-top:12px;max-width:16ch;color:#24483A">What incorporation would decide</h2>
+</div>
+<div>
+<p class="n-body" style="margin:0 0 0;max-width:68ch">Incorporation would create a town: a municipal government for the area inside the boundary described in the petition, with its own elected officials and the powers Colorado law gives a municipality. That is why the same ballot carries the taxes and the debt that would fund it. Niwot is unincorporated today, so those functions sit with Boulder County and the special districts.</p>
+<p class="n-body" style="margin:14px 0 0;max-width:68ch">The proposed boundary is not the same as the Niwot census designated place. The 4,306 people counted there in 2020 are not the electorate for this vote, and not necessarily the population of the proposed town. The petition’s Exhibits A and B describe the boundary; the Commission’s FAQ explains how to check an address against them.</p>
+<p class="n-body" style="margin:18px 0 0;padding:16px 20px;background:#FAF8F2;border-left:3px solid #24483A;max-width:68ch"><strong style="font-weight:600">The official ballot language controls.</strong> Wording on this page is a plain-language summary. Where it differs from the certified ballot text published by the Niwot Election Commission, the Commission&#8217;s text is authoritative.</p>
+</div>
+</div>
+</div>
+</section><section class="n-bg-paper n-pad-sm" id="ballot" aria-labelledby="q-h">
+<div class="n-wrap">
+<div class="n-shead" style="border-bottom-color:#24483A">
+<div class="n-label">On the ballot</div>
+<h2 class="n-h2" id="q-h" style="color:#24483A">Three questions</h2>
+<p class="n-body" style="max-width:74ch;margin:0">Voters inside the proposed boundary decide three separate matters. They are counted separately, but the second and third take effect only if the first is approved.</p>
+</div><ul class="n-cols">
+<li>
+<div class="n-label n-label--quiet" style="margin-bottom:8px">Question 1</div>
+<h3 class="n-h3" style="font-size:clamp(1.25rem,1.1rem + .6vw,1.625rem);color:#24483A">Whether Niwot should incorporate as a municipality</h3>
+<p class="n-body" style="margin:10px 0 0;font-size:.9375rem">Whether the territory described in the petition should be organized as a Colorado municipality. Approval would begin the creation of a town government; rejection would leave the area unincorporated and administered by Boulder County, and none of the other measures would take effect.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</li>
+<li>
+<div class="n-label n-label--quiet" style="margin-bottom:8px">Question 2</div>
+<h3 class="n-h3" style="font-size:clamp(1.25rem,1.1rem + .6vw,1.625rem);color:#24483A">Whether to form a nine-member home rule charter commission</h3>
+<p class="n-body" style="margin:10px 0 0;font-size:.9375rem">Whether a commission of nine members should be formed to draft a proposed home rule charter for the new municipality. The commission drafts a charter; it does not adopt one. It is formed only if incorporation is approved.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</li>
+<li>
+<div class="n-label n-label--quiet" style="margin-bottom:8px">Question 3</div>
+<h3 class="n-h3" style="font-size:clamp(1.25rem,1.1rem + .6vw,1.625rem);color:#24483A">Which nine charter commission candidates should be elected</h3>
+<p class="n-body" style="margin:10px 0 0;font-size:.9375rem">Which of the 28 candidates on the ballot would serve on that charter commission: voters may select up to nine. The Commission’s summary ties this question to the two before it — the nine elected take office only if incorporation (Question 1) and the charter commission (Question 2) are both approved.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</li>
+</ul>
+</div>
+</section><section class="n-bg-white n-pad-sm" id="fiscal" aria-labelledby="f-h">
+<div class="n-wrap">
+<div class="n-shead" style="border-bottom-color:#24483A">
+<div class="n-label">Fiscal questions</div>
+<h2 class="n-h2" id="f-h" style="color:#24483A">Five fiscal issues</h2>
+<p class="n-body" style="max-width:74ch;margin:0">Each is a separate authorization, listed here as filed and without argument about whether it is advisable. All of them apply only if a municipality is created. Where the ballot text states an estimated first-full-year revenue, the figure is given.</p>
+</div>
+<ul class="n-cols">
+<li>
+<details class="n-fiscal" data-fiscal-fold open>
+<summary>
+<span>
+<span class="n-label n-label--quiet" style="display:block;margin-bottom:8px">Issue 1</span>
+<h3 style="margin:0;font-size:1.0625rem;line-height:1.35;color:#24483A;font-weight:600">A 2.5% sales and use tax beginning January 1, 2028</h3>
+</span>
+<span class="n-gmark" aria-hidden="true"></span>
+</summary>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">Authorization to levy a municipal sales and use tax at 2.5%, with collection beginning January 1, 2028. The ballot text exempts food for domestic consumption and states an estimated $2.8 million in revenue in the first full fiscal year.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</details>
+</li>
+<li>
+<details class="n-fiscal" data-fiscal-fold open>
+<summary>
+<span>
+<span class="n-label n-label--quiet" style="display:block;margin-bottom:8px">Issue 2</span>
+<h3 style="margin:0;font-size:1.0625rem;line-height:1.35;color:#24483A;font-weight:600">A four-mill property tax</h3>
+</span>
+<span class="n-gmark" aria-hidden="true"></span>
+</summary>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">Authorization to levy a property tax of four mills within the municipal boundary. The ballot text states an estimated $900,000 in revenue in the first full fiscal year.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</details>
+</li>
+<li>
+<details class="n-fiscal" data-fiscal-fold open>
+<summary>
+<span>
+<span class="n-label n-label--quiet" style="display:block;margin-bottom:8px">Issue 3</span>
+<h3 style="margin:0;font-size:1.0625rem;line-height:1.35;color:#24483A;font-weight:600">An additional 3% sales tax on retail marijuana, beginning January 1, 2028</h3>
+</span>
+<span class="n-gmark" aria-hidden="true"></span>
+</summary>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">Authorization for an additional special sales tax of 3% on retail marijuana sales, with collection beginning January 1, 2028. It applies only if retail marijuana businesses operate within the municipality. The ballot text states an estimated $60,000 in revenue in the first full fiscal year.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</details>
+</li>
+<li>
+<details class="n-fiscal" data-fiscal-fold open>
+<summary>
+<span>
+<span class="n-label n-label--quiet" style="display:block;margin-bottom:8px">Issue 4</span>
+<h3 style="margin:0;font-size:1.0625rem;line-height:1.35;color:#24483A;font-weight:600">Authorization to retain and spend collected revenue from 2027</h3>
+</span>
+<span class="n-gmark" aria-hidden="true"></span>
+</summary>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">Authorization for the municipality to keep and spend all the revenue it collects from 2027 onward, as a voter-approved revenue change under the revenue and spending limits in Article X, Section 20 of the Colorado Constitution (the Taxpayer’s Bill of Rights), rather than refunding amounts above those limits.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</details>
+</li>
+<li>
+<details class="n-fiscal" data-fiscal-fold open>
+<summary>
+<span>
+<span class="n-label n-label--quiet" style="display:block;margin-bottom:8px">Issue 5</span>
+<h3 style="margin:0;font-size:1.0625rem;line-height:1.35;color:#24483A;font-weight:600">Authorization for up to $15 million in debt for transportation infrastructure</h3>
+</span>
+<span class="n-gmark" aria-hidden="true"></span>
+</summary>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">Authorization to incur up to $15 million in debt for transportation infrastructure, with a maximum total repayment cost of up to $28 million. The petition proposes repaying it from the sales and use tax in Issue 1, so this authorization depends on that tax being approved.</p>
+<a class="n-link" href="https://niwotelection.org/ballot" rel="noopener" style="display:inline-block;margin-top:12px;font-size:12px">Official text <span aria-hidden="true">&#8599;</span></a>
+</details>
+</li>
+</ul>
+</div>
+</section><section class="n-bg-green n-pad-sm" id="after" aria-labelledby="a-h">
+<div class="n-wrap">
+<div class="n-g2-wide">
+<div>
+<div class="n-label">After the election</div>
+<h2 class="n-h2" id="a-h" style="margin-top:12px;max-width:16ch">What happens next</h2>
+<p class="n-body" style="margin:16px 0 0;max-width:40ch;color:var(--n-paper)">No charter is being approved on November 3. If incorporation passes, a separate charter vote follows later.</p>
+</div>
+<ol style="list-style:none;margin:0;padding:0">
+<li style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:11px 0;border-top:1px solid rgba(158,173,152,.35)">
+<span aria-hidden="true" style="font-family:var(--n-serif);font-size:1.125rem;color:var(--n-sky-lt)">01</span>
+<span class="n-body" style="font-size:.9375rem;color:var(--n-paper)">If incorporation is rejected, no municipality is created, no charter commission is formed, and the fiscal authorizations have nothing to apply to. The process ends.</span>
+</li>
+<li style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:11px 0;border-top:1px solid rgba(158,173,152,.35)">
+<span aria-hidden="true" style="font-family:var(--n-serif);font-size:1.125rem;color:var(--n-sky-lt)">02</span>
+<span class="n-body" style="font-size:.9375rem;color:var(--n-paper)">If incorporation is approved, the court enters an order of incorporation, and the fiscal measures that also passed take effect on the dates in the ballot text.</span>
+</li>
+<li style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:11px 0;border-top:1px solid rgba(158,173,152,.35)">
+<span aria-hidden="true" style="font-family:var(--n-serif);font-size:1.125rem;color:var(--n-sky-lt)">03</span>
+<span class="n-body" style="font-size:.9375rem;color:var(--n-paper)">If the charter commission question is also approved, the nine elected commissioners draft a proposed home rule charter. The commission exists only alongside incorporation.</span>
+</li>
+<li style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:11px 0;border-top:1px solid rgba(158,173,152,.35)">
+<span aria-hidden="true" style="font-family:var(--n-serif);font-size:1.125rem;color:var(--n-sky-lt)">04</span>
+<span class="n-body" style="font-size:.9375rem;color:var(--n-paper)">The proposed charter returns to voters at a later election.</span>
+</li>
+<li style="display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;padding:11px 0;border-top:1px solid rgba(158,173,152,.35)">
+<span aria-hidden="true" style="font-family:var(--n-serif);font-size:1.125rem;color:var(--n-sky-lt)">05</span>
+<span class="n-body" style="font-size:.9375rem;color:var(--n-paper)">No charter is being approved in the November 3, 2026 election.</span>
+</li>
+</ol>
+</div>
+</div>
+</section><section class="n-bg-white n-pad-sm" id="official" aria-labelledby="o-h">
+<div class="n-wrap">
+<div class="n-shead" style="border-bottom-color:#24483A">
+<div class="n-label">Official resources</div>
+<h2 class="n-h2" id="o-h" style="color:#24483A">Go to the source</h2>
+<p class="n-body" style="max-width:74ch;margin:0">Two bodies, two roles. The Niwot Election Commission, appointed by the Boulder County District Court, is responsible for the ballot content and the procedure for this question. The Boulder County Clerk and Recorder conducts the coordinated election it appears in: registration, ballots, drop-off and results. This guide is not an election authority.</p>
+</div>
+<div class="n-g2" style="margin-top:clamp(20px,2.5vw,32px)">
+<div style="border-bottom:1px solid var(--n-rule)">
+<a class="n-shift n-shift--sm" data-official href="https://niwotelection.org/" rel="noopener">Niwot Election Commission <span aria-hidden="true" style="color:#35617D">&#8599;</span><small>Ballot content and procedure for this question; notices, meeting records and the timetable</small></a>
+<a class="n-shift n-shift--sm" data-official href="https://niwotelection.org/ballot" rel="noopener">Official ballot content <span aria-hidden="true" style="color:#35617D">&#8599;</span><small>The certified questions and fiscal issues</small></a>
+<a class="n-shift n-shift--sm" data-official href="https://niwotelection.org/faq" rel="noopener">Election FAQ and the proposed boundary <span aria-hidden="true" style="color:#35617D">&#8599;</span><small>Including how to check an address against the petition exhibits</small></a>
+<a class="n-shift n-shift--sm" data-official href="https://bouldercounty.gov/elections/" rel="noopener">Boulder County Elections <span aria-hidden="true" style="color:#35617D">&#8599;</span><small>The Clerk and Recorder conducts the coordinated election: registration, address updates, drop-off and voting locations, results</small></a>
+</div>
+<div>
+<div style="padding:18px 20px;background:#EEE7D9;border-left:3px solid #3E6E8C">
+<div class="n-label n-label--quiet" style="color:#252B27">Verification note</div>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">The Election Commission has stated that the printer&#8217;s proof was scheduled for review on September 11, 2026. Ballot language reproduced anywhere outside the Commission&#8217;s own pages should be re-checked against the official ballot page after that review before being treated as final. This page will carry a dated note when it is.</p>
+</div>
+<div style="margin-top:16px;padding:18px 20px;border:1px solid #24483A;border-left-width:3px">
+<div class="n-label n-label--quiet" style="color:#252B27">Campaign material</div>
+<p class="n-body" style="margin:8px 0 0;font-size:.9375rem">Three organizations campaign on this question and publish their own analysis. Their material is advocacy, not official election information, and is labeled as such wherever it appears here.</p>
+<div style="display:grid;gap:8px;margin-top:12px">
+<a class="n-link" href="https://www.niwot.town/" rel="noopener">Niwot Incorporation Committee — campaign material <span aria-hidden="true">&#8599;</span></a>
+<a class="n-link" href="https://niwottogether.org/" rel="noopener">Niwot Together — campaign material <span aria-hidden="true">&#8599;</span></a>
+<a class="n-link" href="https://neighborsforniwot.org/" rel="noopener">Neighbors for Niwot — campaign material <span aria-hidden="true">&#8599;</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section><section class="n-bg-white" id="changes" aria-labelledby="corr-h" style="padding-bottom:clamp(32px,4vw,64px)">
+<div class="n-wrap">
+<div class="n-rail" style="border-color:#3E6E8C;background-image:repeating-linear-gradient(90deg,#3E6E8C 0 2px,transparent 2px 12px)"></div>
+<div class="n-g2-wide" style="margin-top:clamp(20px,2.5vw,32px)">
+<h2 class="n-h2" id="corr-h" style="font-size:clamp(1.5rem,1.2rem + 1.2vw,2.25rem);max-width:18ch;color:#24483A">Changes to this page</h2>
+<div>
+<p class="n-body" style="margin:0;max-width:64ch">Anything on this page that cannot be supported by a filed document or an official publication is removed rather than softened. Every change to a published fact is listed here with its date.</p>
+<details class="n-log" style="margin-top:16px;max-width:64ch">
+<summary>Dated changes (2)</summary>
+<dl data-corrections style="margin:8px 0 0">
+<div style="padding:12px 0;border-top:1px solid var(--n-rule)">
+<dt class="n-label n-label--quiet" style="font-size:12px">September 10, 2026</dt>
+<dd class="n-body" style="margin:6px 0 0;font-size:.9375rem">The Commission’s own labels (Question 1 to 3, Issue 1 to 5) now appear beside each summary. The first three fiscal issues carry the first-full-year revenue estimates the ballot text states ($2.8 million, $900,000 and $60,000). Question 3 says voters may select up to nine of 28 candidates, and its dependency on Questions 1 and 2 follows the Commission’s summary. The page now distinguishes the Commission’s role (ballot content and procedure) from the Boulder County Clerk and Recorder’s (conducting the coordinated election). All of it rests on the launch audit’s September 10 reading of the Commission’s ballot page and is to be re-checked after the September 11 proof review.</dd>
+</div>
+<div style="padding:12px 0;border-top:1px solid var(--n-rule)">
+<dt class="n-label n-label--quiet" style="font-size:12px">September 9, 2026</dt>
+<dd class="n-body" style="margin:6px 0 0;font-size:.9375rem">Fiscal-issue summaries expanded with qualifications from the ballot text: the sales and use tax exempts food for domestic consumption; the marijuana tax is an additional tax from January 1, 2028 that applies only if retail marijuana businesses operate; the revenue-retention measure concerns the constitutional (TABOR) revenue and spending limits from 2027; the transportation debt would be repaid from the proposed sales and use tax. The dependency of the charter commission on incorporation is now stated. Voting tasks were moved to the top of the page and the boundary link now points at the Commission’s FAQ, which names the petition’s Exhibits A and B as the governing description.</dd>
+</div>
+</dl>
+</details>
+<div class="n-btns" style="margin-top:16px">
+<a class="n-btn" href="/contact/">Report a correction</a>
+<a class="n-btn n-btn--ghost" href="/our-story/#sources">Editorial standards</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<footer class="n-foot">
+<div class="n-wrap" style="padding-top:clamp(40px,5vw,76px);padding-bottom:clamp(28px,3.5vw,48px)">
+<div class="n-foot-cols">
+<div class="n-foot-col">
+<div class="n-foot-mark">NIWOT</div>
+<div class="n-rail n-rail--light" style="max-width:220px"></div>
+<div class="n-small" style="margin-top:6px;color:var(--n-sage-lt)">Independent community guide</div>
+</div><div class="n-foot-col">
+<h2>Visit</h2>
+<a href="/explore/">Explore</a>
+<a href="/eat-shop/">Eat &amp; Shop</a>
+<a href="/events/">Events</a>
+<a href="/plan-a-visit/">Plan a Visit</a>
+</div>
+<div class="n-foot-col">
+<h2>Community</h2>
+<a href="/community/">Community groups</a>
+<a href="/community/#resources">Resident resources</a>
+<a href="/our-story/">Our Story</a>
+<a href="/contact/">Send a listing or correction</a>
+</div>
+<div class="n-foot-col">
+<h2>Civic</h2>
+<a href="/civic/incorporation-election/">2026 Election</a>
+<a href="https://niwotelection.org/" rel="noopener">Election Commission <span aria-hidden="true">&#8599;</span></a>
+<a href="https://bouldercounty.gov/elections/" rel="noopener">Boulder County Elections <span aria-hidden="true">&#8599;</span></a>
+</div>
+</div>
+<p class="n-disclaim" style="margin:clamp(28px,3.5vw,48px) 0 0;padding-top:18px;border-top:1px solid rgba(158,173,152,.3)">TownofNiwot.com is an independent community guide. It is not a municipal government website, the Niwot Election Commission, Boulder County, or an incorporation campaign.</p>
+<div class="n-foot-meta" style="margin-top:20px">
+<span>Last verified September 10, 2026</span>
+<span>Official ballot language controls</span>
+<a href="/privacy/" style="font-size:inherit;letter-spacing:inherit">Privacy</a>
+</div>
+</div>
+</footer>
+
+</div>
+<script type="module" src="/assets/js/page-civic.92b989e6ff.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3937be27a7db506',t:'MTc4OTA5NjI3NA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
