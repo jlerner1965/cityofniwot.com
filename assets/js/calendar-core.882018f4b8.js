@@ -456,7 +456,7 @@ export function renderUpcoming(list, mode, now) {
       return (
         '<article data-event-id="' + escapeHtml(inst.id) + '" data-event-date="' + inst.date + '" data-event-status="' + escapeHtml(ev.status) + '" class="n-up">' +
         '<div class="n-label">' + escapeHtml(dateLabel(inst, now)) + (time ? ' &#183; ' + escapeHtml(time.replace(', ' + TZ_LABEL, '')) : '') + '</div>' +
-        '<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">' + escapeHtml(ev.name) + '</h3>' +
+        '<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)"><a href="/events/' + encodeURIComponent(ev.id) + '/" style="color:inherit;text-decoration:none">' + escapeHtml(ev.name) + '</a></h3>' +
         (ev.status !== 'confirmed' ? '<div class="n-label">' + escapeHtml(statusLabel(ev.status)) + '</div>' : '') +
         '<div class="n-body" style="font-size:.9375rem">' + escapeHtml(ev.location.name) + '</div>' +
         '<div class="n-small" style="font-size:.875rem">' + escapeHtml(ev.organizer.name) + (ev.cost ? ' &#183; ' + escapeHtml(ev.cost) : '') + '</div>' +
