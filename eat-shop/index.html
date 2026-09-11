@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Niwot Restaurants, Shops &amp; Local Services | TownofNiwot.com</title>
+<meta name="description" content="Niwot, Colorado restaurants, coffee, shops, wellness and local services in Old Town and Cottonwood Square, each listing checked against its own source.">
+<link rel="canonical" href="https://townofniwot.com/eat-shop/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TownofNiwot.com">
+<meta property="og:title" content="Niwot Restaurants, Shops &amp; Local Services | TownofNiwot.com">
+<meta property="og:description" content="Niwot, Colorado restaurants, coffee, shops, wellness and local services in Old Town and Cottonwood Square, each listing checked against its own source.">
+<meta property="og:url" content="https://townofniwot.com/eat-shop/">
+<meta property="og:image" content="https://townofniwot.com/assets/photos/niwot-tavern-patios.jpg">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="982">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Patios outside the Niwot Tavern and Raza Fresa at Cottonwood Square">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#24483A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" type="image/avif" imagesrcset="/img/q7-qiFttde-400.avif 400w, /img/q7-qiFttde-560.avif 560w, /img/q7-qiFttde-700.avif 700w, /img/q7-qiFttde-1000.avif 1000w, /img/q7-qiFttde-1400.avif 1400w" imagesizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1440px) 52vw, 700px" fetchpriority="high">
+<link rel="stylesheet" href="/assets/css/guide.d3b5b76211.css">
+<script src="/assets/js/guide.4009e6369c.js" defer></script>
+<style>.n-dir-open{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:clamp(28px,4vw,68px);align-items:center}
+.n-quickcats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin-top:clamp(24px,3vw,38px);background:var(--n-rule);border:1px solid var(--n-rule)}
+.n-quickcats a{display:flex;justify-content:space-between;gap:12px;padding:13px 15px;background:var(--n-white);color:var(--n-evergreen);font-size:.875rem;font-weight:600;text-decoration:none}
+.n-quickcats a:hover{background:var(--n-paper);color:var(--n-red-ink)}
+.n-dir{display:grid;grid-template-columns:minmax(0,.3fr) minmax(0,1fr);gap:clamp(24px,3vw,60px);align-items:start}
+.n-filters{position:sticky;top:88px}
+.n-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(150px,.34fr);gap:16px 28px;align-items:start;padding:22px 0;border-bottom:1px solid var(--n-rule)}
+.n-cats{margin:26px 0 0;padding:0;border:0;min-width:0;border-bottom:1px solid var(--n-rule)}
+.n-cats legend{padding:0;margin:0 0 8px}
+.n-chip{position:relative;display:block}
+.n-chip input{position:absolute;top:50%;left:14px;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+.n-chip-l{display:flex;justify-content:space-between;gap:12px;width:100%;padding:13px 14px;border-top:1px solid var(--n-rule);color:var(--n-ink);font-size:1rem;line-height:1.35;cursor:pointer;transition:background .18s ease,color .18s ease}
+.n-chip:hover .n-chip-l{background:var(--n-paper)}
+.n-chip input:checked + .n-chip-l{background:var(--n-evergreen);color:var(--n-white)}
+.n-chip-n{color:var(--n-muted)}
+.n-chip input:checked + .n-chip-l .n-chip-n{color:var(--n-gold-lt)}
+.n-chip input:focus-visible + .n-chip-l{outline:2px solid var(--n-red);outline-offset:-4px}
+/* The ring sits inside the chip, so on the checked chip's evergreen ground
+   it has to be the light gold, as on the site's other dark grounds. */
+.n-chip input:checked:focus-visible + .n-chip-l{outline-color:var(--n-gold-lt)}
+/* The category selector for a phone: one control instead of ten tiles. It
+   is script-driven and sits outside the form, so a submit without a
+   script never sends a second category value. */
+.n-dir-select{display:none;margin-top:22px}
+.n-dir-select select{display:block;width:100%;min-height:50px;margin-top:8px;padding:12px 14px;background:var(--n-white);border:2px solid var(--n-evergreen);font:inherit;font-size:1rem;color:var(--n-ink)}
+/* The strip that names the filter in force, with its reset. */
+.n-active{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-top:14px;padding:10px 14px;background:var(--n-paper);border-left:3px solid var(--n-red)}
+.n-dir-clear{padding:0;background:none;border:0;border-bottom:1px solid currentColor;color:var(--n-sky-ink);font:inherit;font-size:.9375rem;font-weight:500;cursor:pointer}
+.n-dir-clear:hover{color:var(--n-red-ink)}
+.n-how{margin-top:12px;max-width:74ch}
+.n-how summary{cursor:pointer;color:var(--n-sky-ink);font-size:.9375rem;font-weight:500}
+.n-how summary:hover{color:var(--n-red-ink)}
+/* One folded group per category. The summary is the category's own row:
+   name, count, a marker. Every listing is in the HTML either way. */
+.n-group{border-top:2px solid var(--n-evergreen)}
+.n-group summary{display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:56px;padding:14px 0;list-style:none;cursor:pointer;color:var(--n-evergreen)}
+.n-group summary::-webkit-details-marker{display:none}
+.n-group summary:hover{color:var(--n-red-ink)}
+.n-group summary .n-h3{font-size:clamp(1.25rem,1.1rem + .6vw,1.5rem)}
+.n-group summary .n-gmark{display:inline-block;width:12px;height:12px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .18s ease;flex:none;margin-right:4px}
+.n-group[open] summary .n-gmark{transform:rotate(-135deg)}
+.n-group ul{list-style:none;margin:0;padding:0 0 8px}
+@media (max-width:1080px){.n-dir-clear,.n-how summary{padding-top:12px;padding-bottom:12px}}
+@media (max-width:900px){
+.n-dir-open{grid-template-columns:minmax(0,1fr)}
+.n-dir{grid-template-columns:minmax(0,1fr)}
+.n-row{grid-template-columns:minmax(0,1fr)}
+/* A sticky rail in a one-column stack pins itself on top of the listings it
+   is meant to filter. Below the breakpoint it is an ordinary block. */
+.n-filters{position:static}
+/* On a phone the ten category tiles give way to one selector. Without a
+   script the selector could do nothing, so the tiles stay. */
+.n-dir-select{display:block}
+.n-cats{display:none}
+}
+@media (max-width:900px) and (scripting: none){.n-dir-select{display:none}.n-cats{display:block}}
+@media (max-width:620px){.n-quickcats{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Niwot business directory","numberOfItems":63,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://townofniwot.com/eat-shop/#niwot-tavern","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#niwot-tavern","name":"Niwot Tavern","description":"Neighborhood tavern with a covered patio on the corner, beside the bear sculptures.","url":"https://www.niwottavern.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":2,"url":"https://townofniwot.com/eat-shop/#raza-fresa","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#raza-fresa","name":"Raza Fresa Mexican Kitchen","description":"Mexican kitchen with umbrella-shaded patio seating alongside the square.","url":"https://razafresa.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Suite 11D","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":3,"url":"https://townofniwot.com/eat-shop/#cimminis","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#cimminis","name":"Cimmini’s Italian Restaurant","description":"Italian cooking made from scratch, on the 300 block with a heated front patio. Open since January 2022.","url":"https://cimminisniwot.com/","address":{"@type":"PostalAddress","streetAddress":"300 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":4,"url":"https://townofniwot.com/eat-shop/#fortezza-ristorante","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#fortezza-ristorante","name":"Fortezza Ristorante","description":"Northern Italian steakhouse: house-made pasta, Wagyu steaks and a long wine list. Opened August 2025.","url":"https://fortezzaristorante.com/","address":{"@type":"PostalAddress","streetAddress":"7916 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":5,"url":"https://townofniwot.com/eat-shop/#taverna-laudisio","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#taverna-laudisio","name":"Taverna Laudisio","description":"Simple, homey Italian cooking from the Laudisio family, in the two-story historic building that housed 1914 House. Opened June 2026.","url":"https://tavernalaudisio.com/","address":{"@type":"PostalAddress","streetAddress":"121 Second Avenue","postalCode":"80544","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":6,"url":"https://townofniwot.com/eat-shop/#sachi-sushi","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#sachi-sushi","name":"Sachi Sushi","description":"Japanese kitchen at the back of Niwot Market — sushi through the week and ramen on Sundays. Closed Mondays and Tuesdays.","url":"https://niwotmarket.com/sachi-sushi-1","address":{"@type":"PostalAddress","streetAddress":"7980 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":7,"url":"https://townofniwot.com/eat-shop/#fans-chinese-cuisine","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#fans-chinese-cuisine","name":"Fan’s Chinese Cuisine","description":"Chinese kitchen in the square: dine in, take out or delivery.","url":"https://niwot.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Unit C9","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":8,"url":"https://townofniwot.com/eat-shop/#abos-pizza","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#abos-pizza","name":"Abo’s Pizza Niwot","description":"New York-style pizza by the slice or the pie, from the Boulder original that started in 1977.","url":"https://abospizza.com/locations/niwot/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Suite B5","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":9,"url":"https://townofniwot.com/eat-shop/#garden-gate-cafe","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#garden-gate-cafe","name":"The Garden Gate Cafe","description":"Breakfast and lunch daily — benedicts, farmhouse plates and Southwest specials.","url":"https://www.thegardengatecafe.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Unit B4","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":10,"url":"https://townofniwot.com/eat-shop/#fritz-family-brewers","item":{"@type":"Brewery","@id":"https://townofniwot.com/eat-shop/#fritz-family-brewers","name":"Fritz Family Brewers","description":"Family-run brewery pouring German-style lagers and ales. Kids and dogs welcome.","url":"https://www.fritzfamilybrewers.com/","address":{"@type":"PostalAddress","streetAddress":"6778 N 79th Street","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":11,"url":"https://townofniwot.com/eat-shop/#the-wheel-house","item":{"@type":"BarOrPub","@id":"https://townofniwot.com/eat-shop/#the-wheel-house","name":"The Wheel House","description":"Neighborhood bar and taproom with a back patio and live music. Opened September 2020; its own kitchen opened in February 2026.","url":"https://www.niwotwheelhouse.com/","address":{"@type":"PostalAddress","streetAddress":"101 Second Avenue, Suite B","postalCode":"80544","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":12,"url":"https://townofniwot.com/eat-shop/#niwot-market-deli","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#niwot-market-deli","name":"Niwot Market Deli","description":"Deli counter inside the market: breakfast burritos, made-to-order sandwiches and a soup bar.","url":"https://niwotmarket.com/deli","address":{"@type":"PostalAddress","streetAddress":"7980 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":13,"url":"https://townofniwot.com/eat-shop/#subway","item":{"@type":"Restaurant","@id":"https://townofniwot.com/eat-shop/#subway","name":"Subway","description":"Independently owned franchise of the sandwich chain, in the square.","url":"https://restaurants.subway.com/united-states/co/niwot/7960-niwot-rd","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Unit B10","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":14,"url":"https://townofniwot.com/eat-shop/#old-oak-coffeehouse","item":{"@type":"CafeOrCoffeeShop","@id":"https://townofniwot.com/eat-shop/#old-oak-coffeehouse","name":"The Old Oak Coffeehouse","description":"Specialty coffee, house-made baked goods and panini, seven days a week.","url":"https://www.theoldoakcoffeehouse.com/","address":{"@type":"PostalAddress","streetAddress":"136 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":15,"url":"https://townofniwot.com/eat-shop/#winot-coffee-company","item":{"@type":"CafeOrCoffeeShop","@id":"https://townofniwot.com/eat-shop/#winot-coffee-company","name":"WiNot Coffee Company","description":"Independent, family-owned coffeehouse on the square, established 2007.","url":"https://niwot.com/listing/winot-coffee-company/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Unit D13","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":16,"url":"https://townofniwot.com/eat-shop/#emory-janes-coffee-co","item":{"@type":"CafeOrCoffeeShop","@id":"https://townofniwot.com/eat-shop/#emory-janes-coffee-co","name":"Emory Jane’s Coffee Co.","description":"Mobile espresso bar pouring coffee, tea and pastries from a restored 1969 Dodge A100 van. Where it parks changes, so check the operator’s schedule.","url":"https://www.emoryjanescoffeeco.com/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":17,"url":"https://townofniwot.com/eat-shop/#love-ice-cream","item":{"@type":"IceCreamShop","@id":"https://townofniwot.com/eat-shop/#love-ice-cream","name":"Love Ice Cream","description":"Small-batch ice cream shop on the 200 block, with dairy-free flavors among the dozen or so on offer. Opened September 2024.","url":"https://www.loveicecream.co/","address":{"@type":"PostalAddress","streetAddress":"240 Second Avenue","postalCode":"80544","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":18,"url":"https://townofniwot.com/eat-shop/#niwot-market","item":{"@type":"GroceryStore","@id":"https://townofniwot.com/eat-shop/#niwot-market","name":"Niwot Market","description":"The independent grocery, in business since 2002: produce, deli, prepared foods and pet supplies.","url":"https://niwotmarket.com/","address":{"@type":"PostalAddress","streetAddress":"7980 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":19,"url":"https://townofniwot.com/eat-shop/#niwot-liquor","item":{"@type":"LiquorStore","@id":"https://townofniwot.com/eat-shop/#niwot-liquor","name":"Niwot Liquor Store","url":"https://niwot.com/listing/niwot-liquor/","address":{"@type":"PostalAddress","streetAddress":"361 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":20,"url":"https://townofniwot.com/eat-shop/#little-bird","item":{"@type":"Store","@id":"https://townofniwot.com/eat-shop/#little-bird","name":"Little Bird","description":"Women’s clothing, handmade jewelry, locally made body care and art.","url":"https://niwot.com/listing/little-bird/","address":{"@type":"PostalAddress","streetAddress":"112 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":21,"url":"https://townofniwot.com/eat-shop/#wise-buys-antiques","item":{"@type":"Store","@id":"https://townofniwot.com/eat-shop/#wise-buys-antiques","name":"Wise Buys Antiques","description":"Five thousand square feet of collectibles from the 1800s onward, plus furniture refinishing and repair.","url":"https://niwot.com/listing/wise-buys-antiques/","address":{"@type":"PostalAddress","streetAddress":"190 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":22,"url":"https://townofniwot.com/eat-shop/#niwot-jewelry-gifts","item":{"@type":"JewelryStore","@id":"https://townofniwot.com/eat-shop/#niwot-jewelry-gifts","name":"Niwot Jewelry & Gifts","url":"https://niwot.com/listing/niwot-jewelry-gifts/","address":{"@type":"PostalAddress","streetAddress":"300 Second Avenue, Suite 102","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":23,"url":"https://townofniwot.com/eat-shop/#inkberry-books","item":{"@type":"BookStore","@id":"https://townofniwot.com/eat-shop/#inkberry-books","name":"Inkberry Books","description":"Independent bookshop, open since 2018: new, gently used and out-of-print books, with art by Boulder County artists each month.","url":"https://niwot.com/listing/inkberry-books/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Suite B3","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":24,"url":"https://townofniwot.com/eat-shop/#fly-away-home","item":{"@type":"Store","@id":"https://townofniwot.com/eat-shop/#fly-away-home","name":"Fly Away Home","description":"Home decor, cozy knits, accessories and gifts.","url":"https://www.flyawayhomedecor.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":25,"url":"https://townofniwot.com/eat-shop/#the-nook","item":{"@type":"Store","@id":"https://townofniwot.com/eat-shop/#the-nook","name":"The Nook","description":"Home decor and gifts tucked into the market, run by the same owner since 2019.","url":"https://niwotmarket.com/the-nook","address":{"@type":"PostalAddress","streetAddress":"7980 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":26,"url":"https://townofniwot.com/eat-shop/#belle-terre-floral","item":{"@type":"Florist","@id":"https://townofniwot.com/eat-shop/#belle-terre-floral","name":"Belle Terre Floral","description":"Florist, with a second counter inside the market.","url":"https://niwot.com/listing/belle-terre-floral/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":27,"url":"https://townofniwot.com/eat-shop/#niwot-wheel-works","item":{"@type":"BikeStore","@id":"https://townofniwot.com/eat-shop/#niwot-wheel-works","name":"Niwot Wheel Works","description":"Bike shop: sales, rentals, tune-ups and apparel. In the south-west corner of the square, next to Fan’s, since March 2025.","url":"https://www.niwotwheelworks.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Unit C10","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":28,"url":"https://townofniwot.com/eat-shop/#murray-street-flowers","item":{"@type":"Florist","@id":"https://townofniwot.com/eat-shop/#murray-street-flowers","name":"Murray Street Flowers","description":"Small flower grower with a self-serve flower cart at the corner of First Avenue and Murray Street, across from the children’s park. The cart is out Fridays and Saturdays from April to October.","url":"https://www.murraystreetflowers.com/","address":{"@type":"PostalAddress","streetAddress":"100 Murray Street","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":29,"url":"https://townofniwot.com/eat-shop/#osmosis-gallery","item":{"@type":"ArtGallery","@id":"https://townofniwot.com/eat-shop/#osmosis-gallery","name":"Osmosis Gallery","description":"Contemporary gallery in a renovated 1910 brick building, showing more than forty Colorado artists.","url":"https://www.osmosisartgallery.com/","address":{"@type":"PostalAddress","streetAddress":"290 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":30,"url":"https://townofniwot.com/eat-shop/#pebble-art-jewelry","item":{"@type":"LocalBusiness","@id":"https://townofniwot.com/eat-shop/#pebble-art-jewelry","name":"Pebble Art Jewelry","description":"Handmade jewelry, at Niwot Market.","url":"https://niwot.com/listing/pebble-art-jewelry/","address":{"@type":"PostalAddress","streetAddress":"7980 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":31,"url":"https://townofniwot.com/eat-shop/#left-hand-animal-hospital","item":{"@type":"VeterinaryCare","@id":"https://townofniwot.com/eat-shop/#left-hand-animal-hospital","name":"Left Hand Animal Hospital","description":"Veterinary practice, weekdays only.","url":"https://lefthandanimalhospital.com/","address":{"@type":"PostalAddress","streetAddress":"304 Franklin Street","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":32,"url":"https://townofniwot.com/eat-shop/#niwot-natural-medicine","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#niwot-natural-medicine","name":"Niwot Natural Medicine","url":"https://niwot.com/listing/niwot-natural-medicine-2/","address":{"@type":"PostalAddress","streetAddress":"165 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":33,"url":"https://townofniwot.com/eat-shop/#ohm-physical-therapy","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#ohm-physical-therapy","name":"OHM Physical Therapy","url":"https://niwot.com/listing/ohm/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":34,"url":"https://townofniwot.com/eat-shop/#dignity-counseling","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#dignity-counseling","name":"Dignity Counseling and Wellness","url":"https://niwot.com/listing/dignity-counseling-and-wellness/","address":{"@type":"PostalAddress","streetAddress":"210 Franklin Street","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":35,"url":"https://townofniwot.com/eat-shop/#western-wellness-chiropractic","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#western-wellness-chiropractic","name":"Western Wellness Chiropractic","description":"Chiropractic practice specializing in spinal decompression. Opened in Niwot in 2024.","url":"https://niwot.com/","address":{"@type":"PostalAddress","streetAddress":"198 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":36,"url":"https://townofniwot.com/eat-shop/#chill-cryotherapy","item":{"@type":"HealthAndBeautyBusiness","@id":"https://townofniwot.com/eat-shop/#chill-cryotherapy","name":"Chill Cryotherapy & Recovery","description":"Cryotherapy, compression therapy and muscle recovery.","url":"https://chill303.com/","address":{"@type":"PostalAddress","streetAddress":"198 Second Avenue, Unit D","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":37,"url":"https://townofniwot.com/eat-shop/#butterfield-wellness","item":{"@type":"HealthAndBeautyBusiness","@id":"https://townofniwot.com/eat-shop/#butterfield-wellness","name":"Butterfield Wellness Center","description":"Neuromuscular massage therapy — deep tissue work aimed at pain patterns.","url":"https://niwot.com/","address":{"@type":"PostalAddress","streetAddress":"8940 Morton Road","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":38,"url":"https://townofniwot.com/eat-shop/#hidden-yoga-studio","item":{"@type":"HealthAndBeautyBusiness","@id":"https://townofniwot.com/eat-shop/#hidden-yoga-studio","name":"The Hidden Yoga Studio","url":"https://niwot.com/","address":{"@type":"PostalAddress","streetAddress":"361 Second Avenue, Unit 201","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":39,"url":"https://townofniwot.com/eat-shop/#una-vida","item":{"@type":"HealthAndBeautyBusiness","@id":"https://townofniwot.com/eat-shop/#una-vida","name":"Una Vida Meditation & Movement","description":"Weekly classes in yoga, meditation and mindful movement, for all levels.","url":"https://www.unavidaniwot.com/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":40,"url":"https://townofniwot.com/eat-shop/#inner-space-healing","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#inner-space-healing","name":"Inner Space Healing","description":"Psychotherapists and other practitioners sharing one space. Opened October 2024.","url":"https://niwot.com/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":41,"url":"https://townofniwot.com/eat-shop/#hannas-herb-shop","item":{"@type":"Store","@id":"https://townofniwot.com/eat-shop/#hannas-herb-shop","name":"Hanna’s Herb Shop","description":"Herbal apothecary, in Niwot since November 2025 after decades in Boulder. Next door to WiNot Coffee.","url":"https://www.hannasherbshop.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Suite D15","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":42,"url":"https://townofniwot.com/eat-shop/#alchemy-lounge","item":{"@type":"HealthAndBeautyBusiness","@id":"https://townofniwot.com/eat-shop/#alchemy-lounge","name":"The Alchemy Lounge","description":"Bodywork sessions and women’s circles.","url":"https://niwot.com/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":43,"url":"https://townofniwot.com/eat-shop/#ola-chiropractic","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#ola-chiropractic","name":"Ola Chiropractic and Wellness","description":"Chiropractic and wellness practice run by two chiropractors. Opened on Second Avenue in November 2025.","url":"https://www.olachiropracticwellness.com/","address":{"@type":"PostalAddress","streetAddress":"263 Second Avenue, Suite 106B","postalCode":"80544","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":44,"url":"https://townofniwot.com/eat-shop/#niwot-dental","item":{"@type":"Dentist","@id":"https://townofniwot.com/eat-shop/#niwot-dental","name":"Niwot Dental","description":"Family dental practice: preventative, restorative and cosmetic dentistry. Weekdays.","url":"https://www.niwotdental.com/","address":{"@type":"PostalAddress","streetAddress":"6800 N 79th Street, Suite 203","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":45,"url":"https://townofniwot.com/eat-shop/#niles-family-dentistry","item":{"@type":"Dentist","@id":"https://townofniwot.com/eat-shop/#niles-family-dentistry","name":"Niles Family Dentistry","description":"General and family dentistry on the 300 block.","url":"https://www.nilesfamilydentistry.com/","address":{"@type":"PostalAddress","streetAddress":"364 Second Avenue","postalCode":"80503","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":46,"url":"https://townofniwot.com/eat-shop/#healing-collective","item":{"@type":"MedicalBusiness","@id":"https://townofniwot.com/eat-shop/#healing-collective","name":"The Healing Collective","description":"Functional medicine practice. Weekday mornings and early afternoons.","url":"https://niwot.com/listing/healing-collective-the/","address":{"@type":"PostalAddress","streetAddress":"6800 N 79th Street, Suite 202","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":47,"url":"https://townofniwot.com/eat-shop/#blessings-day-spa","item":{"@type":"DaySpa","@id":"https://townofniwot.com/eat-shop/#blessings-day-spa","name":"Blessings Day Spa & Skincare Boutique","description":"Facials, lash services and advanced aesthetics.","url":"https://www.niwotblessings.com/","address":{"@type":"PostalAddress","streetAddress":"240 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":48,"url":"https://townofniwot.com/eat-shop/#classic-looks","item":{"@type":"BeautySalon","@id":"https://townofniwot.com/eat-shop/#classic-looks","name":"Classic Looks","description":"Full-service salon since 1989 — hair, nails, skincare and barbering.","url":"https://www.classiclooks.net/","address":{"@type":"PostalAddress","streetAddress":"6964 N 79th Street, Unit 6","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":49,"url":"https://townofniwot.com/eat-shop/#niwot-beauty-bar","item":{"@type":"BeautySalon","@id":"https://townofniwot.com/eat-shop/#niwot-beauty-bar","name":"Niwot Beauty Bar","description":"Facials, anti-aging treatments, waxing and makeup.","url":"https://niwot.com/","address":{"@type":"PostalAddress","streetAddress":"6897 Paiute Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":50,"url":"https://townofniwot.com/eat-shop/#2nd-nature-hair-lounge","item":{"@type":"HairSalon","@id":"https://townofniwot.com/eat-shop/#2nd-nature-hair-lounge","name":"2nd Nature Hair Lounge","description":"Boutique salon on the 300 block: French haircutting and dimensional color. Weekdays only.","url":"https://2ndnaturehairniwot.com/","address":{"@type":"PostalAddress","streetAddress":"300 Second Avenue, Suite 101","postalCode":"80544","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":51,"url":"https://townofniwot.com/eat-shop/#johns-dry-cleaners","item":{"@type":"DryCleaningOrLaundry","@id":"https://townofniwot.com/eat-shop/#johns-dry-cleaners","name":"John’s Dry Cleaners","description":"Dry cleaning and laundry; one of the company’s Boulder-area shops, with pick-up and delivery in Niwot.","url":"https://www.johnsdrycleaners.com/locations/","address":{"@type":"PostalAddress","streetAddress":"6964 N 79th Street, Unit 5","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":52,"url":"https://townofniwot.com/eat-shop/#sew-fresh-studio","item":{"@type":"LocalBusiness","@id":"https://townofniwot.com/eat-shop/#sew-fresh-studio","name":"Sew Fresh Studio","description":"Tailoring, alterations and sewing classes. Moved to Cottonwood Square in early 2026 after eleven years on Second Avenue.","url":"https://sewfreshstudio.com/","address":{"@type":"PostalAddress","streetAddress":"7960 Niwot Road, Suite B1","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":53,"url":"https://townofniwot.com/eat-shop/#warren-moore-rutherford","item":{"@type":"LegalService","@id":"https://townofniwot.com/eat-shop/#warren-moore-rutherford","name":"Warren Moore Rutherford, LLP","description":"Estate planning, probate, real estate, business and family law. In practice here since 1975; formerly Warren, Carlson & Moore.","url":"https://www.niwotlaw.com/","address":{"@type":"PostalAddress","streetAddress":"6964 N 79th Street, Suite 3","postalCode":"80503","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":54,"url":"https://townofniwot.com/eat-shop/#slifer-smith-frampton-niwot","item":{"@type":"RealEstateAgent","@id":"https://townofniwot.com/eat-shop/#slifer-smith-frampton-niwot","name":"Slifer Smith & Frampton Real Estate, Niwot","description":"Residential real estate — the Niwot office of the Front Range brokerage, formerly Colorado Landmark, Realtors.","url":"https://www.sliferfrontrange.com/","address":{"@type":"PostalAddress","streetAddress":"136 Second Avenue, Suite C","postalCode":"80503","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":55,"url":"https://townofniwot.com/eat-shop/#osmosis-architecture","item":{"@type":"ProfessionalService","@id":"https://townofniwot.com/eat-shop/#osmosis-architecture","name":"Osmosis Architecture","description":"Residential architecture studio, sharing the 1910 building with the gallery.","url":"https://www.osmosisarchitecture.com/","address":{"@type":"PostalAddress","streetAddress":"290 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":56,"url":"https://townofniwot.com/eat-shop/#left-hand-valley-courier","item":{"@type":"NewsMediaOrganization","@id":"https://townofniwot.com/eat-shop/#left-hand-valley-courier","name":"Left Hand Valley Courier","description":"The non-profit weekly covering Niwot and Gunbarrel, delivered free to 6,000 homes and businesses.","url":"https://www.lhvc.com/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":57,"url":"https://townofniwot.com/eat-shop/#he-business-tax-consultants","item":{"@type":"AccountingService","@id":"https://townofniwot.com/eat-shop/#he-business-tax-consultants","name":"H&E Business and Tax Consultants LLC","description":"Day-to-day accounting for small businesses.","url":"https://niwot.com/listing/he-business-and-tax-consultants-llc","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":58,"url":"https://townofniwot.com/eat-shop/#noblestar-technologies","item":{"@type":"ProfessionalService","@id":"https://townofniwot.com/eat-shop/#noblestar-technologies","name":"Noblestar Technologies LLC","description":"Infrastructure and software for logistics, community development and operations.","url":"https://niwot.com/listing/noblestar-techologies-llc/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":59,"url":"https://townofniwot.com/eat-shop/#dmr-group","item":{"@type":"ProfessionalService","@id":"https://townofniwot.com/eat-shop/#dmr-group","name":"DMR Group, LLC","url":"https://niwot.com/listing/dmr-group-llc/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":60,"url":"https://townofniwot.com/eat-shop/#niwot-partners","item":{"@type":"ProfessionalService","@id":"https://townofniwot.com/eat-shop/#niwot-partners","name":"Niwot Partners LLC","url":"https://niwot.com/listing/niwot-partners-llc/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":61,"url":"https://townofniwot.com/eat-shop/#itrade-colorado","item":{"@type":"ProfessionalService","@id":"https://townofniwot.com/eat-shop/#itrade-colorado","name":"iTrade Colorado","description":"Barter network: members earn credits on what they sell and spend them with other members.","url":"https://niwot.com/listing/itrade-colorado/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":62,"url":"https://townofniwot.com/eat-shop/#niwot-group-at-compass","item":{"@type":"RealEstateAgent","@id":"https://townofniwot.com/eat-shop/#niwot-group-at-compass","name":"The Niwot Group at Compass","description":"Residential real estate team on Second Avenue — Niwot Real Estate from 1986, part of Compass since July 2021. Co-hosts the Great Pumpkin Party.","url":"https://theniwotgroup.com/","address":{"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}},{"@type":"ListItem","position":63,"url":"https://townofniwot.com/eat-shop/#niwot-inn","item":{"@type":"Hotel","@id":"https://townofniwot.com/eat-shop/#niwot-inn","name":"Niwot Inn & Spa","description":"Fourteen rooms and an on-site spa, in the middle of Old Town.","url":"https://niwotinn.com/","address":{"@type":"PostalAddress","streetAddress":"342 Second Avenue","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://townofniwot.com/"},{"@type":"ListItem","position":2,"name":"Eat & Shop","item":"https://townofniwot.com/eat-shop/"}]}</script>
+</head>
+<body>
+<div>
+<a class="n-skip" href="#main">Skip to main content</a>
+<header class="n-head"><noscript><style>@media (max-width:1080px){.n-burger{display:none}.n-nav{display:flex;position:static;padding:0 0 12px;border-bottom:0}}</style></noscript>
+<div class="n-wrap n-head-in">
+<a class="n-mark" href="/">NIWOT<small>Independent community guide</small></a>
+<button class="n-burger" type="button" aria-expanded="false" aria-controls="n-menu" aria-label="Open menu"><span></span><span></span><span></span></button>
+<nav class="n-nav" id="n-menu" aria-label="Primary">
+<a href="/explore/">Explore</a>
+<a class="n-on" aria-current="page" href="/eat-shop/">Eat &amp; Shop</a>
+<a href="/events/">Events</a>
+<a href="/community/">Community</a>
+<a href="/civic/incorporation-election/">2026 Election</a>
+</nav>
+</div>
+</header>
+<nav class="n-crumbs" aria-label="Breadcrumb">
+<div class="n-wrap">
+<ol>
+<li><a href="/">Home</a></li>
+<li><span aria-current="page">Eat &amp; Shop</span></li>
+</ol>
+</div>
+</nav>
+<main id="main">
+<section class="n-bg-white" aria-labelledby="title-h">
+<div class="n-wrap" style="padding-top:clamp(28px,4vw,60px);padding-bottom:clamp(38px,5vw,72px)">
+<div class="n-dir-open">
+<div>
+<div class="n-label">Eat &amp; shop locally</div>
+<h1 class="n-display" id="title-h" style="margin-top:14px;font-size:clamp(2.75rem,2rem + 3vw,5.25rem);line-height:.93;max-width:11ch;color:var(--n-evergreen)">Niwot Restaurants, Shops &amp; Local Services</h1>
+<p class="n-lead" style="margin:clamp(20px,2.5vw,32px) 0 0;max-width:46ch">Find kitchens, coffee, groceries, shops and local services across Old Town and Cottonwood Square.</p>
+<nav class="n-quickcats" aria-label="Popular directory categories">
+<a href="/eat-shop/?category=restaurants-bars"><span>Restaurants &amp; bars</span><span aria-hidden="true">&#8594;</span></a>
+<a href="/eat-shop/?category=coffee-bakery"><span>Coffee &amp; sweets</span><span aria-hidden="true">&#8594;</span></a>
+<a href="/eat-shop/?category=shops-gifts"><span>Shops &amp; gifts</span><span aria-hidden="true">&#8594;</span></a>
+<a href="/eat-shop/?category=health-wellness"><span>Health &amp; wellness</span><span aria-hidden="true">&#8594;</span></a>
+</nav>
+</div>
+<div class="n-pair">
+<figure class="n-photo-natural" style="margin:0">
+<picture><source type="image/avif" srcset="/img/q7-qiFttde-400.avif 400w, /img/q7-qiFttde-560.avif 560w, /img/q7-qiFttde-700.avif 700w, /img/q7-qiFttde-1000.avif 1000w, /img/q7-qiFttde-1400.avif 1400w" sizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1440px) 52vw, 700px"><source type="image/webp" srcset="/img/q7-qiFttde-400.webp 400w, /img/q7-qiFttde-560.webp 560w, /img/q7-qiFttde-700.webp 700w, /img/q7-qiFttde-1000.webp 1000w, /img/q7-qiFttde-1400.webp 1400w" sizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1440px) 52vw, 700px"><img src="/img/q7-qiFttde-400.jpeg" alt="Umbrella-shaded patios outside the Niwot Tavern and Raza Fresa Mexican Kitchen with both bronze bear sculptures visible on the corner" style="display:block;width:100%;height:auto;object-fit:contain" loading="eager" decoding="async" fetchpriority="high" width="1400" height="916" srcset="/img/q7-qiFttde-400.jpeg 400w, /img/q7-qiFttde-560.jpeg 560w, /img/q7-qiFttde-700.jpeg 700w, /img/q7-qiFttde-1000.jpeg 1000w, /img/q7-qiFttde-1400.jpeg 1400w" sizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1440px) 52vw, 700px"></picture>
+<figcaption class="n-cap">Cottonwood Square &#8212; local kitchens and the bear sculptures on the corner</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section class="n-bg-white" aria-labelledby="dir-h" style="padding-bottom:clamp(36px,5vw,72px)">
+<div class="n-wrap">
+<div class="n-rail n-rail--red"></div>
+<div class="n-dir" style="margin-top:clamp(20px,2.5vw,36px)">
+<div class="n-filters"><form data-dir-filters action="/eat-shop/" method="get" role="search" aria-label="Search and filter the directory">
+<label class="n-label n-label--quiet" for="dir-q" style="display:block">Search</label>
+<input id="dir-q" name="q" type="search" placeholder="Name, street or keyword" autocomplete="off" style="width:100%;margin-top:8px;padding:13px 14px;background:var(--n-white);border:2px solid var(--n-evergreen);font:inherit;font-size:1rem;color:var(--n-ink)">
+<fieldset class="n-cats">
+<legend class="n-label n-label--quiet">Filter by category</legend>
+<label class="n-chip"><input type="radio" name="category" value="all" checked><span class="n-chip-l"><span data-chip-label>All categories</span> <span class="n-chip-n">63</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="restaurants-bars"><span class="n-chip-l"><span data-chip-label>Restaurants &amp; Bars</span> <span class="n-chip-n">13</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="coffee-bakery"><span class="n-chip-l"><span data-chip-label>Coffee, Bakery &amp; Sweets</span> <span class="n-chip-n">4</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="grocery-provisions"><span class="n-chip-l"><span data-chip-label>Grocery &amp; Provisions</span> <span class="n-chip-n">2</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="shops-gifts"><span class="n-chip-l"><span data-chip-label>Shops &amp; Gifts</span> <span class="n-chip-n">9</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="arts-makers"><span class="n-chip-l"><span data-chip-label>Arts &amp; Makers</span> <span class="n-chip-n">2</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="health-wellness"><span class="n-chip-l"><span data-chip-label>Health &amp; Wellness</span> <span class="n-chip-n">16</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="beauty-personal-care"><span class="n-chip-l"><span data-chip-label>Beauty &amp; Personal Care</span> <span class="n-chip-n">4</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="everyday-services"><span class="n-chip-l"><span data-chip-label>Everyday Services</span> <span class="n-chip-n">2</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="professional-services"><span class="n-chip-l"><span data-chip-label>Professional Services</span> <span class="n-chip-n">10</span></span></label>
+<label class="n-chip"><input type="radio" name="category" value="stay-the-night"><span class="n-chip-l"><span data-chip-label>Stay the Night</span> <span class="n-chip-n">1</span></span></label>
+</fieldset>
+</form>
+<div class="n-dir-select">
+<label class="n-label n-label--quiet" for="dir-cat" style="display:block">Category</label>
+<select id="dir-cat" data-dir-select>
+<option value="all" selected>All categories (63)</option>
+<option value="restaurants-bars">Restaurants &amp; Bars (13)</option>
+<option value="coffee-bakery">Coffee, Bakery &amp; Sweets (4)</option>
+<option value="grocery-provisions">Grocery &amp; Provisions (2)</option>
+<option value="shops-gifts">Shops &amp; Gifts (9)</option>
+<option value="arts-makers">Arts &amp; Makers (2)</option>
+<option value="health-wellness">Health &amp; Wellness (16)</option>
+<option value="beauty-personal-care">Beauty &amp; Personal Care (4)</option>
+<option value="everyday-services">Everyday Services (2)</option>
+<option value="professional-services">Professional Services (10)</option>
+<option value="stay-the-night">Stay the Night (1)</option>
+</select>
+</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="display:inline-block;margin-top:20px">The Association&#8217;s full directory <span aria-hidden="true">&#8599;</span></a>
+</div>
+<div>
+<div class="n-shead n-shead-row" style="border-bottom-color:var(--n-evergreen)">
+<h2 class="n-h2" id="dir-h" data-dir-heading style="font-size:clamp(1.5rem,1.2rem + 1.2vw,2.25rem);color:var(--n-evergreen)">Local businesses</h2>
+<span aria-live="polite" aria-atomic="true" class="n-label n-label--quiet" data-dir-count>63 listings</span>
+</div>
+<div class="n-active" data-dir-active hidden>
+<span class="n-small" style="color:var(--n-ink)">Showing <strong data-dir-active-label style="font-weight:600"></strong></span>
+<button type="button" class="n-dir-clear" data-dir-clear>Clear filters</button>
+</div>
+<p class="n-small" style="margin:14px 0 0;max-width:74ch">Grouped by category; open a group to see its listings, or search across all of them. Each row is checked against the business&#8217;s own site, the Niwot Business Association directory or the Left Hand Valley Courier, and shows the date it was checked. <span data-dir-verified>Listings were last checked between September 8, 2026 and September 10, 2026; each row shows its own date.</span></p>
+<details class="n-how">
+<summary>How this directory is compiled</summary>
+<p class="n-small" style="margin:10px 0 0">A curated directory of Niwot businesses, checked against business-owned and community sources: each business&#8217;s own site, the Niwot Business Association directory and the Left Hand Valley Courier. Phone numbers are not reproduced here because they change faster than anything else &#8212; each row links out for current hours and contact details, and says where the link goes. A business that keeps no public listing will not appear; <a href="/contact/">send yours</a> and it goes in.</p>
+</details><div data-dir-list style="margin-top:clamp(18px,2vw,28px)">
+<details class="n-group" id="cat-restaurants-bars" data-group="restaurants-bars">
+<summary><span class="n-h3" data-group-label>Restaurants &amp; Bars</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>13</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="niwot-tavern" data-listing data-cat="restaurants-bars" data-name="Niwot Tavern" data-category="Restaurants &amp; Bars" data-note="Neighborhood tavern with a covered patio on the corner, beside the bear sculptures." data-area="Cottonwood Square" data-address="7960 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Tavern</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Neighborhood tavern with a covered patio on the corner, beside the bear sculptures.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://www.niwottavern.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="raza-fresa" data-listing data-cat="restaurants-bars" data-name="Raza Fresa Mexican Kitchen" data-category="Restaurants &amp; Bars" data-note="Mexican kitchen with umbrella-shaded patio seating alongside the square." data-area="Cottonwood Square" data-address="7960 Niwot Road, Suite 11D">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Raza Fresa Mexican Kitchen</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Mexican kitchen with umbrella-shaded patio seating alongside the square.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Suite 11D</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://razafresa.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="cimminis" data-listing data-cat="restaurants-bars" data-name="Cimmini’s Italian Restaurant" data-category="Restaurants &amp; Bars" data-note="Italian cooking made from scratch, on the 300 block with a heated front patio. Open since January 2022." data-area="Old Town, 300 block" data-address="300 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Cimmini’s Italian Restaurant</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Italian cooking made from scratch, on the 300 block with a heated front patio. Open since January 2022.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">300 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, 300 block</div>
+<a class="n-link" href="https://cimminisniwot.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="fortezza-ristorante" data-listing data-cat="restaurants-bars" data-name="Fortezza Ristorante" data-category="Restaurants &amp; Bars" data-note="Northern Italian steakhouse: house-made pasta, Wagyu steaks and a long wine list. Opened August 2025." data-area="" data-address="7916 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Fortezza Ristorante</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Northern Italian steakhouse: house-made pasta, Wagyu steaks and a long wine list. Opened August 2025.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7916 Niwot Road</div>
+<a class="n-link" href="https://fortezzaristorante.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="taverna-laudisio" data-listing data-cat="restaurants-bars" data-name="Taverna Laudisio" data-category="Restaurants &amp; Bars" data-note="Simple, homey Italian cooking from the Laudisio family, in the two-story historic building that housed 1914 House. Opened June 2026." data-area="Old Town, Second Avenue" data-address="121 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Taverna Laudisio</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Simple, homey Italian cooking from the Laudisio family, in the two-story historic building that housed 1914 House. Opened June 2026.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">121 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://tavernalaudisio.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="sachi-sushi" data-listing data-cat="restaurants-bars" data-name="Sachi Sushi" data-category="Restaurants &amp; Bars" data-note="Japanese kitchen at the back of Niwot Market — sushi through the week and ramen on Sundays. Closed Mondays and Tuesdays." data-area="Inside Niwot Market" data-address="7980 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Sachi Sushi</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Japanese kitchen at the back of Niwot Market — sushi through the week and ramen on Sundays. Closed Mondays and Tuesdays.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7980 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Inside Niwot Market</div>
+<a class="n-link" href="https://niwotmarket.com/sachi-sushi-1" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="fans-chinese-cuisine" data-listing data-cat="restaurants-bars" data-name="Fan’s Chinese Cuisine" data-category="Restaurants &amp; Bars" data-note="Chinese kitchen in the square: dine in, take out or delivery." data-area="Cottonwood Square" data-address="7960 Niwot Road, Unit C9">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Fan’s Chinese Cuisine</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Chinese kitchen in the square: dine in, take out or delivery.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Unit C9</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="abos-pizza" data-listing data-cat="restaurants-bars" data-name="Abo’s Pizza Niwot" data-category="Restaurants &amp; Bars" data-note="New York-style pizza by the slice or the pie, from the Boulder original that started in 1977." data-area="Cottonwood Square" data-address="7960 Niwot Road, Suite B5">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Abo’s Pizza Niwot</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">New York-style pizza by the slice or the pie, from the Boulder original that started in 1977.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Suite B5</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://abospizza.com/locations/niwot/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="garden-gate-cafe" data-listing data-cat="restaurants-bars" data-name="The Garden Gate Cafe" data-category="Restaurants &amp; Bars" data-note="Breakfast and lunch daily — benedicts, farmhouse plates and Southwest specials." data-area="Cottonwood Square" data-address="7960 Niwot Road, Unit B4">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Garden Gate Cafe</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Breakfast and lunch daily — benedicts, farmhouse plates and Southwest specials.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Unit B4</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://www.thegardengatecafe.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="fritz-family-brewers" data-listing data-cat="restaurants-bars" data-name="Fritz Family Brewers" data-category="Restaurants &amp; Bars" data-note="Family-run brewery pouring German-style lagers and ales. Kids and dogs welcome." data-area="" data-address="6778 N 79th Street">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Fritz Family Brewers</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Family-run brewery pouring German-style lagers and ales. Kids and dogs welcome.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6778 N 79th Street</div>
+<a class="n-link" href="https://www.fritzfamilybrewers.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="the-wheel-house" data-listing data-cat="restaurants-bars" data-name="The Wheel House" data-category="Restaurants &amp; Bars" data-note="Neighborhood bar and taproom with a back patio and live music. Opened September 2020; its own kitchen opened in February 2026." data-area="Old Town, Second Avenue" data-address="101 Second Avenue, Suite B">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Wheel House</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Neighborhood bar and taproom with a back patio and live music. Opened September 2020; its own kitchen opened in February 2026.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">101 Second Avenue, Suite B</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.niwotwheelhouse.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-market-deli" data-listing data-cat="restaurants-bars" data-name="Niwot Market Deli" data-category="Restaurants &amp; Bars" data-note="Deli counter inside the market: breakfast burritos, made-to-order sandwiches and a soup bar." data-area="Inside Niwot Market" data-address="7980 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Market Deli</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Deli counter inside the market: breakfast burritos, made-to-order sandwiches and a soup bar.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7980 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Inside Niwot Market</div>
+<a class="n-link" href="https://niwotmarket.com/deli" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="subway" data-listing data-cat="restaurants-bars" data-name="Subway" data-category="Restaurants &amp; Bars" data-note="Independently owned franchise of the sandwich chain, in the square." data-area="Cottonwood Square" data-address="7960 Niwot Road, Unit B10">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Subway</h3>
+<div class="n-label" style="margin-top:8px">Restaurants &amp; Bars</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Independently owned franchise of the sandwich chain, in the square.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Unit B10</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://restaurants.subway.com/united-states/co/niwot/7960-niwot-rd" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-coffee-bakery" data-group="coffee-bakery">
+<summary><span class="n-h3" data-group-label>Coffee, Bakery &amp; Sweets</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>4</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="old-oak-coffeehouse" data-listing data-cat="coffee-bakery" data-name="The Old Oak Coffeehouse" data-category="Coffee, Bakery &amp; Sweets" data-note="Specialty coffee, house-made baked goods and panini, seven days a week." data-area="Old Town, Second Avenue" data-address="136 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Old Oak Coffeehouse</h3>
+<div class="n-label" style="margin-top:8px">Coffee, Bakery &amp; Sweets</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Specialty coffee, house-made baked goods and panini, seven days a week.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">136 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.theoldoakcoffeehouse.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="winot-coffee-company" data-listing data-cat="coffee-bakery" data-name="WiNot Coffee Company" data-category="Coffee, Bakery &amp; Sweets" data-note="Independent, family-owned coffeehouse on the square, established 2007." data-area="Cottonwood Square" data-address="7960 Niwot Road, Unit D13">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">WiNot Coffee Company</h3>
+<div class="n-label" style="margin-top:8px">Coffee, Bakery &amp; Sweets</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Independent, family-owned coffeehouse on the square, established 2007.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Unit D13</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://niwot.com/listing/winot-coffee-company/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="emory-janes-coffee-co" data-listing data-cat="coffee-bakery" data-name="Emory Jane’s Coffee Co." data-category="Coffee, Bakery &amp; Sweets" data-note="Mobile espresso bar pouring coffee, tea and pastries from a restored 1969 Dodge A100 van. Where it parks changes, so check the operator’s schedule." data-area="Mobile, around Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Emory Jane’s Coffee Co.</h3>
+<div class="n-label" style="margin-top:8px">Coffee, Bakery &amp; Sweets</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Mobile espresso bar pouring coffee, tea and pastries from a restored 1969 Dodge A100 van. Where it parks changes, so check the operator’s schedule.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Mobile, around Niwot</div>
+<a class="n-link" href="https://www.emoryjanescoffeeco.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="love-ice-cream" data-listing data-cat="coffee-bakery" data-name="Love Ice Cream" data-category="Coffee, Bakery &amp; Sweets" data-note="Small-batch ice cream shop on the 200 block, with dairy-free flavors among the dozen or so on offer. Opened September 2024." data-area="Old Town, Second Avenue" data-address="240 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Love Ice Cream</h3>
+<div class="n-label" style="margin-top:8px">Coffee, Bakery &amp; Sweets</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Small-batch ice cream shop on the 200 block, with dairy-free flavors among the dozen or so on offer. Opened September 2024.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">240 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.loveicecream.co/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-grocery-provisions" data-group="grocery-provisions">
+<summary><span class="n-h3" data-group-label>Grocery &amp; Provisions</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>2</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="niwot-market" data-listing data-cat="grocery-provisions" data-name="Niwot Market" data-category="Grocery &amp; Provisions" data-note="The independent grocery, in business since 2002: produce, deli, prepared foods and pet supplies." data-area="" data-address="7980 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Market</h3>
+<div class="n-label" style="margin-top:8px">Grocery &amp; Provisions</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">The independent grocery, in business since 2002: produce, deli, prepared foods and pet supplies.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7980 Niwot Road</div>
+<a class="n-link" href="https://niwotmarket.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-liquor" data-listing data-cat="grocery-provisions" data-name="Niwot Liquor Store" data-category="Grocery &amp; Provisions" data-note="" data-area="Old Town, Second Avenue" data-address="361 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Liquor Store</h3>
+<div class="n-label" style="margin-top:8px">Grocery &amp; Provisions</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">361 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwot.com/listing/niwot-liquor/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-shops-gifts" data-group="shops-gifts">
+<summary><span class="n-h3" data-group-label>Shops &amp; Gifts</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>9</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="little-bird" data-listing data-cat="shops-gifts" data-name="Little Bird" data-category="Shops &amp; Gifts" data-note="Women’s clothing, handmade jewelry, locally made body care and art." data-area="Old Town, Second Avenue" data-address="112 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Little Bird</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Women’s clothing, handmade jewelry, locally made body care and art.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">112 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwot.com/listing/little-bird/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="wise-buys-antiques" data-listing data-cat="shops-gifts" data-name="Wise Buys Antiques" data-category="Shops &amp; Gifts" data-note="Five thousand square feet of collectibles from the 1800s onward, plus furniture refinishing and repair." data-area="Old Town, Second Avenue" data-address="190 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Wise Buys Antiques</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Five thousand square feet of collectibles from the 1800s onward, plus furniture refinishing and repair.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">190 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwot.com/listing/wise-buys-antiques/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-jewelry-gifts" data-listing data-cat="shops-gifts" data-name="Niwot Jewelry &amp; Gifts" data-category="Shops &amp; Gifts" data-note="" data-area="Old Town, 300 block" data-address="300 Second Avenue, Suite 102">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Jewelry &amp; Gifts</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">300 Second Avenue, Suite 102</div>
+<div class="n-small" style="font-size:.875rem">Old Town, 300 block</div>
+<a class="n-link" href="https://niwot.com/listing/niwot-jewelry-gifts/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="inkberry-books" data-listing data-cat="shops-gifts" data-name="Inkberry Books" data-category="Shops &amp; Gifts" data-note="Independent bookshop, open since 2018: new, gently used and out-of-print books, with art by Boulder County artists each month." data-area="Cottonwood Square" data-address="7960 Niwot Road, Suite B3">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Inkberry Books</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Independent bookshop, open since 2018: new, gently used and out-of-print books, with art by Boulder County artists each month.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Suite B3</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://niwot.com/listing/inkberry-books/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="fly-away-home" data-listing data-cat="shops-gifts" data-name="Fly Away Home" data-category="Shops &amp; Gifts" data-note="Home decor, cozy knits, accessories and gifts." data-area="Cottonwood Square" data-address="7960 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Fly Away Home</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Home decor, cozy knits, accessories and gifts.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://www.flyawayhomedecor.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="the-nook" data-listing data-cat="shops-gifts" data-name="The Nook" data-category="Shops &amp; Gifts" data-note="Home decor and gifts tucked into the market, run by the same owner since 2019." data-area="Inside Niwot Market" data-address="7980 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Nook</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Home decor and gifts tucked into the market, run by the same owner since 2019.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7980 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Inside Niwot Market</div>
+<a class="n-link" href="https://niwotmarket.com/the-nook" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="belle-terre-floral" data-listing data-cat="shops-gifts" data-name="Belle Terre Floral" data-category="Shops &amp; Gifts" data-note="Florist, with a second counter inside the market." data-area="Cottonwood Square, and inside Niwot Market" data-address="7960 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Belle Terre Floral</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Florist, with a second counter inside the market.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square, and inside Niwot Market</div>
+<a class="n-link" href="https://niwot.com/listing/belle-terre-floral/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-wheel-works" data-listing data-cat="shops-gifts" data-name="Niwot Wheel Works" data-category="Shops &amp; Gifts" data-note="Bike shop: sales, rentals, tune-ups and apparel. In the south-west corner of the square, next to Fan’s, since March 2025." data-area="Cottonwood Square" data-address="7960 Niwot Road, Unit C10">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Wheel Works</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Bike shop: sales, rentals, tune-ups and apparel. In the south-west corner of the square, next to Fan’s, since March 2025.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Unit C10</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://www.niwotwheelworks.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="murray-street-flowers" data-listing data-cat="shops-gifts" data-name="Murray Street Flowers" data-category="Shops &amp; Gifts" data-note="Small flower grower with a self-serve flower cart at the corner of First Avenue and Murray Street, across from the children’s park. The cart is out Fridays and Saturdays from April to October." data-area="Old Town, at First Avenue and Murray Street" data-address="100 Murray Street">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Murray Street Flowers</h3>
+<div class="n-label" style="margin-top:8px">Shops &amp; Gifts</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Small flower grower with a self-serve flower cart at the corner of First Avenue and Murray Street, across from the children’s park. The cart is out Fridays and Saturdays from April to October.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">100 Murray Street</div>
+<div class="n-small" style="font-size:.875rem">Old Town, at First Avenue and Murray Street</div>
+<a class="n-link" href="https://www.murraystreetflowers.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-arts-makers" data-group="arts-makers">
+<summary><span class="n-h3" data-group-label>Arts &amp; Makers</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>2</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="osmosis-gallery" data-listing data-cat="arts-makers" data-name="Osmosis Gallery" data-category="Arts &amp; Makers" data-note="Contemporary gallery in a renovated 1910 brick building, showing more than forty Colorado artists." data-area="Old Town, Second Avenue" data-address="290 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Osmosis Gallery</h3>
+<div class="n-label" style="margin-top:8px">Arts &amp; Makers</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Contemporary gallery in a renovated 1910 brick building, showing more than forty Colorado artists.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">290 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.osmosisartgallery.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="pebble-art-jewelry" data-listing data-cat="arts-makers" data-name="Pebble Art Jewelry" data-category="Arts &amp; Makers" data-note="Handmade jewelry, at Niwot Market." data-area="Cottonwood Square, at Niwot Market" data-address="7980 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Pebble Art Jewelry</h3>
+<div class="n-label" style="margin-top:8px">Arts &amp; Makers</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Handmade jewelry, at Niwot Market.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7980 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square, at Niwot Market</div>
+<a class="n-link" href="https://niwot.com/listing/pebble-art-jewelry/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-health-wellness" data-group="health-wellness">
+<summary><span class="n-h3" data-group-label>Health &amp; Wellness</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>16</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="left-hand-animal-hospital" data-listing data-cat="health-wellness" data-name="Left Hand Animal Hospital" data-category="Health &amp; Wellness" data-note="Veterinary practice, weekdays only." data-area="Old Town, Franklin Street" data-address="304 Franklin Street">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Left Hand Animal Hospital</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Veterinary practice, weekdays only.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">304 Franklin Street</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Franklin Street</div>
+<a class="n-link" href="https://lefthandanimalhospital.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-natural-medicine" data-listing data-cat="health-wellness" data-name="Niwot Natural Medicine" data-category="Health &amp; Wellness" data-note="" data-area="Old Town, Second Avenue" data-address="165 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Natural Medicine</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">165 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwot.com/listing/niwot-natural-medicine-2/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="ohm-physical-therapy" data-listing data-cat="health-wellness" data-name="OHM Physical Therapy" data-category="Health &amp; Wellness" data-note="" data-area="Cottonwood Square" data-address="7960 Niwot Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">OHM Physical Therapy</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://niwot.com/listing/ohm/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="dignity-counseling" data-listing data-cat="health-wellness" data-name="Dignity Counseling and Wellness" data-category="Health &amp; Wellness" data-note="" data-area="Old Town, Franklin Street" data-address="210 Franklin Street">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Dignity Counseling and Wellness</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">210 Franklin Street</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Franklin Street</div>
+<a class="n-link" href="https://niwot.com/listing/dignity-counseling-and-wellness/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="western-wellness-chiropractic" data-listing data-cat="health-wellness" data-name="Western Wellness Chiropractic" data-category="Health &amp; Wellness" data-note="Chiropractic practice specializing in spinal decompression. Opened in Niwot in 2024." data-area="Old Town, Second Avenue" data-address="198 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Western Wellness Chiropractic</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Chiropractic practice specializing in spinal decompression. Opened in Niwot in 2024.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">198 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="chill-cryotherapy" data-listing data-cat="health-wellness" data-name="Chill Cryotherapy &amp; Recovery" data-category="Health &amp; Wellness" data-note="Cryotherapy, compression therapy and muscle recovery." data-area="Old Town, Second Avenue" data-address="198 Second Avenue, Unit D">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Chill Cryotherapy &amp; Recovery</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Cryotherapy, compression therapy and muscle recovery.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">198 Second Avenue, Unit D</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://chill303.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="butterfield-wellness" data-listing data-cat="health-wellness" data-name="Butterfield Wellness Center" data-category="Health &amp; Wellness" data-note="Neuromuscular massage therapy — deep tissue work aimed at pain patterns." data-area="" data-address="8940 Morton Road">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Butterfield Wellness Center</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Neuromuscular massage therapy — deep tissue work aimed at pain patterns.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">8940 Morton Road</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-10">Checked September 10, 2026</div>
+</div>
+</li>
+<li class="n-row" id="hidden-yoga-studio" data-listing data-cat="health-wellness" data-name="The Hidden Yoga Studio" data-category="Health &amp; Wellness" data-note="" data-area="Old Town, Second Avenue" data-address="361 Second Avenue, Unit 201">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Hidden Yoga Studio</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">361 Second Avenue, Unit 201</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-10">Checked September 10, 2026</div>
+</div>
+</li>
+<li class="n-row" id="una-vida" data-listing data-cat="health-wellness" data-name="Una Vida Meditation &amp; Movement" data-category="Health &amp; Wellness" data-note="Weekly classes in yoga, meditation and mindful movement, for all levels." data-area="Cottonwood Square" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Una Vida Meditation &amp; Movement</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Weekly classes in yoga, meditation and mindful movement, for all levels.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://www.unavidaniwot.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="inner-space-healing" data-listing data-cat="health-wellness" data-name="Inner Space Healing" data-category="Health &amp; Wellness" data-note="Psychotherapists and other practitioners sharing one space. Opened October 2024." data-area="Cottonwood Square" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Inner Space Healing</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Psychotherapists and other practitioners sharing one space. Opened October 2024.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="hannas-herb-shop" data-listing data-cat="health-wellness" data-name="Hanna’s Herb Shop" data-category="Health &amp; Wellness" data-note="Herbal apothecary, in Niwot since November 2025 after decades in Boulder. Next door to WiNot Coffee." data-area="Cottonwood Square" data-address="7960 Niwot Road, Suite D15">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Hanna’s Herb Shop</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Herbal apothecary, in Niwot since November 2025 after decades in Boulder. Next door to WiNot Coffee.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Suite D15</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://www.hannasherbshop.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="alchemy-lounge" data-listing data-cat="health-wellness" data-name="The Alchemy Lounge" data-category="Health &amp; Wellness" data-note="Bodywork sessions and women’s circles." data-area="Old Town" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Alchemy Lounge</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Bodywork sessions and women’s circles.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Old Town</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="ola-chiropractic" data-listing data-cat="health-wellness" data-name="Ola Chiropractic and Wellness" data-category="Health &amp; Wellness" data-note="Chiropractic and wellness practice run by two chiropractors. Opened on Second Avenue in November 2025." data-area="Old Town, Second Avenue" data-address="263 Second Avenue, Suite 106B">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Ola Chiropractic and Wellness</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Chiropractic and wellness practice run by two chiropractors. Opened on Second Avenue in November 2025.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">263 Second Avenue, Suite 106B</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.olachiropracticwellness.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-dental" data-listing data-cat="health-wellness" data-name="Niwot Dental" data-category="Health &amp; Wellness" data-note="Family dental practice: preventative, restorative and cosmetic dentistry. Weekdays." data-area="" data-address="6800 N 79th Street, Suite 203">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Dental</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Family dental practice: preventative, restorative and cosmetic dentistry. Weekdays.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6800 N 79th Street, Suite 203</div>
+<a class="n-link" href="https://www.niwotdental.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niles-family-dentistry" data-listing data-cat="health-wellness" data-name="Niles Family Dentistry" data-category="Health &amp; Wellness" data-note="General and family dentistry on the 300 block." data-area="Old Town, Second Avenue" data-address="364 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niles Family Dentistry</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">General and family dentistry on the 300 block.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">364 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.nilesfamilydentistry.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="healing-collective" data-listing data-cat="health-wellness" data-name="The Healing Collective" data-category="Health &amp; Wellness" data-note="Functional medicine practice. Weekday mornings and early afternoons." data-area="" data-address="6800 N 79th Street, Suite 202">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Healing Collective</h3>
+<div class="n-label" style="margin-top:8px">Health &amp; Wellness</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Functional medicine practice. Weekday mornings and early afternoons.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6800 N 79th Street, Suite 202</div>
+<a class="n-link" href="https://niwot.com/listing/healing-collective-the/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-beauty-personal-care" data-group="beauty-personal-care">
+<summary><span class="n-h3" data-group-label>Beauty &amp; Personal Care</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>4</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="blessings-day-spa" data-listing data-cat="beauty-personal-care" data-name="Blessings Day Spa &amp; Skincare Boutique" data-category="Beauty &amp; Personal Care" data-note="Facials, lash services and advanced aesthetics." data-area="Old Town, Second Avenue" data-address="240 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Blessings Day Spa &amp; Skincare Boutique</h3>
+<div class="n-label" style="margin-top:8px">Beauty &amp; Personal Care</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Facials, lash services and advanced aesthetics.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">240 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.niwotblessings.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="classic-looks" data-listing data-cat="beauty-personal-care" data-name="Classic Looks" data-category="Beauty &amp; Personal Care" data-note="Full-service salon since 1989 — hair, nails, skincare and barbering." data-area="" data-address="6964 N 79th Street, Unit 6">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Classic Looks</h3>
+<div class="n-label" style="margin-top:8px">Beauty &amp; Personal Care</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Full-service salon since 1989 — hair, nails, skincare and barbering.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6964 N 79th Street, Unit 6</div>
+<a class="n-link" href="https://www.classiclooks.net/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-beauty-bar" data-listing data-cat="beauty-personal-care" data-name="Niwot Beauty Bar" data-category="Beauty &amp; Personal Care" data-note="Facials, anti-aging treatments, waxing and makeup." data-area="" data-address="6897 Paiute Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Beauty Bar</h3>
+<div class="n-label" style="margin-top:8px">Beauty &amp; Personal Care</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Facials, anti-aging treatments, waxing and makeup.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6897 Paiute Avenue</div>
+<a class="n-link" href="https://niwot.com/" rel="noopener" style="justify-self:start">Find in the Association directory <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="2nd-nature-hair-lounge" data-listing data-cat="beauty-personal-care" data-name="2nd Nature Hair Lounge" data-category="Beauty &amp; Personal Care" data-note="Boutique salon on the 300 block: French haircutting and dimensional color. Weekdays only." data-area="Old Town, 300 block" data-address="300 Second Avenue, Suite 101">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">2nd Nature Hair Lounge</h3>
+<div class="n-label" style="margin-top:8px">Beauty &amp; Personal Care</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Boutique salon on the 300 block: French haircutting and dimensional color. Weekdays only.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">300 Second Avenue, Suite 101</div>
+<div class="n-small" style="font-size:.875rem">Old Town, 300 block</div>
+<a class="n-link" href="https://2ndnaturehairniwot.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-everyday-services" data-group="everyday-services">
+<summary><span class="n-h3" data-group-label>Everyday Services</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>2</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="johns-dry-cleaners" data-listing data-cat="everyday-services" data-name="John’s Dry Cleaners" data-category="Everyday Services" data-note="Dry cleaning and laundry; one of the company’s Boulder-area shops, with pick-up and delivery in Niwot." data-area="" data-address="6964 N 79th Street, Unit 5">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">John’s Dry Cleaners</h3>
+<div class="n-label" style="margin-top:8px">Everyday Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Dry cleaning and laundry; one of the company’s Boulder-area shops, with pick-up and delivery in Niwot.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6964 N 79th Street, Unit 5</div>
+<a class="n-link" href="https://www.johnsdrycleaners.com/locations/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="sew-fresh-studio" data-listing data-cat="everyday-services" data-name="Sew Fresh Studio" data-category="Everyday Services" data-note="Tailoring, alterations and sewing classes. Moved to Cottonwood Square in early 2026 after eleven years on Second Avenue." data-area="Cottonwood Square" data-address="7960 Niwot Road, Suite B1">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Sew Fresh Studio</h3>
+<div class="n-label" style="margin-top:8px">Everyday Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Tailoring, alterations and sewing classes. Moved to Cottonwood Square in early 2026 after eleven years on Second Avenue.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">7960 Niwot Road, Suite B1</div>
+<div class="n-small" style="font-size:.875rem">Cottonwood Square</div>
+<a class="n-link" href="https://sewfreshstudio.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-professional-services" data-group="professional-services">
+<summary><span class="n-h3" data-group-label>Professional Services</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>10</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="warren-moore-rutherford" data-listing data-cat="professional-services" data-name="Warren Moore Rutherford, LLP" data-category="Professional Services" data-note="Estate planning, probate, real estate, business and family law. In practice here since 1975; formerly Warren, Carlson &amp; Moore." data-area="" data-address="6964 N 79th Street, Suite 3">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Warren Moore Rutherford, LLP</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Estate planning, probate, real estate, business and family law. In practice here since 1975; formerly Warren, Carlson &amp; Moore.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">6964 N 79th Street, Suite 3</div>
+<a class="n-link" href="https://www.niwotlaw.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="slifer-smith-frampton-niwot" data-listing data-cat="professional-services" data-name="Slifer Smith &amp; Frampton Real Estate, Niwot" data-category="Professional Services" data-note="Residential real estate — the Niwot office of the Front Range brokerage, formerly Colorado Landmark, Realtors." data-area="Old Town, Second Avenue" data-address="136 Second Avenue, Suite C">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Slifer Smith &amp; Frampton Real Estate, Niwot</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Residential real estate — the Niwot office of the Front Range brokerage, formerly Colorado Landmark, Realtors.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">136 Second Avenue, Suite C</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.sliferfrontrange.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="osmosis-architecture" data-listing data-cat="professional-services" data-name="Osmosis Architecture" data-category="Professional Services" data-note="Residential architecture studio, sharing the 1910 building with the gallery." data-area="Old Town, Second Avenue" data-address="290 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Osmosis Architecture</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Residential architecture studio, sharing the 1910 building with the gallery.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">290 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://www.osmosisarchitecture.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="left-hand-valley-courier" data-listing data-cat="professional-services" data-name="Left Hand Valley Courier" data-category="Professional Services" data-note="The non-profit weekly covering Niwot and Gunbarrel, delivered free to 6,000 homes and businesses." data-area="Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Left Hand Valley Courier</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">The non-profit weekly covering Niwot and Gunbarrel, delivered free to 6,000 homes and businesses.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Niwot</div>
+<a class="n-link" href="https://www.lhvc.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="he-business-tax-consultants" data-listing data-cat="professional-services" data-name="H&amp;E Business and Tax Consultants LLC" data-category="Professional Services" data-note="Day-to-day accounting for small businesses." data-area="Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">H&amp;E Business and Tax Consultants LLC</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Day-to-day accounting for small businesses.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Niwot</div>
+<a class="n-link" href="https://niwot.com/listing/he-business-and-tax-consultants-llc" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="noblestar-technologies" data-listing data-cat="professional-services" data-name="Noblestar Technologies LLC" data-category="Professional Services" data-note="Infrastructure and software for logistics, community development and operations." data-area="Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Noblestar Technologies LLC</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Infrastructure and software for logistics, community development and operations.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Niwot</div>
+<a class="n-link" href="https://niwot.com/listing/noblestar-techologies-llc/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="dmr-group" data-listing data-cat="professional-services" data-name="DMR Group, LLC" data-category="Professional Services" data-note="" data-area="Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">DMR Group, LLC</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Niwot</div>
+<a class="n-link" href="https://niwot.com/listing/dmr-group-llc/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-partners" data-listing data-cat="professional-services" data-name="Niwot Partners LLC" data-category="Professional Services" data-note="" data-area="Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Partners LLC</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Niwot</div>
+<a class="n-link" href="https://niwot.com/listing/niwot-partners-llc/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+<li class="n-row" id="itrade-colorado" data-listing data-cat="professional-services" data-name="iTrade Colorado" data-category="Professional Services" data-note="Barter network: members earn credits on what they sell and spend them with other members." data-area="Niwot" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">iTrade Colorado</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Barter network: members earn credits on what they sell and spend them with other members.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Niwot</div>
+<a class="n-link" href="https://niwot.com/listing/itrade-colorado/" rel="noopener" style="justify-self:start">Hours &amp; contact <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+<li class="n-row" id="niwot-group-at-compass" data-listing data-cat="professional-services" data-name="The Niwot Group at Compass" data-category="Professional Services" data-note="Residential real estate team on Second Avenue — Niwot Real Estate from 1986, part of Compass since July 2021. Co-hosts the Great Pumpkin Party." data-area="Old Town, Second Avenue" data-address="">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">The Niwot Group at Compass</h3>
+<div class="n-label" style="margin-top:8px">Professional Services</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Residential real estate team on Second Avenue — Niwot Real Estate from 1986, part of Compass since July 2021. Co-hosts the Great Pumpkin Party.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://theniwotgroup.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-09">Checked September 9, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+<details class="n-group" id="cat-stay-the-night" data-group="stay-the-night">
+<summary><span class="n-h3" data-group-label>Stay the Night</span><span style="display:flex;align-items:center;gap:12px"><span class="n-label n-label--quiet" data-group-count>1</span><span class="n-gmark" aria-hidden="true"></span></span></summary>
+<ul>
+<li class="n-row" id="niwot-inn" data-listing data-cat="stay-the-night" data-name="Niwot Inn &amp; Spa" data-category="Stay the Night" data-note="Fourteen rooms and an on-site spa, in the middle of Old Town." data-area="Old Town, Second Avenue" data-address="342 Second Avenue">
+<div>
+<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">Niwot Inn &amp; Spa</h3>
+<div class="n-label" style="margin-top:8px">Stay the Night</div>
+<p class="n-body" style="margin:10px 0 0;max-width:58ch;font-size:.9375rem">Fourteen rooms and an on-site spa, in the middle of Old Town.</p>
+</div>
+<div style="display:grid;gap:8px;align-content:start">
+<div class="n-small" style="font-size:.875rem;color:var(--n-ink)">342 Second Avenue</div>
+<div class="n-small" style="font-size:.875rem">Old Town, Second Avenue</div>
+<a class="n-link" href="https://niwotinn.com/" rel="noopener" style="justify-self:start">Website <span aria-hidden="true">&#8599;</span></a>
+<div class="n-small" style="font-size:.8125rem" data-verified="2026-09-08">Checked September 8, 2026</div>
+</div>
+</li>
+</ul>
+</details>
+</div>
+<div data-dir-empty hidden style="padding:clamp(24px,3vw,44px) 0">
+<p class="n-h3" style="max-width:52ch;color:var(--n-evergreen)">No matching businesses.</p>
+<p class="n-body" style="margin:16px 0 0;max-width:58ch">Try a different word, choose another category, or browse the full members&#8217; directory.</p>
+<div class="n-btns" style="margin-top:22px">
+<button class="n-btn n-btn--ghost" type="button" data-dir-clear style="cursor:pointer;font-family:inherit">Clear filters</button>
+<a class="n-btn n-btn--ghost" href="https://niwot.com/" rel="noopener">Association directory</a>
+</div>
+</div>
+<div class="n-g2" style="margin-top:clamp(32px,4vw,56px)">
+<div class="n-callout n-callout--paper">
+<div class="n-label">Own a business here?</div>
+<p class="n-body" style="margin:10px 0 0;font-size:.9375rem">Send your name, category, address, website and hours and it goes into the directory with the date it was checked.</p>
+<a class="n-link" href="/contact/" style="display:inline-block;margin-top:14px">Add a listing <span aria-hidden="true">&#8594;</span></a>
+</div>
+<div class="n-callout n-callout--sky">
+<div class="n-label" style="color:var(--n-sky-ink)">Planning a trip</div>
+<p class="n-body" style="margin:10px 0 0;font-size:.9375rem">Parking, walking routes and accessibility notes are on the visitor page.</p>
+<a class="n-link" href="/plan-a-visit/" style="display:inline-block;margin-top:14px">Plan a visit <span aria-hidden="true">&#8594;</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<footer class="n-foot">
+<div class="n-wrap" style="padding-top:clamp(40px,5vw,76px);padding-bottom:clamp(28px,3.5vw,48px)">
+<div class="n-foot-cols">
+<div class="n-foot-col">
+<div class="n-foot-mark">NIWOT</div>
+<div class="n-rail n-rail--light" style="max-width:220px"></div>
+<div class="n-small" style="margin-top:6px;color:var(--n-sage-lt)">Independent community guide</div>
+</div><div class="n-foot-col">
+<h2>Visit</h2>
+<a href="/explore/">Explore</a>
+<a href="/eat-shop/">Eat &amp; Shop</a>
+<a href="/events/">Events</a>
+<a href="/plan-a-visit/">Plan a Visit</a>
+</div>
+<div class="n-foot-col">
+<h2>Community</h2>
+<a href="/community/">Community groups</a>
+<a href="/community/#resources">Resident resources</a>
+<a href="/our-story/">Our Story</a>
+<a href="/contact/">Send a listing or correction</a>
+</div>
+<div class="n-foot-col">
+<h2>Civic</h2>
+<a href="/civic/incorporation-election/">2026 Election</a>
+<a href="https://niwotelection.org/" rel="noopener">Election Commission <span aria-hidden="true">&#8599;</span></a>
+<a href="https://bouldercounty.gov/elections/" rel="noopener">Boulder County Elections <span aria-hidden="true">&#8599;</span></a>
+</div>
+</div>
+<p class="n-disclaim" style="margin:clamp(28px,3.5vw,48px) 0 0;padding-top:18px;border-top:1px solid rgba(158,173,152,.3)">TownofNiwot.com is an independent community guide. It is not a municipal government website, the Niwot Election Commission, Boulder County, or an incorporation campaign.</p>
+<div class="n-foot-meta" style="margin-top:20px">
+<span>Reviewed September 2026</span>
+<span>Hours and contact details via each business</span>
+<a href="/privacy/" style="font-size:inherit;letter-spacing:inherit">Privacy</a>
+</div>
+</div>
+</footer>
+
+</div>
+<script type="module" src="/assets/js/directory.384e6ac634.js"></script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3937bd73bacb506',t:'MTc4OTA5NjI3Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
