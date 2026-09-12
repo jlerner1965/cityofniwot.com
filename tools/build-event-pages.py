@@ -13,7 +13,8 @@ copied from 404/index.html so they always match the rest of the site.
 """
 import re, json, html, glob, os, subprocess, datetime as dt
 from zoneinfo import ZoneInfo
-ROOT="/home/user/cityofniwot.com"; os.chdir(ROOT)
+# Derived, not hardcoded: this has to run on a build machine too.
+ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(ROOT)
 SITE="https://townofniwot.com"; TZ=ZoneInfo("America/Denver"); TODAY=dt.date.today()
 ROBOTS='<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">'
 ORG={"@type":"Organization","@id":SITE+"/#org","name":"TownofNiwot.com","url":SITE+"/",
@@ -216,15 +217,26 @@ print("event pages:",len(gen),f"({len(touched)} changed)")
 # Git is the record of when a page actually changed; a page this run just
 # rewrote is dated today, because it changed just now.
 TODAYS=TODAY.isoformat()
-def changed_on(path,rewritten=False):
-    if rewritten: return TODAYS
+def git(*a):
     try:
-        d=subprocess.run(["git","log","-1","--format=%cs","--",path],cwd=ROOT,
-                         capture_output=True,text=True,timeout=10).stdout.strip()
+        return subprocess.run(["git",*a],cwd=ROOT,capture_output=True,
+                              text=True,timeout=10).stdout.strip()
+    except Exception:
+        return ""
+# A build machine clones one commit deep, so git there cannot say when a page
+# last changed — every file would look like it changed on the deploy. Where
+# the date cannot be recomputed, the one already in the sitemap is kept.
+SHALLOW = git("rev-parse","--is-shallow-repository")=="true"
+PREV = dict(re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>",
+                       open("sitemap.xml",encoding="utf-8").read())) \
+       if os.path.exists("sitemap.xml") else {}
+def changed_on(url,path,rewritten=False):
+    if rewritten: return TODAYS
+    if not SHALLOW:
+        d=git("log","-1","--format=%cs","--",path)
         if d: return d
-    except Exception: pass
-    return TODAYS
-pages=[(u,changed_on(f)) for u,f in [
+    return PREV.get(SITE+url, TODAYS)
+pages=[(u,changed_on(u,f)) for u,f in [
     ("/","index.html"),("/explore/","explore/index.html"),
     ("/eat-shop/","eat-shop/index.html"),("/events/","events/index.html"),
     ("/community/","community/index.html"),
@@ -232,7 +244,8 @@ pages=[(u,changed_on(f)) for u,f in [
     ("/plan-a-visit/","plan-a-visit/index.html"),
     ("/our-story/","our-story/index.html"),("/privacy/","privacy/index.html")]]
 pages+=[(f"/events/{e['id']}/",
-         changed_on(f"events/{e['id']}/index.html",e["id"] in touched))
+         changed_on(f"/events/{e['id']}/",f"events/{e['id']}/index.html",
+                    e["id"] in touched))
         for e in sorted(dated,key=lambda e:e["startDate"])]
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url>\n    <loc>{SITE}{p}</loc>\n    <lastmod>{m}</lastmod>\n  </url>\n" for p,m in pages)+"</urlset>\n"
 wr("sitemap.xml",sm)

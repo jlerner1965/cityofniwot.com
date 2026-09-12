@@ -1,0 +1,58 @@
+# Keeps the event pages and sitemap current. The calendar renders correct
+# dates in the browser whatever the HTML says, but the pre-rendered copy is
+# what search engines and anyone without JavaScript read, and it goes stale
+# on its own as events pass — no edit required.
+#
+# Runs every Monday morning, and whenever you press the button:
+# GitHub → Actions → "Refresh event pages" → "Run workflow".
+name: Refresh event pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 1'   # Mondays, 12:00 UTC (06:00 Mountain)
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history: the sitemap dates each page by when it last
+          # changed, and a one-commit clone cannot answer that.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild the event pages and sitemap
+        run: python3 tools/build-event-pages.py
+
+      - name: Commit only if something actually changed
+        run: |
+          if git diff --quiet; then
+            echo "Already current — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Refresh event pages and sitemap
+
+          Rebuilt by the weekly job: the upcoming-event lists and sitemap
+          dates move as events pass, with no edit to the calendar."
+          git push
+          echo "Pushed a refresh."
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "## Event page refresh"
+            echo
+            git log -1 --format='Last commit on main: **%s** (%cs)'
+          } >> "$GITHUB_STEP_SUMMARY"
