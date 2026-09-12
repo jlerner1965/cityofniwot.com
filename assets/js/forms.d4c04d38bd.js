@@ -1,9 +1,10 @@
-/* Submission and newsletter forms.
+/* Submission form.
 
-   The forms POST to /api/contact on their own, so they work with this file
-   absent or broken. This only upgrades the experience: it posts the same
-   payload in the background and renders the outcome in place, instead of
-   navigating away to /thanks/.
+   The form POSTs to Formspree on its own (and Formspree then redirects to
+   /thanks/ via the _next field), so it works with this file absent or
+   broken. This only upgrades the experience: it posts the same payload in
+   the background with an Accept: application/json header and renders the
+   outcome in place, instead of navigating away.
 
    Outcome text comes from the endpoint, not from here — so a form that
    cannot deliver says exactly why rather than showing a thank-you the
@@ -101,7 +102,13 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
       payload = await response.json();
-      ok = response.ok && payload.ok;
+      ok = response.ok && payload.ok !== false;
+      /* Formspree reports a problem as { error } or { errors: [{ field, message }] }. */
+      if (!ok && payload && !payload.message) {
+        payload.message = payload.error
+          ? 'That could not be sent: ' + payload.error + '. Please try again, or use the direct contacts on this page.'
+          : 'That could not be sent. Please check the highlighted fields and try again.';
+      }
     } catch {
       payload = {
         message:

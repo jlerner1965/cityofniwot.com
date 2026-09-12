@@ -49,11 +49,12 @@ directory indexes (GitHub Pages, Netlify, Vercel, Cloudflare Pages, nginx).
 
 ## Contact form
 
-The forms on `/contact/` POST to `/api/contact`. That endpoint is a small
-server function that is not part of this static repository. Without it the
-form submits but gets a 404, so the endpoint needs to be provided by the host
-(a serverless function or a form service) before launch. The progressive
-enhancement in `assets/js/forms.*.js` shows the endpoint's response in place.
+The form on `/contact/` posts to Formspree (`https://formspree.io/f/xqpkjoob`),
+which emails each submission to the editor. With JavaScript, the outcome is
+shown in place; without it, Formspree redirects to `/thanks/`. Spam is filtered
+by the hidden `_gotcha` field. To change the destination mailbox or the
+endpoint, edit the form in the Formspree dashboard or update the `action`
+attribute on the form.
 
 ## Event pages and SEO
 
