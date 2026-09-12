@@ -1,0 +1,55 @@
+# Checks every outbound link on the site and writes the result to the run
+# summary. Runs on the 1st of each month, and whenever you press the button:
+# GitHub → Actions → "Check outbound links" → "Run workflow".
+name: Check outbound links
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 13 1 * *'   # 1st of the month, 13:00 UTC (07:00 Mountain)
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check the links
+        id: check
+        run: |
+          set +e
+          # $? after a pipe is tee's status, not the checker's.
+          python3 tools/check-links.py --json report.json | tee output.txt
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Write the summary
+        if: always()
+        run: |
+          {
+            echo "## Outbound link check"
+            echo
+            echo '```'
+            cat output.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the full report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: link-report
+          path: report.json
+          if-no-files-found: ignore
+
+      - name: Fail if anything is broken
+        if: always() && steps.check.outputs.exit != '0'
+        run: |
+          echo "Broken links found — see the summary above."
+          exit 1
