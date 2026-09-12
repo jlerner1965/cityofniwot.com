@@ -33,7 +33,7 @@ Built from the page mockups at
 - `assets/photos/` holds the full-size JPEGs used for social sharing previews (`og:image`).
 - `vercel.json` enforces trailing-slash URLs, sets cache headers for images and assets, and adds basic security headers.
 - `favicon.ico`, `favicon.svg` and `apple-touch-icon.png` are the site icons.
-- `robots.txt` and `sitemap.xml` are ready for the production domain.
+- `robots.txt`, `sitemap.xml` and `llms.txt` are ready for the production domain.
 
 ## Serving locally
 
@@ -72,7 +72,10 @@ Every indexable page carries a canonical URL, Open Graph tags, a robots meta
 tag allowing large image previews, and JSON-LD structured data (WebSite with
 site search, Organization, Place for Niwot, BreadcrumbList, Event, Article on
 the history and election pages, TouristDestination on Explore, and an ItemList
-of businesses on Eat & Shop). `sitemap.xml` lists every indexable page.
+of businesses on Eat & Shop). The homepage also carries six visible, matching
+FAQ answers for natural-language search intent. `sitemap.xml` lists every
+indexable page, and `llms.txt` provides a concise map for AI retrieval systems
+that choose to read the emerging format.
 
 Note that `assets/css` and `assets/js` file names carry a content hash but are
 served with a one-day cache, so editing a file in place is safe.
