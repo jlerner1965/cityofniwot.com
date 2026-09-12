@@ -24,6 +24,40 @@ Built from the page mockups at
 | `/events/<event-id>/` | One page per calendar event, generated (15 at present) |
 | `/404/` and `404.html` | Not-found page |
 
+## Navigation
+
+Every page carries the same primary navigation, in this order:
+
+| Position | Page | Shown in the bar |
+| --- | --- | --- |
+| 1 | Explore | yes |
+| 2 | Eat & Shop | yes |
+| 3 | Events | yes |
+| 4 | Community | yes |
+| 5 | Plan a Visit | yes |
+| 6 | 2026 Election | yes |
+| 7 | Our Story | collapsed menu only |
+| 8 | Contact | collapsed menu only |
+
+Six is what fits on one line in the masthead without the labels crowding, so
+above 1180px the bar shows the first six and the last two are reached from the
+footer. At 1180px and below the bar collapses to the menu button, which has the
+room the bar does not: it lists all eight, with the last two set a tier back
+behind a rule, so every page on the site is one tap from every other page on a
+phone. The two rules that carry this are `.n-nav-more` and the
+`@media (max-width: 1180px)` block in `assets/css/guide.d3b5b76211.css`; the
+same width is repeated in the `<noscript>` block in each page's header, which
+opens the list statically where scripting is off.
+
+The page's own entry carries `class="n-on"` and `aria-current="page"`. Adding a
+page to the navigation means editing the `<nav class="n-nav">` block in every
+HTML file — there is no template — and marking the current entry on its own
+page.
+
+The 1180px collapse width belongs to the navigation alone. The touch-padding
+media queries in the same stylesheet are still at 1080px; they are a different
+measurement and do not move with it.
+
 ## Layout
 
 - `assets/css/` and `assets/js/` hold the shared stylesheet and scripts. File
