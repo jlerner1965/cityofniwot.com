@@ -90,6 +90,28 @@ by the hidden `_gotcha` field. To change the destination mailbox or the
 endpoint, edit the form in the Formspree dashboard or update the `action`
 attribute on the form.
 
+## Outbound links
+
+The site links out to 91 addresses across 51 hosts — business sites, organizer
+pages, Boulder County services. A directory is only as good as its links and
+they rot quietly, so check them:
+
+```sh
+python3 tools/check-links.py
+python3 tools/check-links.py --json report.json
+```
+
+It reads every `href` in the HTML, so nothing has to be listed twice, and
+reports each one as OK, REDIRECT, BLOCKED or BROKEN. A host that refuses HEAD
+is retried with GET, and 403 or 429 is reported as BLOCKED rather than broken —
+several small business hosts turn away anything that looks automated, and that
+is not the same as a dead link. Exit status is 1 if anything is BROKEN, so it
+can gate a deploy.
+
+Worth running monthly, and after any batch of listing edits. It checks that a
+page answers, not that it still says what the listing claims — that part is an
+editorial check and needs a person.
+
 ## Event pages and SEO
 
 Each event on the calendar also has its own page at `/events/<event-id>/`,
