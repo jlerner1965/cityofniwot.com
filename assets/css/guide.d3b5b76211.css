@@ -80,7 +80,10 @@ a:hover { color: var(--n-red-ink); }
 .n-burger span { display: block; height: 2px; background: var(--n-paper); margin: 0 0 5px; }
 .n-burger span:last-child { margin-bottom: 0; }
 
-@media (max-width: 1080px) {
+/* The collapse width belongs to the navigation alone. The touch-padding
+   media queries further down happen to have started at the same number;
+   they are a different measurement and do not move with it. */
+@media (max-width: 1180px) {
   .n-burger { display: block; }
   .n-nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--n-gutter) 20px; background: var(--n-evergreen); border-bottom: 3px solid var(--n-red); }
   .n-head.n-open .n-nav { display: flex; }
@@ -91,7 +94,7 @@ a:hover { color: var(--n-red-ink); }
    list is shown in full under the masthead instead, and the button that
    could not open anything is not shown. The header partial carries the same
    rule in a <noscript> for browsers without the `scripting` media feature. */
-@media (max-width: 1080px) and (scripting: none) {
+@media (max-width: 1180px) and (scripting: none) {
   .n-burger { display: none; }
   .n-nav { display: flex; position: static; padding: 0 0 12px; border-bottom: 0; }
 }
@@ -237,7 +240,10 @@ textarea.n-field { resize: vertical; }
    Home › Page, on every page but the homepage. The same list feeds the
    BreadcrumbList structured data. */
 .n-crumbs { font-size: 13px; letter-spacing: 0; color: var(--n-muted); }
-.n-crumbs ol { display: flex; flex-wrap: wrap; gap: 0 8px; list-style: none; margin: 0; padding: 14px 0 0; }
+/* The touch padding below goes on the links only, so a stretched row left
+   the current page's plain text riding above the links beside it. The
+   trail is one line of type: align it on the baseline it shares. */
+.n-crumbs ol { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; list-style: none; margin: 0; padding: 14px 0 0; }
 .n-crumbs li + li::before { content: "/"; margin-right: 8px; color: var(--n-sage); }
 .n-crumbs a { display: inline-block; color: var(--n-muted); text-decoration: none; border-bottom: 1px solid transparent; }
 .n-crumbs a:hover { color: var(--n-red-ink); border-bottom-color: currentColor; }
@@ -530,7 +536,8 @@ a { text-underline-offset: 4px; }
 .n-home .n-quick > a {
   counter-increment: quick-link;
   min-height: 118px;
-  align-content: space-between !important;
+  align-content: start !important;
+  row-gap: 18px;
   padding: 14px 0 10px !important;
   border-bottom-color: var(--n-rule) !important;
 }
@@ -544,7 +551,10 @@ a { text-underline-offset: 4px; }
   letter-spacing: .1em;
 }
 
-.n-home .n-quick > a > span:first-child { align-self: end; }
+/* Bottom-aligned, a link whose description runs to three lines pushed its
+   title above the other three and broke the row. The number sets the line
+   the titles sit on; the descriptions hang below at whatever length. */
+.n-home .n-quick > a > span:first-child { align-self: start; }
 
 .n-home .n-quick .n-small {
   max-width: 18ch;
@@ -622,7 +632,15 @@ a { text-underline-offset: 4px; }
 .n-foot .n-disclaim,
 .n-foot .n-foot-meta { color: #AABCB5; }
 
-@media (max-width: 1080px) {
+/* Wide enough for the bar, the secondary pair is in the footer instead:
+   six items is what fits on one line without the labels crowding. Declared
+   before the collapse block, which has the same weight and would otherwise
+   lose to it on source order. */
+.n-nav-more { display: none; }
+
+.n-burger span { transition: transform .18s ease, opacity .18s ease; }
+
+@media (max-width: 1180px) {
   .n-head { min-height: 68px; }
   .n-head-in { min-height: 68px; }
   .n-nav {
@@ -640,6 +658,19 @@ a { text-underline-offset: 4px; }
   }
   .n-nav a::after { display: none; }
   .n-nav a.n-on { border-bottom-color: var(--n-red); }
+  /* The masthead is the home link and on a phone it is the only one: give
+     it a tap target rather than the 24px the type happens to occupy. */
+  .n-mark { padding-block: 10px; }
+  /* Open, the button is the way back out, so it reads as a close mark. */
+  .n-head.n-open .n-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .n-head.n-open .n-burger span:nth-child(2) { opacity: 0; }
+  .n-head.n-open .n-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  /* Below the collapse the menu has the room the bar does not, so the two
+     pages that do not fit the bar are reachable here, set a tier back. */
+  .n-nav-more { display: block; }
+  .n-nav .n-nav-more { color: var(--n-muted); }
+  .n-nav a:not(.n-nav-more) + .n-nav-more { border-top: 2px solid var(--n-ink); margin-top: 10px; }
+  .n-nav .n-nav-more.n-on { color: var(--n-red-ink); }
 }
 
 @media (max-width: 900px) {
