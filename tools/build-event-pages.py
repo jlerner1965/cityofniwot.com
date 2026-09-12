@@ -11,7 +11,7 @@ Pages for events that have a start date are written; tentative events without
 a date are skipped. Existing pages are overwritten. The header and footer are
 copied from 404/index.html so they always match the rest of the site.
 """
-import re, json, html, glob, os, datetime as dt
+import re, json, html, glob, os, subprocess, datetime as dt
 from zoneinfo import ZoneInfo
 ROOT="/home/user/cityofniwot.com"; os.chdir(ROOT)
 SITE="https://townofniwot.com"; TZ=ZoneInfo("America/Denver"); TODAY=dt.date.today()
@@ -27,7 +27,12 @@ PLACE={"@type":"Place","@id":SITE+"/#niwot","name":"Niwot, Colorado",
        "sameAs":["https://en.wikipedia.org/wiki/Niwot,_Colorado"]}
 def rd(f): return open(f,encoding="utf-8").read()
 def wr(f,s):
-    os.makedirs(os.path.dirname(f) or ".",exist_ok=True); open(f,"w",encoding="utf-8").write(s)
+    """Write f, and say whether that changed anything."""
+    os.makedirs(os.path.dirname(f) or ".",exist_ok=True)
+    try: same = open(f,encoding="utf-8").read()==s
+    except FileNotFoundError: same=False
+    if not same: open(f,"w",encoding="utf-8").write(s)
+    return not same
 def esc(s): return html.escape(str(s),quote=True)
 def ld(obj): return '<script type="application/ld+json">'+json.dumps(obj,ensure_ascii=False,separators=(",",":"))+'</script>'
 def trim(s,n=155):
@@ -199,15 +204,36 @@ def event_page(e):
 </html>
 '''
 
-gen=[]
+gen=[]; touched=set()
 for e in dated:
-    wr(f"events/{e['id']}/index.html",event_page(e)); gen.append(e["id"])
-print("event pages:",len(gen))
+    if wr(f"events/{e['id']}/index.html",event_page(e)): touched.add(e["id"])
+    gen.append(e["id"])
+print("event pages:",len(gen),f"({len(touched)} changed)")
 
 # ---------- 6. sitemap ----------
+# lastmod was a literal date repeated on every line, so each run stamped the
+# whole site with the day the line was written and overwrote anything newer.
+# Git is the record of when a page actually changed; a page this run just
+# rewrote is dated today, because it changed just now.
 TODAYS=TODAY.isoformat()
-pages=[("/","2026-09-11"),("/explore/","2026-09-11"),("/eat-shop/","2026-09-11"),("/events/","2026-09-11"),("/community/","2026-09-11"),("/civic/incorporation-election/","2026-09-11"),("/plan-a-visit/","2026-09-11"),("/our-story/","2026-09-11"),("/privacy/","2026-09-11")]
-pages+=[(f"/events/{e['id']}/","2026-09-11") for e in sorted(dated,key=lambda e:e["startDate"])]
+def changed_on(path,rewritten=False):
+    if rewritten: return TODAYS
+    try:
+        d=subprocess.run(["git","log","-1","--format=%cs","--",path],cwd=ROOT,
+                         capture_output=True,text=True,timeout=10).stdout.strip()
+        if d: return d
+    except Exception: pass
+    return TODAYS
+pages=[(u,changed_on(f)) for u,f in [
+    ("/","index.html"),("/explore/","explore/index.html"),
+    ("/eat-shop/","eat-shop/index.html"),("/events/","events/index.html"),
+    ("/community/","community/index.html"),
+    ("/civic/incorporation-election/","civic/incorporation-election/index.html"),
+    ("/plan-a-visit/","plan-a-visit/index.html"),
+    ("/our-story/","our-story/index.html"),("/privacy/","privacy/index.html")]]
+pages+=[(f"/events/{e['id']}/",
+         changed_on(f"events/{e['id']}/index.html",e["id"] in touched))
+        for e in sorted(dated,key=lambda e:e["startDate"])]
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+"".join(f"  <url>\n    <loc>{SITE}{p}</loc>\n    <lastmod>{m}</lastmod>\n  </url>\n" for p,m in pages)+"</urlset>\n"
 wr("sitemap.xml",sm)
 
