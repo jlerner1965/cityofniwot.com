@@ -36,6 +36,19 @@
 .n-story-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,48,45,.94) 0%,rgba(15,48,45,.78) 38%,rgba(15,48,45,.2) 72%,rgba(15,48,45,.08) 100%)}
 .n-story-hero-in{position:relative;z-index:1;padding-block:clamp(44px,6vw,80px)}
 .n-story-hero .n-display{max-width:13ch;color:var(--n-white)}
+/* The trail used to sit in a white band between the masthead and the photo,
+   a stray strip on the one page whose hero bleeds. It rides the photograph
+   instead. The hero's own gradient darkens the left on a wide screen but the
+   top only on a narrow one, so the trail carries its own scrim: held at .84
+   through the band the type sits in, the link clears 5.5:1 and the current
+   page 8.5:1 even against a blown-out white sky. */
+.n-crumbs--over{position:absolute;top:0;right:0;left:0;z-index:2;background:linear-gradient(180deg,rgba(15,48,45,.86) 0%,rgba(15,48,45,.84) 46%,rgba(15,48,45,0) 100%)}
+.n-crumbs--over ol{padding-top:16px;padding-bottom:26px}
+.n-crumbs--over a{color:var(--n-sage-lt)}
+.n-crumbs--over a:hover{color:var(--n-gold-lt);border-bottom-color:currentColor}
+.n-crumbs--over a:focus-visible{outline-color:var(--n-gold-lt)}
+.n-crumbs--over li + li::before{color:var(--n-sage)}
+.n-crumbs--over [aria-current="page"]{color:var(--n-white)}
 .n-story-deck{max-width:47ch;margin:24px 0 0;color:var(--n-paper);font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.55}
 .n-story-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(30px,4vw,54px);border-top:1px solid rgba(255,255,255,.38)}
 .n-story-fact{padding:18px 20px 0 0;border-right:1px solid rgba(255,255,255,.25)}
@@ -83,7 +96,10 @@
 </nav>
 </div>
 </header>
-<nav class="n-crumbs" aria-label="Breadcrumb">
+<main id="main">
+<section class="n-story-hero" aria-labelledby="title-h">
+<picture><source type="image/avif" srcset="/img/UC8Go6fryR-400.avif 400w, /img/UC8Go6fryR-560.avif 560w, /img/UC8Go6fryR-700.avif 700w, /img/UC8Go6fryR-1000.avif 1000w, /img/UC8Go6fryR-1400.avif 1400w" sizes="100vw"><source type="image/webp" srcset="/img/UC8Go6fryR-400.webp 400w, /img/UC8Go6fryR-560.webp 560w, /img/UC8Go6fryR-700.webp 700w, /img/UC8Go6fryR-1000.webp 1000w, /img/UC8Go6fryR-1400.webp 1400w" sizes="100vw"><img src="/img/UC8Go6fryR-400.jpeg" alt="The Left Hand valley and foothills west of Niwot, Colorado" style="" loading="eager" decoding="async" fetchpriority="high" width="1400" height="933" srcset="/img/UC8Go6fryR-400.jpeg 400w, /img/UC8Go6fryR-560.jpeg 560w, /img/UC8Go6fryR-700.jpeg 700w, /img/UC8Go6fryR-1000.jpeg 1000w, /img/UC8Go6fryR-1400.jpeg 1400w" sizes="100vw"></picture>
+<nav class="n-crumbs n-crumbs--over" aria-label="Breadcrumb">
 <div class="n-wrap">
 <ol>
 <li><a href="/">Home</a></li>
@@ -91,9 +107,6 @@
 </ol>
 </div>
 </nav>
-<main id="main">
-<section class="n-story-hero" aria-labelledby="title-h">
-<picture><source type="image/avif" srcset="/img/UC8Go6fryR-400.avif 400w, /img/UC8Go6fryR-560.avif 560w, /img/UC8Go6fryR-700.avif 700w, /img/UC8Go6fryR-1000.avif 1000w, /img/UC8Go6fryR-1400.avif 1400w" sizes="100vw"><source type="image/webp" srcset="/img/UC8Go6fryR-400.webp 400w, /img/UC8Go6fryR-560.webp 560w, /img/UC8Go6fryR-700.webp 700w, /img/UC8Go6fryR-1000.webp 1000w, /img/UC8Go6fryR-1400.webp 1400w" sizes="100vw"><img src="/img/UC8Go6fryR-400.jpeg" alt="The Left Hand valley and foothills west of Niwot, Colorado" style="" loading="eager" decoding="async" fetchpriority="high" width="1400" height="933" srcset="/img/UC8Go6fryR-400.jpeg 400w, /img/UC8Go6fryR-560.jpeg 560w, /img/UC8Go6fryR-700.jpeg 700w, /img/UC8Go6fryR-1000.jpeg 1000w, /img/UC8Go6fryR-1400.jpeg 1400w" sizes="100vw"></picture>
 <div class="n-wrap n-story-hero-in">
 <h1 class="n-display" id="title-h" style="font-size:clamp(3rem,2.3rem + 2.8vw,5rem)">Niwot History: Railroad, Town Grid &amp; Community</h1>
 <p class="n-story-deck">A railroad, an angled street grid and a preserved main street shaped the community that still sits between open fields and the Front Range.</p>
