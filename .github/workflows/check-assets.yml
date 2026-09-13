@@ -1,0 +1,27 @@
+# The stylesheet and scripts carry a content hash in their filenames and are
+# served with a one-day cache plus a week of stale-while-revalidate. That is
+# only safe while the hash is true. Edit one in place and returning visitors
+# keep the old bytes for a day or more — and if the HTML changed with it, they
+# see a broken page that looks fine in a fresh browser.
+#
+# This fails the moment a name stops matching its contents.
+name: Check asset hashes
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Every hashed filename must match its bytes
+        run: python3 tools/rehash-assets.py --check

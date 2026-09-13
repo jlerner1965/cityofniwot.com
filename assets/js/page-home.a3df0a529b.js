@@ -2,8 +2,8 @@
 
    They are rendered at build time, but they carry real dates and a static
    build is only as fresh as its last deploy, so recompute them on load. */
-import { buildUpcoming, renderUpcoming } from './calendar-core.882018f4b8.js';
-import { readEvents, now as nowInNiwot } from './events-data.82d5b64b3f.js';
+import { buildUpcoming, renderUpcoming } from './calendar-core.50642ddb8b.js';
+import { readEvents, now as nowInNiwot } from './events-data.c4395061ce.js';
 
 const events = readEvents();
 const strip = document.querySelector('[data-upcoming]');

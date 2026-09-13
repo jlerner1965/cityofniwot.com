@@ -193,5 +193,25 @@ FAQ answers for natural-language search intent. `sitemap.xml` lists every
 indexable page, and `llms.txt` provides a concise map for AI retrieval systems
 that choose to read the emerging format.
 
-Note that `assets/css` and `assets/js` file names carry a content hash but are
-served with a one-day cache, so editing a file in place is safe.
+## Asset hashes
+
+`assets/css` and `assets/js` filenames carry a content hash, and `vercel.json`
+serves them with a one-day cache plus a week of stale-while-revalidate. That
+is only safe while the hash is true.
+
+Editing one in place is **not** safe. The name stops matching, the server has
+the new bytes, and every browser that has been here recently keeps the old
+ones for a day or more. If the HTML changed in the same commit and depends on
+the new CSS, those visitors get a broken page — and it looks perfect in a
+fresh browser, so it is easy to miss.
+
+After editing anything under `assets/`:
+
+```sh
+python3 tools/rehash-assets.py
+```
+
+It renames each file to its real hash and rewrites every reference, in the
+pages and in the scripts. The scripts import each other, so one rename makes
+its importers stale in turn; the tool repeats until everything settles.
+`--check` reports without changing anything, and a job runs it on every push.

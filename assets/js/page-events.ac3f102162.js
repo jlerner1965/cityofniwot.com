@@ -25,8 +25,8 @@ import {
   renderDetail,
   renderMonthEmpty,
   renderUpcoming,
-} from './calendar-core.882018f4b8.js';
-import { readEvents, now as nowInNiwot } from './events-data.82d5b64b3f.js';
+} from './calendar-core.50642ddb8b.js';
+import { readEvents, now as nowInNiwot } from './events-data.c4395061ce.js';
 
 const events = readEvents();
 const grid = document.querySelector('[data-cal-grid]');
