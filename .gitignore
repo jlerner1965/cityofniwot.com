@@ -1,3 +1,4 @@
 # A screenshot script with an unset output directory wrote here once.
 undefined/
 __pycache__/
+*.whl

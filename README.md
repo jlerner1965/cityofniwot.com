@@ -90,6 +90,32 @@ by the hidden `_gotcha` field. To change the destination mailbox or the
 endpoint, edit the form in the Formspree dashboard or update the `action`
 attribute on the form.
 
+## Logo
+
+`assets/logo/` holds the wordmark: NIWOT set on the rail device, with COLORADO
+and the independent-community-guide line beneath.
+
+| File | Use |
+| --- | --- |
+| `niwot-logo.svg` | Primary. Dark type, transparent ground — soft white or paper |
+| `niwot-logo-reversed.svg` | Evergreen and other dark grounds. The rail turns gold, the same swap the homepage hero makes |
+| `niwot-logo-1024.png` | Raster, transparent, 1024px wide |
+| `niwot-logo-reversed-1024.png` | Raster on evergreen, 1024px wide |
+
+The type is **converted to outlines**, not set as `<text>`: the files carry no
+`font-family` and need no font installed, so the mark cannot land on a
+substitute serif in someone else's document or print shop. That also means the
+wording cannot be edited by retyping it — a change means regenerating from
+Instrument Serif and Instrument Sans.
+
+Do not place it below **150px wide**. The guide line is under 5px tall there
+and stops being readable; use the wordmark alone or the favicon tile instead.
+
+The site header does not use these files. It sets the same wordmark as live
+text, which scales, stays selectable and reads to a screen reader — better than
+an image for that job. These are for everywhere the site is not: social
+profiles, print, partner listings.
+
 ## Outbound links
 
 The site links out to 91 addresses across 51 hosts — business sites, organizer
