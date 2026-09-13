@@ -327,11 +327,33 @@ a { text-underline-offset: 4px; }
 
 .n-mark:hover { color: var(--n-red-ink); }
 
+/* The wordmark carries the logo's rail: two rails and the ties, the same
+   device the logo and the page dividers use. It is sized to the word, and
+   pulled in by the trailing letter-space so it ends with the T rather than
+   3px past it. The rail now does the dividing, so the pipe that used to sit
+   before the identifier is gone. */
+.n-mark .n-word {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 7px;
+}
+.n-mark .n-word::after {
+  content: "";
+  position: absolute;
+  right: .13em;
+  bottom: 0;
+  left: 0;
+  height: 7px;
+  border-top: 1.5px solid var(--n-red);
+  border-bottom: 1.5px solid var(--n-red);
+  background-image: repeating-linear-gradient(90deg, var(--n-red) 0 1.5px, transparent 1.5px 9px);
+}
+
 .n-mark small {
   display: inline-block;
-  margin: 0 0 0 12px;
-  padding-left: 12px;
-  border-left: 1px solid var(--n-ink);
+  margin: 0 0 0 14px;
+  padding-left: 0;
+  border-left: 0;
   color: var(--n-muted);
   font-size: .75rem;
   font-weight: 600;
