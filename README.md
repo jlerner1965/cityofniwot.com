@@ -93,7 +93,7 @@ attribute on the form.
 ## Logo
 
 `assets/logo/` holds the wordmark: NIWOT set on the rail device, with COLORADO
-and the independent-community-guide line beneath.
+beneath.
 
 | File | Use |
 | --- | --- |
@@ -108,8 +108,18 @@ substitute serif in someone else's document or print shop. That also means the
 wording cannot be edited by retyping it — a change means regenerating from
 Instrument Serif and Instrument Sans.
 
-Do not place it below **150px wide**. The guide line is under 5px tall there
-and stops being readable; use the wordmark alone or the favicon tile instead.
+Do not place it below **155px wide**. COLORADO is the smallest thing in the
+lockup and its capitals are 10.4 units in a 320.4-unit artboard, which works
+out at 5px tall at 155px wide — about the floor for readable uppercase on
+screen. In print, where 4px of cap height still holds, it goes to about 125px.
+Below that use the favicon tile.
+
+The lockup does not say "independent community guide". It did, and the line
+was dropped because it was unreadable at any size the mark is actually used —
+2px of cap height at 96px wide. On the site that costs nothing, since the
+masthead and the footer disclaimer both say it. Somewhere the mark travels
+alone, "NIWOT COLORADO" reads closer to a municipal seal than this site is,
+which is worth a thought before putting it on anything civic.
 
 The site header does not use these files. It sets the same wordmark as live
 text, which scales, stays selectable and reads to a screen reader — better than
