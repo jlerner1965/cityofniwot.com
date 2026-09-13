@@ -112,6 +112,30 @@ Worth running monthly, and after any batch of listing edits. It checks that a
 page answers, not that it still says what the listing claims — that part is an
 editorial check and needs a person.
 
+## Content with an expiry date
+
+Some sentences are only true until a date: an election described as upcoming,
+a promise to re-check something after a review. Nothing edits them when that
+date passes, and on a civic page a stale tense is worse than a stale link — it
+tells a resident a vote is still coming when it has already happened.
+
+```sh
+python3 tools/check-dated-content.py
+```
+
+A weekly job runs it and opens an issue when something has expired, updating
+that one issue rather than filing a new one each week. It is silent while
+everything is current.
+
+Each check is a date, a file and a phrase that should be gone by then, listed
+at the top of the script. A check goes quiet on its own once the wording
+changes — there is no list to remember to tick off. The exception is the
+ballot-language note on the election page, which is silenced by a note
+containing the words `Ballot language re-checked on <date>`; the check says so
+when it fires.
+
+To add a claim that expires, append an entry to `CHECKS`.
+
 ## Event pages and SEO
 
 Each event on the calendar also has its own page at `/events/<event-id>/`,

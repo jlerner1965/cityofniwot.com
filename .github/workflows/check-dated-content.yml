@@ -1,0 +1,65 @@
+# Some sentences on the site are only true until a date — an election
+# described as upcoming, a promise to re-check something after a review.
+# This watches for the ones that have passed and opens an issue listing
+# them. It stays silent when everything is current, and a check goes quiet
+# by itself once the wording is fixed.
+name: Check dated content
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 13 * * 2'   # Tuesdays, 13:00 UTC (07:00 Mountain)
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Look for expired claims
+        id: check
+        run: |
+          set +e
+          python3 tools/check-dated-content.py | tee findings.md
+          echo "expired=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Put the findings in the run summary
+        if: always()
+        run: |
+          {
+            echo "## Dated content"
+            echo
+            cat findings.md
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Open or update an issue
+        if: steps.check.outputs.expired != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          TITLE="Dated content needs updating"
+          {
+            echo "Some wording on the site has passed the date it was true until."
+            echo "Each item says where it is and what to change."
+            echo
+            cat findings.md
+            echo
+            echo "---"
+            echo "_Raised by the weekly dated-content check. [See the run]($RUN)._"
+            echo "_This issue reappears until the wording is fixed; fixing it silences the check._"
+          } > body.md
+
+          EXISTING=$(gh issue list --repo "$REPO" --state open \
+                     --search "$TITLE in:title" --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --repo "$REPO" --body-file body.md
+            echo "Updated issue #$EXISTING"
+          else
+            gh issue create --repo "$REPO" --title "$TITLE" --body-file body.md
+          fi
