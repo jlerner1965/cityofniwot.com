@@ -89,10 +89,10 @@
 <label class="n-label" for="v-kind" style="color:var(--n-gold-lt)">What is this?</label>
 <select class="n-field" id="v-kind" name="kind">
 <option>Business listing</option>
-<option>Event listing</option>
+<option data-requires-source>Event listing</option>
 <option>Public art inventory</option>
-<option>Accessibility correction</option>
-<option>Correction to this guide</option>
+<option data-requires-source>Accessibility correction</option>
+<option data-requires-source>Correction to this guide</option>
 <option>Something else</option>
 </select>
 </div>
@@ -105,7 +105,7 @@
 <textarea class="n-field" id="v-detail" name="detail" rows="5" required></textarea>
 </div>
 <div>
-<label class="n-label" for="v-src" style="color:var(--n-gold-lt)">Link to your own page or the source</label>
+<label class="n-label" for="v-src" style="color:var(--n-gold-lt)">Link to your own page or the source <span data-source-note style="text-transform:none;letter-spacing:0">(optional)</span></label>
 <input class="n-field" id="v-src" name="source" type="url" inputmode="url" autocomplete="url" placeholder="https://">
 </div>
 <div>
@@ -118,12 +118,16 @@
 <p class="n-small" style="margin:0;max-width:54ch;color:var(--n-sage-lt)">Your email is optional and is used only to reply about this submission. Sending a correction does not sign you up for anything. <a href="/privacy/">How submissions are handled</a>.</p>
 </form>
 <template data-form-success><p role="status" style="margin:24px 0 0;padding-top:16px;border-top:3px solid var(--n-gold-lt);max-width:54ch;color:var(--n-white)">Thank you &#8212; your submission has been sent. It goes in with the date it was verified.</p></template>
-<template data-form-unavailable><p role="status" data-message style="margin:24px 0 0;padding-top:16px;border-top:3px solid var(--n-gold-lt);max-width:54ch;color:var(--n-white)">This form is not connected yet, so nothing was sent. For anything official, the <a href="/community/#resources">responsible body</a> is the reliable contact.</p></template>
+<template data-form-unavailable><p role="status" data-message style="margin:24px 0 0;padding-top:16px;border-top:3px solid var(--n-gold-lt);max-width:54ch;color:var(--n-white)">This form is not connected yet, so nothing was sent. Write to <a href="mailto:editor@townofniwot.com" style="color:var(--n-gold-lt)">editor@townofniwot.com</a> instead. For anything official, the <a href="/community/#resources">responsible body</a> is the reliable contact.</p></template>
 </div>
 <div>
 <div class="n-label">What goes in</div>
 <h2 class="n-h2" style="margin-top:12px;max-width:20ch">With its source, and with its date</h2>
 <p class="n-body" style="margin:16px 0 0;max-width:50ch;color:var(--n-paper)">A business listing needs a name, a category, an address and a website or the Business Association listing. An event needs the organizer&#8217;s own page with the date on it. A correction needs the page, what is wrong and what it should say.</p>
+<div style="margin-top:clamp(20px,2.5vw,28px);padding-top:16px;border-top:1px solid rgba(240,236,225,.28)">
+<div class="n-label" style="color:var(--n-gold-lt)">Or write directly</div>
+<p class="n-body" style="margin:8px 0 0;max-width:50ch;color:var(--n-paper)"><a href="mailto:editor@townofniwot.com" style="color:var(--n-gold-lt)">editor@townofniwot.com</a> reaches the editor without the form. Use it for anything the form does not fit, and if the form ever fails to send.</p>
+</div>
 <p class="n-body" style="margin:14px 0 0;max-width:50ch;color:var(--n-paper)">Listings and events are published with the date they were checked. A correction to a published fact is listed on Our Story with its date and a note of what changed. A claim that cannot be supported is removed rather than softened.</p>
 <div style="margin-top:20px">
 <div style="display:grid;gap:4px;padding:14px 0;border-top:1px solid rgba(158,173,152,.35)">
@@ -179,6 +183,6 @@
 </footer>
 
 </div>
-<script type="module" src="/assets/js/forms.d4c04d38bd.js"></script>
+<script type="module" src="/assets/js/forms.430ef85da5.js"></script>
 </body>
 </html>
