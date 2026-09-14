@@ -2,6 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
   "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/events/tree-carving-fundraiser-trivia-2026-09-15",
+      "destination": "/events/?date=2026-09-15#cal-h",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/img/(.*)",

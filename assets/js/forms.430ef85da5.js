@@ -79,7 +79,28 @@ function summary(form, text) {
   error.textContent = text;
 }
 
+/* A listing is published with the source it was checked against, so for the
+   kinds where the source IS the submission — an event, a correction — the
+   link is required rather than welcome. Which kinds those are is marked on
+   the options themselves, so the form stays the one place that says so.
+   Without scripting the field stays optional: the endpoint cannot enforce it
+   either way, and a required attribute nobody can satisfy is worse. */
 document.querySelectorAll('[data-contact-form]').forEach((form) => {
+  const kind = form.querySelector('[name="kind"]');
+  const source = form.querySelector('[name="source"]');
+  const note = form.querySelector('[data-source-note]');
+  if (kind && source) {
+    const sync = () => {
+      const option = kind.selectedOptions[0];
+      const needed = !!(option && option.hasAttribute('data-requires-source'));
+      source.required = needed;
+      source.setAttribute('aria-required', String(needed));
+      if (note) note.textContent = needed ? '(required)' : '(optional)';
+    };
+    kind.addEventListener('change', sync);
+    sync();
+  }
+
   const button = form.querySelector('button[type="submit"]');
   if (button) button.dataset.label = button.textContent;
 
@@ -106,13 +127,13 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
       /* Formspree reports a problem as { error } or { errors: [{ field, message }] }. */
       if (!ok && payload && !payload.message) {
         payload.message = payload.error
-          ? 'That could not be sent: ' + payload.error + '. Please try again, or use the direct contacts on this page.'
+          ? 'That could not be sent: ' + payload.error + '. Please try again, or email editor@townofniwot.com.'
           : 'That could not be sent. Please check the highlighted fields and try again.';
       }
     } catch {
       payload = {
         message:
-          'That could not be sent — the connection failed. Please try again, or use the direct contacts on this page.',
+          'That could not be sent — the connection failed. Please try again, or email editor@townofniwot.com.',
       };
     }
 

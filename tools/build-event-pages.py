@@ -52,9 +52,14 @@ def add_ld(h,obj):
 # ---------- 1. events data ----------
 ev_html=rd("events/index.html")
 events=json.loads(re.search(r'id="niwot-events"[^>]*>(.*?)</script>',ev_html,re.S).group(1))
-blocks=re.findall(r'<script type="application/ld\+json">(.*?)</script>',ev_html,re.S)
-ldev=json.loads(blocks[0]); ld_list=ldev["@graph"] if isinstance(ldev,dict) and "@graph" in ldev else ldev
-addr_by_name={e["name"]:e.get("location",{}).get("address") for e in ld_list if isinstance(e,dict) and e.get("@type")=="Event"}
+def postal(e):
+    """The record's address as schema.org wants it. A venue with no street
+    address gets the locality alone — which is true — rather than nothing."""
+    a={"@type":"PostalAddress"}
+    street=(e.get("location") or {}).get("address")
+    if street: a["streetAddress"]=street
+    a.update({"addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"})
+    return a
 byid={e["id"]:e for e in events}
 name_to_id={}
 for e in events: name_to_id.setdefault(e["name"],e["id"])
@@ -107,6 +112,14 @@ EV_ALT="The red CB&Q caboose at Whistle Stop Park in Niwot, home of the summer c
 dated=[e for e in events if e.get("startDate")]
 upcoming=sorted([e for e in dated if d(last_date(e))>=TODAY],key=lambda e:e["startDate"])
 
+def status_row(e):
+    """What we can honestly say we know. A record that names the organizer's
+    listing but no start time was located, not confirmed — and a page that
+    claims both is the thing this row exists to prevent."""
+    if e["status"]!="confirmed": return "Expected, not yet confirmed"
+    if not e.get("startTime"): return "Source listing located \u2014 details incomplete"
+    return "Confirmed with the organizer"
+
 def event_page(e):
     name=e["name"]; loc=e["location"]["name"]; org=e["organizer"]; tl=time_label(e); dl_=date_label(e)
     is_conf=e["status"]=="confirmed"
@@ -115,7 +128,7 @@ def event_page(e):
     if len(title)>65: title=f"{name} | Niwot, CO Events"
     desc=trim(f"{name} in Niwot, Colorado: {dl_}{', '+tl if tl else ''}, at {loc}. {e['description']}")
     free=bool(e.get("cost")) and e["cost"].lower().startswith("free")
-    addr=addr_by_name.get(name) or {"@type":"PostalAddress","addressLocality":"Niwot","addressRegion":"CO","addressCountry":"US"}
+    addr=postal(e)
     ev={"@context":"https://schema.org","@type":"Event","@id":page_url(e)+"#event","name":name,
         "description":e["description"],"url":page_url(e),"image":[EV_IMG],
         "startDate":iso(e["startDate"],e["startTime"]) if e.get("startTime") else e["startDate"],
@@ -123,8 +136,9 @@ def event_page(e):
         "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
         "location":{"@type":"Place","name":loc,"address":addr},
         "organizer":{"@type":"Organization","name":org["name"],"url":org["url"]},
-        "isAccessibleForFree":free,"keywords":[e.get("tag","Event"),"Niwot","Boulder County"],
+        "keywords":[e.get("tag","Event"),"Niwot","Boulder County"],
         "sameAs":e["sourceUrl"]}
+    if e.get("cost"): ev["isAccessibleForFree"]=free
     if e.get("endTime"): ev["endDate"]=iso(last_date(e),e["endTime"])
     elif e.get("recurrence"): ev["endDate"]=last_date(e)
     if e.get("recurrence"):
@@ -139,7 +153,7 @@ def event_page(e):
     if tl: rows.append(("Time",tl+", Mountain Time"))
     rows+= [("Location",loc+", Niwot, Colorado"),("Organizer",org["name"])]
     if e.get("cost"): rows.append(("Cost",e["cost"]))
-    rows.append(("Status","Confirmed with the organizer" if is_conf else "Expected, not yet confirmed"))
+    rows.append(("Status",status_row(e)))
     rows.append(("Checked",long_date(e["verifiedAt"])))
     dl="".join(f'<div style="padding:12px 0;border-top:1px solid var(--n-rule);display:grid;grid-template-columns:minmax(96px,.28fr) minmax(0,1fr);gap:8px 20px"><dt class="n-label n-label--quiet" style="font-size:12px">{esc(k)}</dt><dd class="n-body" style="margin:0;font-size:.9375rem">{esc(v)}</dd></div>' for k,v in rows)
     others=[o for o in upcoming if o["id"]!=e["id"]][:5]
@@ -211,6 +225,165 @@ for e in dated:
     gen.append(e["id"])
 print("event pages:",len(gen),f"({len(touched)} changed)")
 
+# ---------- 5b. the pre-rendered "coming up" cards ----------
+# The browser rebuilds these from the same JSON on load, so anyone with
+# scripting sees a current list whatever the file says. Crawlers and everyone
+# else read the file — and that copy goes stale by itself as events pass,
+# which is how a finished event stays sitting on the homepage. Rendering it
+# here, from the same records, is what archives it. The markup below is the
+# markup renderUpcoming() emits in calendar-core.js; when one moves, the other
+# has to move with it, or the page will flicker as it hydrates.
+NOW_AT=dt.datetime.now(TZ)
+NOW={"date":NOW_AT.date().isoformat(),"time":NOW_AT.strftime("%H:%M")}
+DATED_STATUSES=("confirmed","cancelled","postponed")
+STATUS_LABEL={"confirmed":"Confirmed","cancelled":"Cancelled",
+              "postponed":"Postponed","tentative":"Expected — date not confirmed"}
+
+def jesc(v):
+    """escapeHtml() from calendar-core.js, character for character."""
+    return (str("" if v is None else v).replace("&","&amp;").replace("<","&lt;")
+            .replace(">","&gt;").replace('"',"&quot;"))
+
+def instances(evs):
+    """Every dated occurrence, soonest first — expandEvents() in Python."""
+    out=[]
+    for e in evs:
+        if not e.get("startDate") or e.get("status") not in DATED_STATUSES: continue
+        if e.get("recurrence"):
+            r=e["recurrence"]; x=until=d(e["startDate"]); until=d(r["until"]); dates=[]
+            while x<=until:
+                # calendar-core counts Sunday as 0, as Date#getDay() does;
+                # Python counts Monday as 0.
+                if (x.weekday()+1)%7==r["weekday"]: dates.append(x.isoformat())
+                x+=dt.timedelta(days=1)
+        else:
+            dates=[e["startDate"]]
+        for date in dates:
+            out.append({"id":e["id"],"date":date,
+                        "endDate":date if e.get("recurrence") else (e.get("endDate") or date),
+                        "startTime":e.get("startTime"),"endTime":e.get("endTime"),"event":e})
+    out.sort(key=lambda i:(i["date"],i["startTime"] or "00:00",i["event"]["name"]))
+    return out
+
+def is_past(i):
+    end_date=i["endDate"] or i["date"]; end_time=i["endTime"] or "24:00"
+    if end_date!=NOW["date"]: return end_date<NOW["date"]
+    return end_time<=NOW["time"]
+
+def day_label(iso):
+    x=d(iso); base=f"{WD[x.weekday()]}, {x.strftime('%B')} {x.day}"
+    return base if x.year==d(NOW["date"]).year else f"{base}, {x.year}"
+
+def inst_time(i):
+    if not i["startTime"]: return ""
+    s=fmt_time(i["startTime"])
+    if not i["endTime"]: return s
+    en=fmt_time(i["endTime"])
+    return (s[:-3]+"–"+en) if s[-2:]==en[-2:] else (s+"–"+en)
+
+def card(i,mode):
+    e=i["event"]; t=inst_time(i)
+    when=day_label(i["date"])
+    if i["endDate"] and i["endDate"]!=i["date"]: when+=" to "+day_label(i["endDate"])
+    if mode=="select":
+        action=('<button type="button" class="n-jump" data-jump="'+i["date"]
+                +'" data-jump-event="'+jesc(i["id"])+'"'
+                ' style="margin-top:auto;align-self:start;background:none;border:0;'
+                'border-bottom:1px solid currentColor;color:var(--n-sky-ink);font:inherit;'
+                'font-size:.9375rem;font-weight:500;cursor:pointer">'
+                'View details <span aria-hidden="true">&#8594;</span></button>')
+    else:
+        action=('<a class="n-link" href="'+jesc(f'/events/?date={i["date"]}&event={i["id"]}#cal-h')
+                +'" style="margin-top:auto;align-self:start">'
+                'View details <span aria-hidden="true">&#8594;</span></a>')
+    return ('<article data-event-id="'+jesc(i["id"])+'" data-event-date="'+i["date"]
+            +'" data-event-status="'+jesc(e["status"])+'" class="n-up">'
+            '<div class="n-label">'+jesc(when)+((' &#183; '+jesc(t)) if t else '')+'</div>'
+            '<h3 class="n-h3" style="font-size:1.375rem;color:var(--n-evergreen)">'
+            '<a href="/events/'+e["id"]+'/" style="color:inherit;text-decoration:none">'
+            +jesc(e["name"])+'</a></h3>'
+            +(('<div class="n-label">'+jesc(STATUS_LABEL.get(e["status"],e["status"]))+'</div>')
+              if e["status"]!="confirmed" else "")
+            +'<div class="n-body" style="font-size:.9375rem">'+jesc(e["location"]["name"])+'</div>'
+            '<div class="n-small" style="font-size:.875rem">'+jesc(e["organizer"]["name"])
+            +((' &#183; '+jesc(e["cost"])) if e.get("cost") else "")+'</div>'
+            +action+'</article>')
+
+def empty_note(mode):
+    where=('The expected seasonal events are listed below' if mode=="select"
+           else 'The expected seasonal events are listed on the '
+                '<a href="/events/#expected">events calendar</a>')
+    return ('<p class="n-body" data-upcoming-empty style="margin:0;max-width:56ch">'
+            'Nothing is confirmed on the calendar right now. '+where+', and the '
+            'organizers’ own pages carry anything announced since this page '
+            'was checked.</p>')
+
+def replace_inner(t,attr):
+    """The content of the one <div> carrying `attr`, found by balancing."""
+    m=re.search(r'<div[^>]*'+re.escape(attr)+r'[^>]*>',t)
+    if not m: return None,None,None
+    start=m.end(); depth=1
+    for tok in re.finditer(r'<(/?)div\b',t[start:]):
+        depth+=-1 if tok.group(1) else 1
+        if depth==0: return t[:start],t[start:start+tok.start()],t[start+tok.start():]
+    return None,None,None
+
+live=[i for i in instances(events) if not is_past(i)]
+rebuilt=set()
+for path,mode,limit in (("index.html","link",3),("events/index.html","select",None)):
+    t=rd(path)
+    head,_,tail=replace_inner(t,'data-upcoming="%s"'%mode)
+    if head is None:
+        print(f"! {path}: no data-upcoming=\"{mode}\" container"); continue
+    shown=live[:limit] if limit else live
+    body="".join(card(i,mode) for i in shown) or empty_note(mode)
+    if wr(path,head+body+tail): rebuilt.add(path)
+    print(f"{path}: {len(shown)} cards"+(" (changed)" if path in rebuilt else ""))
+
+# ---------- 5c. the calendar page's structured data ----------
+# It used to carry an Event object per listing. Google puts the event
+# experience on single-event pages, and fourteen Events on one URL competes
+# with the fourteen pages that each describe one properly. An ItemList says
+# what this page actually is: an index pointing at them.
+# In the order the page shows them — by next occurrence, not by the date a
+# series first ran — so the list and the cards cannot disagree.
+listed=[]
+for i in live:
+    if i["event"] not in listed: listed.append(i["event"])
+itemlist={"@context":"https://schema.org","@type":"ItemList",
+          "name":"Upcoming events in Niwot, Colorado",
+          "itemListOrder":"https://schema.org/ItemListOrderAscending",
+          "numberOfItems":len(listed),
+          "itemListElement":[{"@type":"ListItem","position":n,"url":page_url(e),"name":e["name"]}
+                             for n,e in enumerate(listed,1)]}
+t=rd("events/index.html")
+blocks=list(re.finditer(r'<script type="application/ld\+json">(.*?)</script>',t,re.S))
+def is_the_list(raw):
+    """The block this page's index lives in — an ItemList once this has run
+    before, an Event graph the first time. Matching both keeps the rebuild
+    idempotent; matching only Events made the second run a no-op."""
+    try: obj=json.loads(raw)
+    except ValueError: return False
+    if not isinstance(obj,dict): return False
+    if obj.get("@type")=="ItemList": return True
+    return any(isinstance(x,dict) and x.get("@type")=="Event"
+               for x in obj.get("@graph",[]))
+first=next((b for b in blocks if is_the_list(b.group(1))), None)
+if first:
+    t=t[:first.start()]+ld(itemlist)+t[first.end():]
+    if wr("events/index.html",t): rebuilt.add("events/index.html")
+    print(f"events/index.html: Event graph -> ItemList of {len(listed)}")
+
+# ---------- 5d. pages for events that no longer exist ----------
+# Splitting or renaming a record leaves its old page behind, live and
+# indexable, describing an event this site no longer lists.
+keep={e["id"] for e in dated}
+for f in sorted(glob.glob("events/*/index.html")):
+    eid=os.path.basename(os.path.dirname(f))
+    if eid in keep: continue
+    os.remove(f); os.rmdir(os.path.dirname(f))
+    print("removed stale page:",eid,"(add a redirect in vercel.json)")
+
 # ---------- 6. sitemap ----------
 # lastmod was a literal date repeated on every line, so each run stamped the
 # whole site with the day the line was written and overwrote anything newer.
@@ -236,7 +409,7 @@ def changed_on(url,path,rewritten=False):
         d=git("log","-1","--format=%cs","--",path)
         if d: return d
     return PREV.get(SITE+url, TODAYS)
-pages=[(u,changed_on(u,f)) for u,f in [
+pages=[(u,changed_on(u,f,f in rebuilt)) for u,f in [
     ("/","index.html"),("/explore/","explore/index.html"),
     ("/eat-shop/","eat-shop/index.html"),("/events/","events/index.html"),
     ("/community/","community/index.html"),
