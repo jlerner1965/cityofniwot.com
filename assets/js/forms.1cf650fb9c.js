@@ -127,13 +127,13 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
       /* Formspree reports a problem as { error } or { errors: [{ field, message }] }. */
       if (!ok && payload && !payload.message) {
         payload.message = payload.error
-          ? 'That could not be sent: ' + payload.error + '. Please try again, or email editor@townofniwot.com.'
+          ? 'That could not be sent: ' + payload.error + '. Please try again in a moment.'
           : 'That could not be sent. Please check the highlighted fields and try again.';
       }
     } catch {
       payload = {
         message:
-          'That could not be sent — the connection failed. Please try again, or email editor@townofniwot.com.',
+          'That could not be sent — the connection failed. Please try again in a moment.',
       };
     }
 
