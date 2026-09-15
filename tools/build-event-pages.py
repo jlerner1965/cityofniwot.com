@@ -426,8 +426,12 @@ PREV = dict(re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>",
 def changed_on(url,path,rewritten=False):
     if rewritten or git("status","--porcelain","--",path): return TODAYS
     if not SHALLOW:
-        d=git("log","-1","--format=%cs","--",path)
-        if d: return d
+        stamp=git("log","-1","--format=%cI","--",path)
+        if stamp:
+            try:
+                return dt.datetime.fromisoformat(stamp).astimezone(TZ).date().isoformat()
+            except ValueError:
+                pass
     return PREV.get(SITE+url, TODAYS)
 pages=[(u,changed_on(u,f,f in rebuilt)) for u,f in [
     ("/","index.html"),("/explore/","explore/index.html"),
