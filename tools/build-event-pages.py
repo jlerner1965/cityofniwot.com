@@ -15,7 +15,7 @@ import re, json, html, glob, os, subprocess, datetime as dt
 from zoneinfo import ZoneInfo
 # Derived, not hardcoded: this has to run on a build machine too.
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(ROOT)
-SITE="https://townofniwot.com"; TZ=ZoneInfo("America/Denver"); TODAY=dt.date.today()
+SITE="https://townofniwot.com"; TZ=ZoneInfo("America/Denver"); TODAY=dt.datetime.now(TZ).date()
 ROBOTS='<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">'
 ORG={"@type":"Organization","@id":SITE+"/#org","name":"TownofNiwot.com","url":SITE+"/",
      "description":"An independent community guide to Niwot, Colorado. Not a municipal government website.",
@@ -340,7 +340,27 @@ for path,mode,limit in (("index.html","link",3),("events/index.html","select",No
     if wr(path,head+body+tail): rebuilt.add(path)
     print(f"{path}: {len(shown)} cards"+(" (changed)" if path in rebuilt else ""))
 
-# ---------- 5c. the calendar page's structured data ----------
+# ---------- 5c. the calendar page's canonical event-page index ----------
+# This server-rendered list is the non-scripted path to every canonical event
+# page. Rebuild it with the feed so renamed or split records cannot leave a
+# dead link behind after the stale page itself is removed.
+event_links="".join(
+    f'<li><a href="/events/{e["id"]}/">{esc(e["name"])}</a> '
+    f'<span class="n-small">({esc(short_date(e["startDate"]))})</span></li>'
+    for e in sorted(dated,key=lambda e:e["startDate"]))
+page_index=(
+    '<section class="n-bg-white n-pad-sm" aria-labelledby="pages-h" '
+    'style="border-top:1px solid var(--n-rule)"><div class="n-wrap">'
+    '<h2 class="n-label n-label--quiet" id="pages-h" style="margin:0 0 12px">Event pages</h2>'
+    '<ul class="n-body" style="columns:2;column-gap:32px;margin:0;padding-left:1.2em;'
+    'font-size:.9375rem;max-width:72ch">'+event_links+'</ul></div></section>')
+t=rd("events/index.html")
+t,n=re.subn(r'<section class="n-bg-white n-pad-sm" aria-labelledby="pages-h".*?</section>',
+            page_index,t,count=1,flags=re.S)
+if n and wr("events/index.html",t): rebuilt.add("events/index.html")
+print(f"events/index.html: {len(dated)} canonical event links")
+
+# ---------- 5d. the calendar page's structured data ----------
 # It used to carry an Event object per listing. Google puts the event
 # experience on single-event pages, and fourteen Events on one URL competes
 # with the fourteen pages that each describe one properly. An ItemList says
@@ -374,7 +394,7 @@ if first:
     if wr("events/index.html",t): rebuilt.add("events/index.html")
     print(f"events/index.html: Event graph -> ItemList of {len(listed)}")
 
-# ---------- 5d. pages for events that no longer exist ----------
+# ---------- 5e. pages for events that no longer exist ----------
 # Splitting or renaming a record leaves its old page behind, live and
 # indexable, describing an event this site no longer lists.
 keep={e["id"] for e in dated}
@@ -404,7 +424,7 @@ PREV = dict(re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>",
                        open("sitemap.xml",encoding="utf-8").read())) \
        if os.path.exists("sitemap.xml") else {}
 def changed_on(url,path,rewritten=False):
-    if rewritten: return TODAYS
+    if rewritten or git("status","--porcelain","--",path): return TODAYS
     if not SHALLOW:
         d=git("log","-1","--format=%cs","--",path)
         if d: return d
