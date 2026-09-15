@@ -4,7 +4,7 @@
   "cleanUrls": false,
   "redirects": [
     {
-      "source": "/events/tree-carving-fundraiser-trivia-night-2026-09-15",
+      "source": "/events/tree-carving-fundraiser-trivia-night-2026-09-15/",
       "destination": "/events/?date=2026-09-15#cal-h",
       "permanent": true
     }
