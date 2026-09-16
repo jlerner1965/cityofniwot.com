@@ -1,0 +1,447 @@
+[
+ {
+  "id": "rock-rails-2026",
+  "name": "Rock & Rails concert series",
+  "status": "confirmed",
+  "startDate": "2026-06-04",
+  "recurrence": {
+   "weekday": 4,
+   "until": "2026-08-27"
+  },
+  "startTime": "17:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Whistle Stop Park, Old Town"
+  },
+  "organizer": {
+   "name": "Niwot Cultural Arts Association",
+   "url": "https://niwotarts.org/"
+  },
+  "sourceUrl": "https://niwotarts.org/rock-rails/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free admission",
+  "tag": "Concert",
+  "description": "The free Thursday-evening concert series on the lawn beside the caboose at Whistle Stop Park, produced by the Niwot Cultural Arts Association with the Niwot Business Association. The 2026 season ran June 4 to August 27, with happy hour and opening music from 5pm and the headline band from 6:30pm."
+ },
+ {
+  "id": "rise-benefit-concert-2026",
+  "name": "Rise Benefit Concert at Whistle Stop Park",
+  "status": "confirmed",
+  "startDate": "2026-09-03",
+  "startTime": "17:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Whistle Stop Park, Old Town"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free admission",
+  "tag": "Concert",
+  "description": "A Rock & Rails-format evening after the regular season, held to celebrate and raise funds for the Jared Music Foundation."
+ },
+ {
+  "id": "dancing-under-the-stars-2026",
+  "name": "Dancing Under the Stars",
+  "status": "confirmed",
+  "startDate": "2026-06-12",
+  "recurrence": {
+   "weekday": 5,
+   "until": "2026-09-18"
+  },
+  "startTime": "19:00",
+  "endTime": "21:30",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Cottonwood Square",
+   "address": "Niwot Road and 79th Street"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/dancing-under-the-stars-2026/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free",
+  "tag": "Dance",
+  "description": "A free dance lesson at 7pm, then social dancing with a DJ from 7:45pm, outdoors in Cottonwood Square. Every Friday evening of the season, June 12 to September 18."
+ },
+ {
+  "id": "second-friday-art-walk-2026-09-11",
+  "name": "Second Friday Art Walk",
+  "status": "confirmed",
+  "startDate": "2026-09-11",
+  "startTime": "17:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Old Town and Cottonwood Square"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free",
+  "tag": "Art walk",
+  "description": "Shops through Old Town and Cottonwood Square stay open late, 5 to 9pm, with art, music and special features through the evening. Timed with the closing weekend of the Why Not Niwot? show at Niwot Hall. Hours are those on the organizer’s September 11 listing."
+ },
+ {
+  "id": "why-not-niwot-awards-night-2026",
+  "name": "Why Not Niwot? Awards Night",
+  "status": "confirmed",
+  "startDate": "2026-09-11",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot Hall"
+  },
+  "organizer": {
+   "name": "Niwot Cultural Arts Association",
+   "url": "https://niwotarts.org/"
+  },
+  "sourceUrl": "https://niwotarts.org/why-not-niwot/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free",
+  "tag": "Art",
+  "description": "Awards ceremony and artists’ reception closing the fifteenth Why Not Niwot? juried show — forty works by twenty Colorado artists — with the Niwot Community Semi-Marching Free Grange Band. Held during the Art Walk. The organizer’s page gives 6pm; the Business Association’s calendar lists the evening from 5:30pm, so check the organizer’s page before setting out."
+ },
+ {
+  "id": "osmosis-opening-diane-pike-2026-09-11",
+  "name": "Opening: Peaks, Pines and a Raven",
+  "status": "confirmed",
+  "startDate": "2026-09-11",
+  "startTime": "17:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Osmosis Gallery",
+   "address": "290 Second Avenue"
+  },
+  "organizer": {
+   "name": "Osmosis Gallery",
+   "url": "https://www.osmosisartgallery.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/opening-peaks-pines-and-a-raven-feat-diane-pike/",
+  "verifiedAt": "2026-09-09",
+  "tag": "Art",
+  "description": "Opening reception for an exhibition of work by Diane Pike, 5 to 9pm during the Second Friday Art Walk. The show runs at the gallery through the end of November."
+ },
+ {
+  "id": "house-blend-band-2026-09-12",
+  "name": "House Blend Band",
+  "status": "confirmed",
+  "startDate": "2026-09-12",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot — venue on the organizer’s listing"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-14",
+  "tag": "Music",
+  "description": "Live music on the Niwot Business Association calendar for Saturday, September 12. The listing names no venue and no start time."
+ },
+ {
+  "id": "trivia-night-2026",
+  "name": "Trivia Night",
+  "status": "confirmed",
+  "startDate": "2026-09-15",
+  "recurrence": {
+   "weekday": 2,
+   "until": "2026-09-29"
+  },
+  "startTime": "18:30",
+  "endTime": "20:30",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "The Wheel House",
+   "address": "101 Second Avenue"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/trivia-night/",
+  "verifiedAt": "2026-09-16",
+  "tag": "Trivia",
+  "description": "Trivia at The Wheel House on Second Avenue, 6:30 to 8:30pm. The Niwot Business Association lists it as a weekly Tuesday event; the dates here are the ones read on its listing (September 15, 22 and 29). Check the listing for later Tuesdays.",
+  "_notes": "Organizer listing shows weekly recurrence with next occurrence Sep 29; no end date published, so only the read dates are expanded. Extend `until` after re-reading the listing."
+ },
+ {
+  "id": "road-of-remembrance-2026-09-16",
+  "name": "The Road of Remembrance",
+  "status": "confirmed",
+  "startDate": "2026-09-16",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot Hall",
+   "address": "195 Second Avenue"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-14",
+  "tag": "Community",
+  "description": "On the Niwot Business Association calendar for Wednesday, September 16, at Niwot Hall from 7 to 8:30pm.",
+  "startTime": "19:00",
+  "endTime": "20:30"
+ },
+ {
+  "id": "basin-design-open-house-2026-09-19",
+  "name": "Basin Design Open House",
+  "status": "confirmed",
+  "startDate": "2026-09-19",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Basin Design"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-14",
+  "tag": "Open house",
+  "description": "An open house at Basin Design, 5 to 8pm, on the Niwot Business Association calendar for Saturday, September 19. The listing gives no street address.",
+  "startTime": "17:00",
+  "endTime": "20:00"
+ },
+ {
+  "id": "blessing-of-the-animals-2026-10-04",
+  "name": "Blessing of the Animals",
+  "status": "confirmed",
+  "startDate": "2026-10-04",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot United Methodist Church",
+   "address": "7405 Lookout Road"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-14",
+  "tag": "Community",
+  "description": "A blessing of the animals at Niwot United Methodist Church on Lookout Road, 4 to 5pm, on the Niwot Business Association calendar for Sunday, October 4.",
+  "startTime": "16:00",
+  "endTime": "17:00"
+ },
+ {
+  "id": "ncaa-open-house-2026-10-04",
+  "name": "Niwot Cultural Arts Association Open House",
+  "status": "confirmed",
+  "startDate": "2026-10-04",
+  "startTime": "14:00",
+  "endTime": "17:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "9700 Niwot Road"
+  },
+  "organizer": {
+   "name": "Niwot Cultural Arts Association",
+   "url": "https://niwotarts.org/"
+  },
+  "sourceUrl": "https://niwotarts.org/",
+  "verifiedAt": "2026-09-16",
+  "tag": "Open house",
+  "description": "An open house in support of the Niwot tree sculptures, Saturday, October 4 from 2 to 5pm at 9700 Niwot Road, announced on the Cultural Arts Association’s site. Dustin Wolf is restoring his father Eddie Running Wolf’s carvings, and the association is raising funds for a canopy to shelter them at Left Hand Valley Grange Park."
+ },
+ {
+  "id": "niwot-wellness-lecture-2026-10-07",
+  "name": "Niwot Wellness Lecture Series",
+  "status": "confirmed",
+  "startDate": "2026-10-07",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot Hall",
+   "address": "195 Second Avenue"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-14",
+  "tag": "Talk",
+  "description": "A talk in the wellness lecture series at Niwot Hall, 6 to 8pm, on the Niwot Business Association calendar for Wednesday, October 7. The listing says free; it does not name the speaker.",
+  "startTime": "18:00",
+  "endTime": "20:00",
+  "cost": "Free"
+ },
+ {
+  "id": "enchanted-evening-2026",
+  "name": "Enchanted Evening",
+  "status": "confirmed",
+  "startDate": "2026-11-27",
+  "startTime": "18:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Old Town and Cottonwood Square"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/enchanted-evening/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free",
+  "tag": "Holiday",
+  "description": "The community tree lighting, Santa’s arrival by horse-drawn sleigh, carols and live music through Old Town and Cottonwood Square, on the evening after Thanksgiving. The date and 6 to 9pm hours are from the organizer’s dated 2026 listing; the same page’s general description says the evening starts at 5pm, so check it before setting out."
+ },
+ {
+  "id": "holiday-parade-2026",
+  "name": "Niwot Holiday Parade",
+  "status": "confirmed",
+  "startDate": "2026-11-28",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Second Avenue, Murray Street to Niwot Road"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/holidays-and-parades/",
+  "verifiedAt": "2026-09-16",
+  "cost": "Free",
+  "tag": "Holiday",
+  "description": "A morning parade down Second Avenue from Murray Street to Niwot Road, with Santa, on the Saturday after Thanksgiving. The organizer’s listing gives Saturday, November 28, 11am to 1pm; its description also says “Nov 29th”, so check the listing before setting out. After the parade Santa is at the Grange until 1pm.",
+  "startTime": "11:00",
+  "endTime": "13:00"
+ },
+ {
+  "id": "first-friday-art-walk-2026-12-04",
+  "name": "First Friday Art Walk",
+  "status": "confirmed",
+  "startDate": "2026-12-04",
+  "startTime": "17:00",
+  "endTime": "21:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Old Town and Cottonwood Square"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-16",
+  "tag": "Art walk",
+  "description": "Galleries, shops and studios through Old Town and Cottonwood Square stay open late, 5 to 9pm, on the Niwot Business Association calendar for Friday, December 4. The listing names Osmosis Gallery and several businesses among the stops."
+ },
+ {
+  "id": "holiday-magic-market-fayre-2026-12-05",
+  "name": "Holiday Magic Market Fayre",
+  "status": "confirmed",
+  "startDate": "2026-12-05",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot Hall and businesses around town",
+   "address": "195 Second Avenue"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/upcoming-events/",
+  "verifiedAt": "2026-09-16",
+  "tag": "Market",
+  "description": "Holiday pop-up vendors at Niwot Hall and at businesses around Old Town, 10am to 4pm, with Santa and Mrs. Claus from 1 to 3pm, carriage rides and carolers. The organizer’s page says the Market Fayre is held on December 5 and again on December 12; the second date is listed separately.",
+  "startTime": "10:00",
+  "endTime": "16:00"
+ },
+ {
+  "id": "holiday-magic-market-fayre-2026-12-12",
+  "name": "Holiday Magic Market Fayre",
+  "status": "confirmed",
+  "startDate": "2026-12-12",
+  "startTime": "10:00",
+  "endTime": "16:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Niwot Hall and businesses around town",
+   "address": "195 Second Avenue"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/holiday-magic-market-fayre/",
+  "verifiedAt": "2026-09-16",
+  "tag": "Market",
+  "description": "The second day of the Holiday Magic Market Fayre: pop-up vendors at Niwot Hall and at businesses around Old Town, 10am to 4pm. The organizer’s page names the 5th and 12th of December; the calendar entry read on September 16 carries only the 5th, so confirm the second day on the organizer’s page."
+ },
+ {
+  "id": "lets-wine-about-winter-2027",
+  "name": "Let’s Wine About Winter",
+  "status": "confirmed",
+  "startDate": "2027-02-20",
+  "startTime": "13:00",
+  "endTime": "17:00",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Old Town and Cottonwood Square"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/lets-wine-about-winter-2026-743/",
+  "verifiedAt": "2026-09-16",
+  "cost": "$35 on the organizer’s listing; tickets to be announced early 2027",
+  "tag": "Food & drink",
+  "description": "An afternoon of wine through Old Town and Cottonwood Square, 1 to 5pm on Saturday, February 20, 2027, benefiting the Niwot Cultural Arts Association. The organizer’s listing gives a $35 price and says the ticket link comes early in 2027."
+ },
+ {
+  "id": "great-pumpkin-party-2026",
+  "name": "Niwot’s Great Pumpkin Party",
+  "status": "tentative",
+  "expected": "Late October — the organizer says details are still to come",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Second Avenue, Old Town"
+  },
+  "organizer": {
+   "name": "Niwot Business Association",
+   "url": "https://niwot.com/"
+  },
+  "sourceUrl": "https://niwot.com/events/niwots-great-pumpkin-party/",
+  "verifiedAt": "2026-09-09",
+  "tag": "Family",
+  "description": "Costume parade, trick-or-treating along Second Avenue, hay rides, magic shows and a petting zoo, co-hosted with The Niwot Group at Compass. Held the Saturday before Halloween in past years; the 2026 date is not yet published."
+ },
+ {
+  "id": "rock-rails-2027",
+  "name": "Rock & Rails concert series, 2027 season",
+  "status": "tentative",
+  "expected": "Thursday evenings, June to August 2027 — dates published by the organizer each spring",
+  "timezone": "America/Denver",
+  "location": {
+   "name": "Whistle Stop Park, Old Town"
+  },
+  "organizer": {
+   "name": "Niwot Cultural Arts Association",
+   "url": "https://niwotarts.org/"
+  },
+  "sourceUrl": "https://niwotarts.org/rock-rails/",
+  "verifiedAt": "2026-09-09",
+  "cost": "Free admission",
+  "tag": "Concert",
+  "description": "The free outdoor concert series beside the caboose returns each summer, produced by the Cultural Arts Association with the Business Association. The season’s dates and line-up are published in the spring; none are confirmed for 2027 yet."
+ }
+]

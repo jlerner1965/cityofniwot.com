@@ -14,7 +14,9 @@ Canonical site: https://townofniwot.com
 - [Niwot community organizations and resident resources](https://townofniwot.com/community/): local groups, Boulder County services and special districts.
 - [History of Niwot, Colorado](https://townofniwot.com/our-story/): a sourced history of the railroad, 1875 town plat and unincorporated community.
 - [Visit Niwot](https://townofniwot.com/plan-a-visit/): directions, parking, walking, cycling, transit and accessibility notes.
+- [Civic information for Niwot](https://townofniwot.com/civic/): Niwot’s civic status as an unincorporated community, the bodies that govern it, and the election pages.
 - [2026 Niwot incorporation election](https://townofniwot.com/civic/incorporation-election/): neutral voter information with links to official election authorities.
+- [Send a listing or correction](https://townofniwot.com/contact/): how business owners, organizers and residents submit listings, events and corrections for review.
 
 ## Editorial policy
 

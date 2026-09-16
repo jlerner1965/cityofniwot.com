@@ -26,11 +26,10 @@
 <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#173F3A">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/instrument-serif-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="/assets/css/guide.709b1855a2.css">
+<link rel="stylesheet" href="/assets/css/guide.e08db6f1eb.css">
 <script src="/assets/js/guide.4009e6369c.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://townofniwot.com/"},{"@type":"ListItem","position":2,"name":"Privacy","item":"https://townofniwot.com/privacy/"}]}</script>
 </head>
@@ -45,11 +44,11 @@
 <a href="/explore/">Explore</a>
 <a href="/eat-shop/">Eat &amp; Shop</a>
 <a href="/events/">Events</a>
-<a href="/community/">Community</a>
 <a href="/plan-a-visit/">Plan a Visit</a>
-<a href="/civic/incorporation-election/">2026 Election</a>
-<a class="n-nav-more" href="/our-story/">Our Story</a>
-<a class="n-nav-more" href="/contact/">Contact</a>
+<a href="/community/">Community</a>
+<a href="/our-story/">Our Story</a>
+<a href="/civic/">Civic Information</a>
+<a class="n-nav-cta" href="/contact/">Submit a listing</a>
 </nav>
 </div>
 </header>
@@ -61,7 +60,7 @@
 </ol>
 </div>
 </nav>
-<main id="main">
+<main id="main" tabindex="-1">
 <section class="n-bg-white" aria-labelledby="title-h">
 <div class="n-wrap" style="padding-top:clamp(28px,4vw,60px);padding-bottom:clamp(20px,2.5vw,36px)">
 <div class="n-g2-wide" style="align-items:end">
@@ -70,8 +69,8 @@
 <h1 class="n-display" id="title-h" style="margin-top:14px;font-size:clamp(1.875rem,1.4rem + 1.9vw,2.875rem);line-height:1.05;max-width:24ch;color:var(--n-evergreen)">What this site keeps, and what it does not</h1>
 </div>
 <div>
-<p class="n-lead" style="margin:0;max-width:50ch">This guide has one active submission form and collects only the information you choose to send through it. The hosting, form and font providers also process the limited technical information needed to deliver the site and your submission.</p>
-<div class="n-small" style="margin-top:14px">Effective September 9, 2026 &#183; Last updated September 14, 2026</div>
+<p class="n-lead" style="margin:0;max-width:50ch">This guide has one active submission form and collects only the information you choose to send through it. The hosting and form providers also process the limited technical information needed to deliver the site and your submission.</p>
+<div class="n-small" style="margin-top:14px">Effective September 9, 2026 &#183; Last updated September 16, 2026</div>
 </div>
 </div>
 </div>
@@ -90,10 +89,10 @@
 <p class="n-body" style="margin:14px 0 0">The submission form. When you send a listing, an event or a correction, we receive what you type: the kind of submission, the name of the business, event or page, the details, a link to your page or source, and your email address if you choose to give one. The email address is optional and is used only to reply about that submission.</p>
 <p class="n-body" style="margin:14px 0 0">Email notices. There is no notices form on the site and no mailing list is kept. Nothing here collects an address for that purpose. If notices are offered later, this page will say so, and will name whatever service delivers them, before anything is collected.</p>
 <p class="n-body" style="margin:14px 0 0">Server logs. The hosting provider, Vercel, records each request to the site &#8212; the address requested, the time, your IP address and browser details &#8212; for security and to keep the site running. We do not use these logs to identify readers.</p>
-<p class="n-body" style="margin:14px 0 0">Type from Google Fonts. The pages load two typefaces from Google Fonts. Your browser requests the font files from Google&#8217;s servers, which receive your IP address and browser details under Google&#8217;s own privacy policy. Nothing else on the site is loaded from a third party.</p>
+<p class="n-body" style="margin:14px 0 0">Type. The two typefaces are served from this site&#8217;s own address, so reading a page sends nothing to a font provider. Nothing on a page is loaded from a third party; the only outside request is the one you make by sending the form.</p>
 
 <h2 class="n-h3" style="margin-top:clamp(28px,3vw,40px);color:var(--n-evergreen)">Where it is processed and stored</h2>
-<p class="n-body" style="margin:14px 0 0">Three services process site data. <strong>Formspree</strong> receives what you type into the submission form and forwards it as an email to the editor&#8217;s mailbox; it keeps a copy in its submission archive so a lost email can be recovered. <strong>Vercel</strong> hosts the site and writes the server logs described above. <strong>Google Fonts</strong> serves the two typefaces, and your browser&#8217;s request for them reaches Google. Nothing you send is sold or shared with advertisers.</p>
+<p class="n-body" style="margin:14px 0 0">Two services process site data. <strong>Formspree</strong> receives what you type into the submission form and forwards it as an email to the editor&#8217;s mailbox; it keeps a copy in its submission archive so a lost email can be recovered. <strong>Vercel</strong> hosts the site and writes the server logs described above. Nothing you send is sold or shared with advertisers.</p>
 
 <h2 class="n-h3" style="margin-top:clamp(28px,3vw,40px);color:var(--n-evergreen)">How long it is kept</h2>
 <p class="n-body" style="margin:14px 0 0">A submission is kept for as long as it is needed to act on it. Where it leads to a published correction or listing, the submission is kept as the record of what changed and why, because corrections here are published with their date and source. A submission that leads nowhere is deleted within twelve months.</p>
@@ -105,11 +104,15 @@
 <p class="n-body" style="margin:14px 0 0">You can ask what we hold about you, ask for it to be corrected, or ask for it to be deleted. Email <a href="mailto:editor@townofniwot.com">editor@townofniwot.com</a>, or use the <a href="/contact/">submission form</a> and choose &#8220;Something else.&#8221; We answer within thirty days.</p>
 
 <h2 class="n-h3" style="margin-top:clamp(28px,3vw,40px);color:var(--n-evergreen)">Cookies, analytics and tracking</h2>
-<p class="n-body" style="margin:14px 0 0">This site sets no cookies, runs no analytics, carries no advertising and includes no third-party tracking scripts. Page views request the font files described above; sending the form also sends the fields you entered to Formspree.</p>
+<p class="n-body" style="margin:14px 0 0">This site sets no cookies, runs no analytics, carries no advertising and includes no third-party tracking scripts. Sending the form sends the fields you entered to Formspree, and nothing else leaves the page. If analytics are ever added, this page will say which service, what it records and how to opt out before it is switched on.</p>
 
 <h2 class="n-h3" style="margin-top:clamp(28px,3vw,40px);color:var(--n-evergreen)">Questions and changes</h2>
 <p class="n-body" style="margin:14px 0 0">Privacy questions go to the editor at <a href="mailto:editor@townofniwot.com">editor@townofniwot.com</a>, or by the routes above. Changes to this page are published with the date they took effect and a note of what changed.</p>
 <dl data-corrections style="margin:14px 0 0">
+<div style="padding:12px 0;border-top:1px solid var(--n-rule)">
+<dt class="n-label n-label--quiet" style="font-size:12px">September 16, 2026</dt>
+<dd class="n-body" style="margin:6px 0 0;font-size:.9375rem">The typefaces are now served from this site rather than from Google Fonts, so a page view no longer sends anything to Google; the paragraphs describing that request are gone and the processors are Formspree and Vercel. The submission form gained an optional &#8220;page this is about&#8221; field and now says that a submission is reviewed before anything is published and does not guarantee publication.</dd>
+</div>
 <div style="padding:12px 0;border-top:1px solid var(--n-rule)">
 <dt class="n-label n-label--quiet" style="font-size:12px">September 14, 2026</dt>
 <dd class="n-body" style="margin:6px 0 0;font-size:.9375rem">The entry below named Resend as a processor. It was never one: no email service beyond Formspree receives anything, and that sentence should have named Vercel and Formspree. Correcting it here rather than editing it there, because the record of what a page once said is the point of keeping one. The page also described two forms when only the submission form exists, and described a notices form, a notice list and an unsubscribe route that are not on the site; those are gone. The processors section now names Formspree, Vercel and Google Fonts, which is all of them, and a direct editorial address replaces the promise of one.</dd>
@@ -152,6 +155,7 @@
 </div>
 <div class="n-foot-col">
 <h2>Civic</h2>
+<a href="/civic/">Civic information</a>
 <a href="/civic/incorporation-election/">2026 Election</a>
 <a href="https://niwotelection.org/" rel="noopener">Election Commission <span aria-hidden="true">&#8599;</span></a>
 <a href="https://bouldercounty.gov/elections/" rel="noopener">Boulder County Elections <span aria-hidden="true">&#8599;</span></a>

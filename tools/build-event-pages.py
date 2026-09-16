@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
-"""Regenerate the per-event pages under /events/<id>/ and sitemap.xml.
+"""Rebuild everything on the site that is derived from the event records.
 
-Source of truth is the JSON in <script id="niwot-events"> on events/index.html
-(addresses come from that page's Event JSON-LD). Run from anywhere after
-updating the events page:
+Source of truth is data/events.json. Run from anywhere after editing it:
 
     python3 tools/build-event-pages.py
 
-Pages for events that have a start date are written; tentative events without
-a date are skipped. Existing pages are overwritten. The header and footer are
-copied from 404/index.html so they always match the rest of the site.
+It writes the records into the homepage and the calendar page (the
+<script id="niwot-events"> block each carries), pre-renders the upcoming
+cards, the current month's grid and detail rail, the expected list, one page
+per dated event under /events/<id>/, the calendar's ItemList and index of
+event pages, and sitemap.xml. Tentative records without a date get no page.
+The header and footer are copied from 404/index.html so they always match
+the rest of the site.
+
+Keys beginning with an underscore (`_notes`) are editorial and are stripped
+before anything is published.
+
+Pre-rendering goes through tools/render-calendar.mjs, which imports the same
+calendar-core.js the browser runs, so the static page and the hydrated page
+cannot disagree. Node is required for that step; without it the cards are
+rendered by the Python fallback below and the month grid is left as it was.
 """
 import re, json, html, glob, os, subprocess, datetime as dt
 from zoneinfo import ZoneInfo
@@ -50,8 +60,29 @@ def add_ld(h,obj):
     return h.replace('</head>', ld(obj)+'\n</head>',1)
 
 # ---------- 1. events data ----------
-ev_html=rd("events/index.html")
-events=json.loads(re.search(r'id="niwot-events"[^>]*>(.*?)</script>',ev_html,re.S).group(1))
+def public(rec):
+    """The record as published: editorial keys (leading underscore) removed."""
+    return {k:v for k,v in rec.items() if not k.startswith("_")}
+events=[public(e) for e in json.load(open("data/events.json",encoding="utf-8"))]
+ids=[e["id"] for e in events]
+assert len(ids)==len(set(ids)),"duplicate event id in data/events.json"
+for e in events:
+    assert e.get("status") in ("confirmed","cancelled","postponed","tentative"),e["id"]
+    if e["status"]!="tentative": assert e.get("startDate"),e["id"]+" needs a startDate"
+    assert e.get("sourceUrl") and e.get("verifiedAt") and e.get("organizer",{}).get("name"),e["id"]+" needs sourceUrl, verifiedAt, organizer"
+EMBED_TZ=ZoneInfo("America/Denver")
+EMBED='<script type="application/json" id="niwot-events" data-built="%s">%s</script>'%(
+    dt.datetime.now(EMBED_TZ).strftime("%Y-%m-%d %H:%M"),json.dumps(events,ensure_ascii=False,separators=(",",":")))
+rebuilt=set()
+for path in ("index.html","events/index.html"):
+    t=rd(path)
+    t2,n=re.subn(r'<script type="application/json" id="niwot-events"[^>]*>.*?</script>',lambda m:EMBED,t,count=1,flags=re.S)
+    assert n==1,path+": no niwot-events block"
+    # Only the records matter: a rebuild that changes nothing but the
+    # data-built stamp would commit noise every day.
+    if re.sub(r' data-built="[^"]*"','',t2)!=re.sub(r' data-built="[^"]*"','',t):
+        wr(path,t2); rebuilt.add(path)
+print("event records:",len(events),"embedded"+(" (changed)" if rebuilt else ""))
 def postal(e):
     """The record's address as schema.org wants it. A venue with no street
     address gets the locality alone — which is true — rather than nothing."""
@@ -102,7 +133,7 @@ def deep_link(e):
 
 # header/footer template from 404 page
 p404=rd("404/index.html")
-header=re.search(r'(<body>.*?)<main id="main">',p404,re.S).group(1)
+header=re.search(r'(<body>.*?)<main id="main"[^>]*>',p404,re.S).group(1)
 footer=re.search(r'</main>(.*?)</body>',p404,re.S).group(1)
 footer=footer.replace('<span>Reviewed September 2026</span>','<span>Reviewed September 2026</span>')
 head_common=re.search(r'(<link rel="icon".*?<script src="/assets/js/guide[^>]*></script>)',p404,re.S).group(1)
@@ -116,6 +147,8 @@ def status_row(e):
     """What we can honestly say we know. A record that names the organizer's
     listing but no start time was located, not confirmed — and a page that
     claims both is the thing this row exists to prevent."""
+    if e["status"]=="cancelled": return "Cancelled by the organizer"
+    if e["status"]=="postponed": return "Postponed \u2014 new date not yet published"
     if e["status"]!="confirmed": return "Expected, not yet confirmed"
     if not e.get("startTime"): return "Source listing located \u2014 details incomplete"
     return "Confirmed with the organizer"
@@ -126,19 +159,23 @@ def event_page(e):
     title=f"{name} — {short_date(e['startDate'])} | Niwot Events"
     if e.get("recurrence"): title=f"{name} {d(e['startDate']).year} | Niwot Events"
     if len(title)>65: title=f"{name} | Niwot, CO Events"
+    if e["status"]=="cancelled": title="Cancelled: "+title
     desc=trim(f"{name} in Niwot, Colorado: {dl_}{', '+tl if tl else ''}, at {loc}. {e['description']}")
     free=bool(e.get("cost")) and e["cost"].lower().startswith("free")
     addr=postal(e)
     ev={"@context":"https://schema.org","@type":"Event","@id":page_url(e)+"#event","name":name,
         "description":e["description"],"url":page_url(e),"image":[EV_IMG],
         "startDate":iso(e["startDate"],e["startTime"]) if e.get("startTime") else e["startDate"],
-        "eventStatus":"https://schema.org/EventScheduled" if is_conf else "https://schema.org/EventScheduled",
+        "eventStatus":{"confirmed":"https://schema.org/EventScheduled","cancelled":"https://schema.org/EventCancelled",
+                       "postponed":"https://schema.org/EventPostponed"}.get(e["status"],"https://schema.org/EventScheduled"),
         "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
         "location":{"@type":"Place","name":loc,"address":addr},
         "organizer":{"@type":"Organization","name":org["name"],"url":org["url"]},
         "keywords":[e.get("tag","Event"),"Niwot","Boulder County"],
         "sameAs":e["sourceUrl"]}
     if e.get("cost"): ev["isAccessibleForFree"]=free
+    if e.get("registrationUrl"): ev["url"]=page_url(e); ev.setdefault("offers",{"@type":"Offer","url":e["registrationUrl"]})
+    if e.get("accessibility"): ev["accessibilitySummary"]=e["accessibility"]
     if e.get("endTime"): ev["endDate"]=iso(last_date(e),e["endTime"])
     elif e.get("recurrence"): ev["endDate"]=last_date(e)
     if e.get("recurrence"):
@@ -153,12 +190,17 @@ def event_page(e):
     if tl: rows.append(("Time",tl+", Mountain Time"))
     rows+= [("Location",loc+", Niwot, Colorado"),("Organizer",org["name"])]
     if e.get("cost"): rows.append(("Cost",e["cost"]))
+    if e.get("accessibility"): rows.append(("Access",e["accessibility"]))
     rows.append(("Status",status_row(e)))
     rows.append(("Checked",long_date(e["verifiedAt"])))
     dl="".join(f'<div style="padding:12px 0;border-top:1px solid var(--n-rule);display:grid;grid-template-columns:minmax(96px,.28fr) minmax(0,1fr);gap:8px 20px"><dt class="n-label n-label--quiet" style="font-size:12px">{esc(k)}</dt><dd class="n-body" style="margin:0;font-size:.9375rem">{esc(v)}</dd></div>' for k,v in rows)
     others=[o for o in upcoming if o["id"]!=e["id"]][:5]
     more="".join(f'<li style="padding:12px 0;border-top:1px solid var(--n-rule)"><a class="n-shift" href="/events/{o["id"]}/" style="color:var(--n-evergreen);font-size:1.0625rem;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px">{esc(o["name"])}</a><div class="n-small" style="margin-top:4px;font-size:.875rem">{esc(date_label(o))}{(" &#183; "+esc(time_label(o))) if time_label(o) else ""} &#183; {esc(o["location"]["name"])}</div></li>' for o in others)
-    past_note="" if d(last_date(e))>=TODAY else '<div class="n-callout n-callout--paper" style="margin-top:20px"><p class="n-body" style="margin:0;max-width:56ch">This event has already taken place. It stays on the site as a record of what happened, and for the organizer&#8217;s next date.</p></div>'
+    past_note=""
+    if e["status"] in ("cancelled","postponed"):
+        past_note='<div class="n-callout n-callout--paper" style="margin-top:20px"><div class="n-label">'+("Cancelled" if e["status"]=="cancelled" else "Postponed")+'</div><p class="n-body" style="margin:8px 0 0;max-width:56ch">'+esc(e.get("statusNote") or ("The organizer has cancelled this event." if e["status"]=="cancelled" else "The organizer has postponed this event and has not yet published a new date."))+' Check the organizer&#8217;s page for the latest.</p></div>'
+    elif d(last_date(e))<TODAY:
+        past_note='<div class="n-callout n-callout--paper" style="margin-top:20px"><div class="n-label">Past event</div><p class="n-body" style="margin:8px 0 0;max-width:56ch">This event has already taken place. It stays on the site as a record of what happened, and for the organizer&#8217;s next date.</p></div>'
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -185,7 +227,7 @@ def event_page(e):
 {ld(ev)}
 {ld(crumbs)}
 </head>
-{header}<main id="main">
+{header}<main id="main" tabindex="-1">
 <section class="n-bg-white" aria-labelledby="title-h">
 <div class="n-wrap" style="padding-top:clamp(8px,1vw,16px);padding-bottom:clamp(36px,5vw,72px)">
 <nav class="n-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li><a href="/events/">Events</a></li><li aria-current="page">{esc(name)}</li></ol></nav>
@@ -197,7 +239,8 @@ def event_page(e):
 <p class="n-body" style="margin:clamp(16px,2vw,24px) 0 0;max-width:58ch">{esc(e["description"])}</p>
 {past_note}
 <div class="n-btns" style="margin-top:clamp(24px,3vw,36px)">
-<a class="n-btn" href="{esc(e["sourceUrl"])}" rel="noopener">Organizer&#8217;s page <span aria-hidden="true">&#8599;</span></a>
+<a class="n-btn" href="{esc(e["sourceUrl"])}" rel="noopener" data-track="event_source_click">Organizer&#8217;s page <span aria-hidden="true">&#8599;</span></a>
+{('<a class="n-btn" href="'+esc(e["registrationUrl"])+'" rel="noopener" data-track="event_registration_click">Register or buy tickets <span aria-hidden="true">&#8599;</span></a>') if e.get("registrationUrl") else ''}
 <a class="n-btn n-btn--ghost" href="{esc(deep_link(e))}">See it on the calendar</a>
 </div>
 </div>
@@ -329,16 +372,40 @@ def replace_inner(t,attr):
     return None,None,None
 
 live=[i for i in instances(events) if not is_past(i)]
-rebuilt=set()
-for path,mode,limit in (("index.html","link",3),("events/index.html","select",None)):
-    t=rd(path)
-    head,_,tail=replace_inner(t,'data-upcoming="%s"'%mode)
-    if head is None:
-        print(f"! {path}: no data-upcoming=\"{mode}\" container"); continue
-    shown=live[:limit] if limit else live
-    body="".join(card(i,mode) for i in shown) or empty_note(mode)
+def node_render():
+    """The browser's own rendering of every calendar surface, or None."""
+    try:
+        r=subprocess.run(["node","tools/render-calendar.mjs"],cwd=ROOT,input=json.dumps(events),
+                         capture_output=True,text=True,timeout=60)
+    except (OSError,subprocess.SubprocessError) as ex:
+        print("! node render unavailable:",ex); return None
+    if r.returncode!=0:
+        print("! node render failed:",r.stderr.strip()[:400]); return None
+    return json.loads(r.stdout)
+rendered=node_render()
+def swap_inner(path,attr,body):
+    t=rd(path); head,_,tail=replace_inner(t,attr)
+    if head is None: print(f"! {path}: no {attr} container"); return
     if wr(path,head+body+tail): rebuilt.add(path)
-    print(f"{path}: {len(shown)} cards"+(" (changed)" if path in rebuilt else ""))
+if rendered:
+    swap_inner("index.html",'data-upcoming="link"',rendered["homeCards"])
+    swap_inner("events/index.html",'data-upcoming="select"',rendered["upcomingList"])
+    swap_inner("events/index.html",'data-cal-grid',rendered["grid"])
+    swap_inner("events/index.html",'data-cal-detail',rendered["detail"])
+    t=rd("events/index.html")
+    t=re.sub(r'(<span class="n-label n-label--quiet" data-cal-label aria-live="polite">)[^<]*(</span>)',
+             lambda m:m.group(1)+esc(rendered["monthLabel"])+m.group(2),t,count=1)
+    t=re.sub(r'(<ul class="n-expected" data-expected>).*?(</ul>)',lambda m:m.group(1)+rendered["expected"]+m.group(2),t,count=1,flags=re.S)
+    t=re.sub(r'(<h2 class="n-h3" id="exp-h"[^>]*>Annual events still waiting on a date</h2>)',lambda m:m.group(1),t)
+    t=re.sub(r'(id="exp-h".*?<span class="n-label n-label--quiet">)\d+(</span>)',lambda m:m.group(1)+str(rendered["expectedCount"])+m.group(2),t,count=1,flags=re.S)
+    if wr("events/index.html",t): rebuilt.add("events/index.html")
+    print(f"pre-rendered via node as of {rendered['now']['date']} {rendered['now']['time']} Niwot time: "
+          f"{len(rendered['upcomingIds'])} upcoming, month {rendered['monthLabel']}")
+else:
+    for path,mode,limit in (("index.html","link",3),("events/index.html","select",None)):
+        shown=live[:limit] if limit else live
+        swap_inner(path,'data-upcoming="%s"'%mode,"".join(card(i,mode) for i in shown) or empty_note(mode))
+        print(f"{path}: {len(shown)} cards (python fallback)")
 
 # ---------- 5c. the calendar page's canonical event-page index ----------
 # This server-rendered list is the non-scripted path to every canonical event
@@ -402,7 +469,8 @@ for f in sorted(glob.glob("events/*/index.html")):
     eid=os.path.basename(os.path.dirname(f))
     if eid in keep: continue
     os.remove(f); os.rmdir(os.path.dirname(f))
-    print("removed stale page:",eid,"(add a redirect in vercel.json)")
+    has_redirect=any(r.get("source")==f"/events/{eid}/" for r in json.load(open("vercel.json")).get("redirects",[]))
+    print("removed stale page:",eid,"" if has_redirect else "(no redirect in vercel.json — add one)")
 
 # ---------- 6. sitemap ----------
 # lastmod was a literal date repeated on every line, so each run stamped the
@@ -437,9 +505,11 @@ pages=[(u,changed_on(u,f,f in rebuilt)) for u,f in [
     ("/","index.html"),("/explore/","explore/index.html"),
     ("/eat-shop/","eat-shop/index.html"),("/events/","events/index.html"),
     ("/community/","community/index.html"),
+    ("/civic/","civic/index.html"),
     ("/civic/incorporation-election/","civic/incorporation-election/index.html"),
     ("/plan-a-visit/","plan-a-visit/index.html"),
-    ("/our-story/","our-story/index.html"),("/privacy/","privacy/index.html")]]
+    ("/our-story/","our-story/index.html"),("/contact/","contact/index.html"),
+    ("/privacy/","privacy/index.html")]]
 pages+=[(f"/events/{e['id']}/",
          changed_on(f"/events/{e['id']}/",f"events/{e['id']}/index.html",
                     e["id"] in touched))
