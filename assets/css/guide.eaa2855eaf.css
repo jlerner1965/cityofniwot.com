@@ -18,39 +18,61 @@
 @font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/assets/fonts/instrument-sans-normal-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 @font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/assets/fonts/instrument-sans-normal-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 
+/* One palette. There were two :root blocks: this one and a lighter,
+   cooler set further down that redefined every value in it, so the block
+   up here decided nothing and the ratios it documented belonged to colours
+   the site had stopped using. The values below are the ones that were
+   winning; the ratios are measured against them.
+
+   Ratios are WCAG 2.1 contrast against the ground each colour is actually
+   used on. 4.5:1 is the AA minimum for body text, 3:1 for large text and
+   for the non-text parts of a control. */
 :root {
-  --n-white: #FAF8F2;
-  --n-paper: #EEE7D9;
-  --n-evergreen: #24483A;
-  --n-forest: #17352B;
-  --n-red: #B64F3A;
-  --n-sage: #9EAD98;
-  /* Sage is 4.31:1 on evergreen, so text on the dark grounds uses this
-     lightened sage (5.7:1) instead. */
-  --n-sage-lt: #B9C6B3;
-  --n-sage-pale: #E2E8DE;
-  --n-sky: #7FA9C2;
-  /* Sky is 4.05:1 on evergreen, so link text on the dark grounds uses this
-     lightened sky (5.9:1) instead. */
-  --n-sky-lt: #A9CADD;
-  --n-sky-pale: #E4EDF3;
-  --n-gold: #C19A55;
-  --n-ink: #252B27;
-  /* Derived text-safe shades. The base red, sky and gold do not clear 4.5:1
-     on every light ground in this palette, so small text uses these instead:
-     --n-red-ink  4.68:1 on warm paper, 5.27:1 on soft white
-     --n-sky-ink  4.6:1 on sage, 4.7:1 on paper, 5.6:1 on soft white
-     The base --n-red stays for rails, rules and borders, where the minimum
-     does not apply. */
-  --n-red-ink: #A34531;
-  --n-sky-ink: #35617D;
-  --n-gold-lt: #D9B877;
-  --n-rule: #D8D0BF;
-  --n-muted: #5C6459;
+  /* Light grounds */
+  --n-white: #FFFEFD;
+  --n-paper: #F1EDE3;
+  --n-sage-pale: #EAF0EC;
+  --n-sky-pale: #E9F1F5;
+
+  /* Dark grounds */
+  --n-evergreen: #173F3A;
+  --n-forest: #0F302D;
+
+  /* Text on the light grounds.
+     --n-ink    14.92:1 on soft white, 12.86:1 on paper
+     --n-muted   5.81:1 on soft white,  5.01:1 on paper */
+  --n-ink: #1C2928;
+  --n-muted: #596864;
+
+  /* Text on the dark grounds. The lightened shades carry the small text;
+     the base shades hold at body size too and are used where the design
+     wants the quieter colour.
+     --n-sage     4.92:1 on evergreen      --n-sage-lt  7.44:1 on evergreen, 9.09:1 on forest
+     --n-sky      6.52:1 on evergreen      --n-sky-lt   8.33:1 on evergreen
+     --n-gold     6.06:1 on evergreen      --n-gold-lt  7.86:1 on evergreen
+     --n-white   11.53:1 on evergreen, 14.08:1 on forest */
+  --n-sage: #9CAD9F;
+  --n-sage-lt: #C5D2CB;
+  --n-sky: #A9C7D2;
+  --n-sky-lt: #C8DEE7;
+  --n-gold: #D7B77C;
+  --n-gold-lt: #E5D3A8;
+
+  /* Accents. The base red is a rail, rule and border colour, where the text
+     minimum does not apply; it clears it anyway (5.51:1 on soft white,
+     4.74:1 on paper). The -ink shades are for small text:
+     --n-red-ink  7.71:1 on soft white, 6.64:1 on paper
+     --n-sky-ink  6.94:1 on soft white, 5.98:1 on paper, 6.05:1 on pale sage */
+  --n-red: #A64F32;
+  --n-red-ink: #843E2A;
+  --n-sky-ink: #315E78;
+  --n-rule: #D6D6CE;
+
+  /* Type and measure */
   --n-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
   --n-sans: 'Instrument Sans', system-ui, -apple-system, sans-serif;
-  --n-gutter: clamp(20px, 5vw, 76px);
-  --n-max: 1440px;
+  --n-gutter: clamp(24px, 4vw, 48px);
+  --n-max: 1240px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -158,7 +180,6 @@ main:focus { outline: none; }
 .n-rail { height: 9px; border-top: 1px solid var(--n-evergreen); border-bottom: 1px solid var(--n-evergreen); background-image: repeating-linear-gradient(90deg, var(--n-evergreen) 0 2px, transparent 2px 12px); }
 .n-rail--red { border-color: var(--n-red); background-image: repeating-linear-gradient(90deg, var(--n-red) 0 2px, transparent 2px 12px); }
 .n-rail--light { border-color: var(--n-sage); background-image: repeating-linear-gradient(90deg, var(--n-sage) 0 2px, transparent 2px 12px); }
-.n-hr { height: 1px; background: var(--n-rule); border: 0; margin: 0; }
 
 /* section head: label, rule, title */
 .n-shead { display: grid; gap: 14px; padding-bottom: 18px; border-bottom: 2px solid var(--n-evergreen); }
@@ -169,10 +190,7 @@ main:focus { outline: none; }
 .n-g2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 3vw, 60px); align-items: start; }
 .n-g2-wide { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 3vw, 60px); align-items: start; }
 .n-g3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.5vw, 40px); }
-.n-g4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(18px, 2vw, 32px); }
-@media (max-width: 1000px) { .n-g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .n-g2, .n-g2-wide, .n-g3 { grid-template-columns: minmax(0, 1fr); } }
-@media (max-width: 620px) { .n-g4 { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---- footer ---- */
 .n-foot { background: var(--n-forest); color: var(--n-paper); }
@@ -229,12 +247,10 @@ main:focus { outline: none; }
 textarea.n-field { resize: vertical; }
 
 /* ---- photograph frames ----
-   Three heights by role, so a photograph is the same size wherever it does
-   the same job. Each was a one-off clamp per template before. */
+   The hero crop, and the two escapes from it: a photograph that should keep
+   its own proportions, and a portrait that should not be cropped to a
+   landscape box. */
 .n-ph-hero img { object-fit: cover; }
-.n-ph-lg img { height: clamp(240px, 27vw, 380px) !important; }
-.n-ph-md img { height: clamp(220px, 24vw, 320px) !important; }
-.n-ph-sm img { height: clamp(170px, 19vw, 250px) !important; }
 .n-photo-natural img { height: auto !important; aspect-ratio: auto; }
 .n-photo-portrait { width: min(100%, 380px); margin-inline: auto !important; }
 .n-photo-portrait img { height: auto !important; aspect-ratio: auto; object-fit: contain; }
@@ -282,28 +298,6 @@ legend { padding: 0; }
    grounds and the railway devices, never by shadow, and nothing moves under
    the cursor but color. */
 
-:root {
-  --n-white: #FFFEFD;
-  --n-paper: #F1EDE3;
-  --n-evergreen: #173F3A;
-  --n-forest: #0F302D;
-  --n-red: #A64F32;
-  --n-sage: #9CAD9F;
-  --n-sage-lt: #C5D2CB;
-  --n-sage-pale: #EAF0EC;
-  --n-sky: #A9C7D2;
-  --n-sky-lt: #C8DEE7;
-  --n-sky-pale: #E9F1F5;
-  --n-gold: #D7B77C;
-  --n-gold-lt: #E5D3A8;
-  --n-ink: #1C2928;
-  --n-muted: #596864;
-  --n-rule: #D6D6CE;
-  --n-red-ink: #843E2A;
-  --n-sky-ink: #315E78;
-  --n-gutter: clamp(24px, 4vw, 48px);
-  --n-max: 1240px;
-}
 
 body {
   background: var(--n-white);

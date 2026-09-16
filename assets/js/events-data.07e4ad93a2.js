@@ -1,6 +1,6 @@
 /* The event records are emitted into the page as JSON by the template, so
    the browser and the build read exactly the same data. */
-import { zonedParts } from './calendar-core.50642ddb8b.js';
+import { zonedParts } from './calendar-core.7f2188064e.js';
 
 export function readEvents() {
   const node = document.getElementById('niwot-events');
