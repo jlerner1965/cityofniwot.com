@@ -12,7 +12,7 @@ headers and redirects as `vercel.json`, in headless Chromium.
 | Repository | `jlerner1965/cityofniwot.com` (origin). Confirmed as the production source: on September 16, 2026 every page served by `https://townofniwot.com` was byte-identical (MD5) to the file in `main`, and the production `ETag` matched the homepage's hash. The older repositories named in the brief were not used. |
 | Branch | `claude/townofniwot-audit-optimize-0ougka`, created from `main` at `23a35c3`; no uncommitted work existed. |
 | Hosting | Vercel (`server: Vercel` on every response). Apex `townofniwot.com` is canonical; `www.` and `http://` both answer `308` to the apex. HSTS is set. |
-| Vercel project | Not visible from this session: the Vercel account connected here (`ARProject`) lists no projects, so the project lives under another account. **Owner action:** confirm the project builds from this repository's `main` and that preview deployments are enabled for branches. |
+| Vercel project | `arp-roject/cityofniwot-com`. Vercel's Git integration deploys this repository: the push of this branch produced a Preview deployment automatically (GitHub deployment 6484742590, status success), at <https://cityofniwot-bkc1rp76e-arp-roject.vercel.app>. Production deploys from `main` (last production deployment: `23a35c3`, September 15, 2026). |
 | Build | None. Static HTML, CSS and JavaScript committed as served; Python tools under `tools/` regenerate the derived pages; four GitHub Actions run checks and the event refresh. |
 | Environment variables | None used. |
 | Analytics | None (verified in every page head; the privacy page says so). |
@@ -189,7 +189,7 @@ September 16, 2026, 15:30 UTC: one JSON POST to `https://formspree.io/f/xqpkjoob
 
 ## 27. Screenshots
 
-Before and after full-page captures at 375 px and 1366 px for every page are in the audit session's `qa/before` and `qa/after` folders; representative ones accompany the summary delivered with this report.
+Representative captures are in `docs/screenshots/`: the directory on a phone before and after, the civic hub at phone and desktop widths, the events page on a phone, and the open menu at 390 px. Full-page before-and-after captures at 375 px and 1366 px were taken for every page during the audit.
 
 ## 28. Production-launch checklist
 
@@ -201,7 +201,7 @@ Before and after full-page captures at 375 px and 1366 px for every page are in 
 
 ## 30. Remaining risks and required approvals
 
-1. **Vercel project not verifiable from this session.** A preview URL for this branch will exist only if the project's Git integration deploys branches. Owner to confirm and review the preview.
+1. **Preview to review.** The branch's Vercel preview is at <https://cityofniwot-bkc1rp76e-arp-roject.vercel.app> (noindexed by header). Owner to review it before merging; production is untouched.
 2. **Photograph licences** are asserted, not filed. Owner to file them per the inventory.
 3. **Analytics** off until a GA4 ID and privacy wording are approved.
 4. **Real-device testing** (iPhone Safari, Android Chrome) not possible here.
