@@ -8,7 +8,7 @@ what a person does, and when.
 | --- | --- | --- |
 | Daily (automatic) | Pre-render the calendar and homepage cards as of today; refresh the sitemap | `.github/workflows/refresh-events.yml` runs `tools/build-event-pages.py` at 06:00 Mountain and commits if anything moved |
 | Every push (automatic) | Asset hashes match their bytes; the directory page matches its data | `.github/workflows/check-assets.yml` |
-| Weekly, Tuesday (automatic) | Dated wording that has expired; records past their review date | `.github/workflows/check-dated-content.yml` runs `tools/check-dated-content.py` and `tools/check-review-dates.py` and opens or updates one issue |
+| Daily (automatic) | Dated wording that has expired; records past their review date | `.github/workflows/check-dated-content.yml` runs `tools/check-dated-content.py` and `tools/check-review-dates.py` at 07:30 Mountain and opens or updates one issue. Daily because a weekly run cannot report a date that falls on its own weekday — election day is a Tuesday |
 | Monthly, 1st (automatic) | Outbound links | `.github/workflows/check-links.yml` |
 | Weekly (editor, ~20 min) | Re-read the Business Association calendar and the Cultural Arts Association site; update `data/events.json` (`verifiedAt`, times, venues, new records, cancellations as `status`); run the builder | `python3 tools/check-review-dates.py --days 14` gives the worklist |
 | Weekly (editor) | Answer submissions from the form; publish what the source supports; log corrections on Our Story | Formspree inbox |

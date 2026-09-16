@@ -314,7 +314,11 @@ def is_past(i):
     return end_time<=NOW["time"]
 
 def day_label(iso):
-    x=d(iso); base=f"{WD[x.weekday()]}, {x.strftime('%B')} {x.day}"
+    # dayLabel() in calendar-core.js abbreviates the weekday ("Fri, September
+    # 11"). The browser re-renders these cards from the same records on load,
+    # so spelling it out here would make the card change under the reader
+    # between the served HTML and the hydrated page.
+    x=d(iso); base=f"{WD[x.weekday()][:3]}, {x.strftime('%B')} {x.day}"
     return base if x.year==d(NOW["date"]).year else f"{base}, {x.year}"
 
 def inst_time(i):
