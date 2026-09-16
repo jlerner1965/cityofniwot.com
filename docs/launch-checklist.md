@@ -23,7 +23,7 @@ the preview.
 
 ## Owner
 
-- [x] Vercel project `arp-roject/cityofniwot-com` deploys this repository; the branch preview is at https://cityofniwot-bkc1rp76e-arp-roject.vercel.app (noindexed by header)
+- [x] Vercel project `arp-roject/cityofniwot-com` deploys this repository; the branch preview is at https://cityofniwot-bkc1rp76e-arp-roject.vercel.app (behind Vercel Authentication; noindexed by header)
 - [ ] Review the preview at phone and desktop widths, in particular the navigation bar between 1181px and 1440px and the new `/civic/` page
 - [ ] File the photograph licences per `docs/image-inventory.md`
 - [ ] Decide on analytics: supply a GA4 measurement ID and approve the privacy wording, or leave analytics off
