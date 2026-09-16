@@ -27,6 +27,27 @@ TODAY = dt.datetime.now(ZoneInfo("America/Denver")).date()
 # `file` (or, with `unless`, that phrase should have appeared alongside it).
 CHECKS = [
     {
+        # The one dated claim the site makes about itself, on 31 pages, and
+        # until now the only one nothing watched. It does not become false
+        # in October — it was reviewed in September and always will have
+        # been — it becomes misleading: a guide that says "Reviewed
+        # September 2026" in the spring is telling a reader its listings
+        # were checked recently when they were not. A quarter is the
+        # horizon the maintenance schedule already works to.
+        "after": "2026-12-31",
+        "file": "index.html",
+        "phrase": "Reviewed September 2026",
+        "what": "The footer stamp on 31 pages still reads \"Reviewed September 2026\", "
+                "which is now more than a quarter old.",
+        "do": "Work the quarterly pass in docs/maintenance-schedule.md — the "
+              "directory listings against their sources, the resident-resource "
+              "and organization links, the transit and parking paragraphs — "
+              "then set the stamp to the month you did it, in the footer of "
+              "every HTML file. It is one line: <span>Reviewed <month> "
+              "<year></span>. The election page and the privacy page carry "
+              "their own dates instead and are not part of this.",
+    },
+    {
         "after": "2026-11-03",
         "file": "index.html",
         "phrase": "is scheduled for November 3, 2026",
