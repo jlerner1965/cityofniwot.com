@@ -14,6 +14,12 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    # A healthy run is about 15 seconds. The checker now tries a host that
+    # never answers three times rather than once, so a run against a broken
+    # network could take three times as long as it used to — and the default
+    # on a job with nothing else to do is six hours. Fifteen minutes is far
+    # more than the check can honestly need.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 

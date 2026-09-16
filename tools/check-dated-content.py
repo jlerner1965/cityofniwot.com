@@ -27,6 +27,27 @@ TODAY = dt.datetime.now(ZoneInfo("America/Denver")).date()
 # `file` (or, with `unless`, that phrase should have appeared alongside it).
 CHECKS = [
     {
+        # The one dated claim the site makes about itself, on 31 pages, and
+        # until now the only one nothing watched. It does not become false
+        # in October — it was reviewed in September and always will have
+        # been — it becomes misleading: a guide that says "Reviewed
+        # September 2026" in the spring is telling a reader its listings
+        # were checked recently when they were not. A quarter is the
+        # horizon the maintenance schedule already works to.
+        "after": "2026-12-31",
+        "file": "index.html",
+        "phrase": "Reviewed September 2026",
+        "what": "The footer stamp on 31 pages still reads \"Reviewed September 2026\", "
+                "which is now more than a quarter old.",
+        "do": "Work the quarterly pass in docs/maintenance-schedule.md — the "
+              "directory listings against their sources, the resident-resource "
+              "and organization links, the transit and parking paragraphs — "
+              "then set the stamp to the month you did it, in the footer of "
+              "every HTML file. It is one line: <span>Reviewed <month> "
+              "<year></span>. The election page and the privacy page carry "
+              "their own dates instead and are not part of this.",
+    },
+    {
         "after": "2026-11-03",
         "file": "index.html",
         "phrase": "is scheduled for November 3, 2026",
@@ -47,11 +68,13 @@ CHECKS = [
         "after": "2026-11-03",
         "file": "index.html",
         "phrase": ">2026 Election<",
-        "what": "\"2026 Election\" still holds one of six slots in the nav bar.",
+        "what": "\"2026 Election\" still leads the footer's Civic column.",
         "do": "The label stays accurate — the page is about the 2026 election — "
-              "but a finished vote does not need prime position. Consider "
-              "moving it to the collapsed-menu tier beside Our Story and "
-              "Contact, which means editing the nav in every HTML file.",
+              "but a finished vote does not need to be the first thing under "
+              "Civic. Consider putting /civic/ first and relabelling this one "
+              "\"2026 Election result\", in the footer of every HTML file. (The "
+              "primary nav carries the /civic/ hub, not this page, so the bar "
+              "itself needs no change.)",
     },
     {
         "after": "2026-11-03",
@@ -129,6 +152,7 @@ CHECKS = [
 
 def main():
     expired = []
+    missing = []
     for c in CHECKS:
         after = dt.date.fromisoformat(c["after"])
         if TODAY <= after:
@@ -138,6 +162,10 @@ def main():
             with open(path, encoding="utf-8") as fh:
                 text = fh.read()
         except FileNotFoundError:
+            # A check is a claim about a file. If the file has moved, the
+            # check is not satisfied — it is unenforceable, and silence here
+            # would retire it without anyone deciding to.
+            missing.append(c)
             continue
         if c["phrase"] not in text:
             continue
@@ -145,7 +173,17 @@ def main():
             continue
         expired.append((c, after))
 
+    if missing:
+        print("These checks name a file that is no longer there, so nothing "
+              "is watching what they describe:\n")
+        for c in missing:
+            print(f"- `{c['file']}` — {c['what']}")
+            print("  Point the check at the file that carries this wording now, "
+                  "or drop the check if the wording is gone.\n")
+
     if not expired:
+        if missing:
+            return 1
         print(f"Nothing has expired as of {TODAY}.")
         return 0
 

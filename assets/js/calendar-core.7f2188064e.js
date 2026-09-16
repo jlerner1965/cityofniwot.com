@@ -1,10 +1,11 @@
 /* Event occurrence logic and markup, shared by the build and the browser.
 
-   Eleventy imports this at build time to render the initial month, the
-   "Coming up" strip and the archive, so the page is complete without
-   JavaScript and complete for a crawler. The browser then imports the same
-   module and re-renders from the real current time, because a static build
-   goes stale the moment an event ends.
+   tools/build-event-pages.py imports this at build time, through
+   tools/render-calendar.mjs, to render the initial month, the "Coming up"
+   strip and the detail rail, so the page is complete without JavaScript and
+   complete for a crawler. The browser then imports the same module and
+   re-renders from the real current time, because a static build goes stale
+   the moment an event ends.
 
    One implementation, two callers. Keep it free of DOM and Node APIs.
 

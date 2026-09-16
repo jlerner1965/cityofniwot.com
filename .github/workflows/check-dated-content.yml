@@ -3,12 +3,19 @@
 # This watches for the ones that have passed and opens an issue listing
 # them. It stays silent when everything is current, and a check goes quiet
 # by itself once the wording is fixed.
+#
+# Daily, not weekly. A weekly run cannot report a date it shares a weekday
+# with: election day is Tuesday, November 3, 2026, the run that morning is
+# still before it, and the next one is a week later — seven days of the
+# site telling residents a finished vote is still to come. Every other
+# deadline the checks watch sits mid-week too. The run is a checkout and a
+# few file reads; there is nothing to save by waiting.
 name: Check dated content
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 13 * * 2'   # Tuesdays, 13:00 UTC (07:00 Mountain)
+    - cron: '30 13 * * *'   # daily, 13:30 UTC (07:30 Mountain)
 
 permissions:
   contents: read
