@@ -159,6 +159,13 @@ several small business hosts turn away anything that looks automated, and that
 is not the same as a dead link. Exit status is 1 if anything is BROKEN, so it
 can gate a deploy.
 
+A host that answers is believed at once. A connection that dies before any
+answer — a reset, a timeout, a DNS or TLS failure — is tried twice more, a few
+seconds apart, because that failure can belong to the network the check is
+running on rather than to the site: four listings once reported BROKEN from an
+audit sandbox were all live, and three of them answered on the second attempt.
+`--tries 1` turns the retries off for a quick local pass.
+
 Worth running monthly, and after any batch of listing edits. It checks that a
 page answers, not that it still says what the listing claims — that part is an
 editorial check and needs a person.
@@ -226,10 +233,19 @@ to a Python rendering and the month grid is left alone.
 
 ```sh
 python3 tools/build-event-pages.py
+python3 tools/build-event-pages.py --check   # CI: the pages must match the data
 ```
 
 A record that is renamed or retired loses its page on the next build; add a
 redirect for the old address in `vercel.json` (the build says so).
+
+`--check` compares the committed pages against `data/events.json` and exits 1
+if they have parted: a record with no page, a page with no record, or a page
+whose name, date, status, venue, organizer, canonical, sitemap entry or index
+link no longer matches its record. It deliberately ignores everything that
+moves on its own — the upcoming cards, the month grid, each page's deep link
+into the calendar, the sitemap's dates — because those are rendered as of
+today and a check that fails every morning is a check nobody reads.
 
 The directory page is rebuilt the same way from `data/directory.json`:
 

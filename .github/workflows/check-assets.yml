@@ -28,3 +28,21 @@ jobs:
 
       - name: The directory page must match data/directory.json
         run: python3 tools/build-directory.py --check
+
+      - name: The event pages must match data/events.json
+        run: python3 tools/build-event-pages.py --check
+
+      # Every event page's header and footer are copied from 404/index.html
+      # by the builder, and 404.html is the copy Vercel actually serves.
+      # They are the same file twice; nothing but this says so.
+      - name: The two copies of the 404 page must be identical
+        run: |
+          if ! cmp -s 404.html 404/index.html; then
+            echo "404.html and 404/index.html have drifted apart:"
+            diff 404.html 404/index.html || true
+            echo
+            echo "404/index.html is the header and footer template for every"
+            echo "event page; 404.html is what Vercel serves. Edit both."
+            exit 1
+          fi
+          echo "404.html and 404/index.html are identical."

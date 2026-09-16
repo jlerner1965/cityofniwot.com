@@ -21,7 +21,7 @@ calendar-core.js the browser runs, so the static page and the hydrated page
 cannot disagree. Node is required for that step; without it the cards are
 rendered by the Python fallback below and the month grid is left as it was.
 """
-import re, json, html, glob, os, subprocess, datetime as dt
+import re, json, html, glob, os, subprocess, sys, datetime as dt
 from zoneinfo import ZoneInfo
 # Derived, not hardcoded: this has to run on a build machine too.
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(ROOT)
@@ -37,8 +37,10 @@ PLACE={"@type":"Place","@id":SITE+"/#niwot","name":"Niwot, Colorado",
        "containedInPlace":{"@type":"AdministrativeArea","name":"Boulder County, Colorado"},
        "sameAs":["https://en.wikipedia.org/wiki/Niwot,_Colorado"]}
 def rd(f): return open(f,encoding="utf-8").read()
+CHECK="--check" in sys.argv      # read-only: verify(), then exit
 def wr(f,s):
     """Write f, and say whether that changed anything."""
+    if CHECK: return False       # --check never touches the working tree
     os.makedirs(os.path.dirname(f) or ".",exist_ok=True)
     try: same = open(f,encoding="utf-8").read()==s
     except FileNotFoundError: same=False
@@ -70,6 +72,84 @@ for e in events:
     assert e.get("status") in ("confirmed","cancelled","postponed","tentative"),e["id"]
     if e["status"]!="tentative": assert e.get("startDate"),e["id"]+" needs a startDate"
     assert e.get("sourceUrl") and e.get("verifiedAt") and e.get("organizer",{}).get("name"),e["id"]+" needs sourceUrl, verifiedAt, organizer"
+
+# ---------- 1b. --check: is the committed output still true to the data? ----------
+# check-assets.yml already refuses a directory page that has drifted from
+# data/directory.json. The event pages had no such guard: edit a record,
+# forget the builder, and the pages merge saying the old thing. The daily job
+# then corrects them by pushing to main, which is a fix arriving after the
+# wrong page has been served, not a check.
+#
+# What cannot be compared is the part that moves on its own. The upcoming
+# cards, the month grid, each page's deep link into the calendar and the
+# sitemap's dates are all rendered as of today, so a byte comparison would
+# fail every morning and teach everyone to ignore it. What does not move is
+# the shape: which records have pages, and whether each page still says what
+# its record says. That is what drifts when someone forgets the builder, and
+# that is what this checks.
+def verify():
+    bad=[]
+    def note(where,msg): bad.append((where,msg))
+    dated_ids={e["id"] for e in events if e.get("startDate")}
+    on_disk={os.path.basename(os.path.dirname(f))
+             for f in glob.glob("events/*/index.html")}
+    for eid in sorted(dated_ids-on_disk):
+        note("data/events.json",f"{eid} has no page at events/{eid}/ — run the builder")
+    redirects={r.get("source") for r in json.load(open("vercel.json")).get("redirects",[])}
+    for eid in sorted(on_disk-dated_ids):
+        note(f"events/{eid}/index.html","page has no record; the builder would remove it"
+             +("" if f"/events/{eid}/" in redirects else " and vercel.json has no redirect for it"))
+
+    sitemap=rd("sitemap.xml") if os.path.exists("sitemap.xml") else ""
+    index_page=rd("events/index.html")
+    for eid in sorted(dated_ids & on_disk):
+        e=byid[eid]; f=f"events/{eid}/index.html"; page=rd(f)
+        ev=None
+        for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>',page,re.S):
+            try: obj=json.loads(raw)
+            except ValueError: continue
+            for n in (obj.get("@graph",[obj]) if isinstance(obj,dict) else obj):
+                if isinstance(n,dict) and n.get("@type")=="Event": ev=n
+        if ev is None:
+            note(f,"no Event structured data"); continue
+        # The record is the source; the page is a copy of it. Every field
+        # here is one a person edits in events.json and would expect to see
+        # on the page the same day.
+        want_status="https://schema.org/Event"+{"confirmed":"Scheduled","cancelled":"Cancelled",
+                                                "postponed":"Postponed"}.get(e["status"],"Scheduled")
+        for label,got,expected in (
+            ("name",ev.get("name"),e["name"]),
+            ("startDate",(ev.get("startDate") or "")[:10],e["startDate"]),
+            ("eventStatus",ev.get("eventStatus"),want_status),
+            ("location",(ev.get("location") or {}).get("name"),e["location"]["name"]),
+            ("organizer",(ev.get("organizer") or {}).get("name"),e["organizer"]["name"]),
+        ):
+            if got!=expected:
+                note(f,f"{label} is {got!r}; data/events.json says {expected!r}")
+        if f'<link rel="canonical" href="{page_url(e)}">' not in page:
+            note(f,f"canonical is not {page_url(e)}")
+        if f"<loc>{page_url(e)}</loc>" not in sitemap:
+            note("sitemap.xml",f"does not list {page_url(e)}")
+        if f'<a href="/events/{eid}/">' not in index_page:
+            note("events/index.html",f"the Event pages index does not link /events/{eid}/")
+
+    published=json.dumps(events,ensure_ascii=False,separators=(",",":"))
+    for path in ("index.html","events/index.html"):
+        m=re.search(r'<script type="application/json" id="niwot-events"[^>]*>(.*?)</script>',
+                    rd(path),re.S)
+        if not m: note(path,"no niwot-events block")
+        elif m.group(1)!=published:
+            note(path,"the embedded records differ from data/events.json — run the builder")
+
+    if bad:
+        print(f"{len(bad)} thing(s) no longer match data/events.json:\n")
+        for where,msg in bad: print(f"  {where}\n      {msg}")
+        print("\nRun: python3 tools/build-event-pages.py")
+        return 1
+    print(f"{len(dated_ids)} event pages, the calendar index, the embedded records "
+          f"and the sitemap all match data/events.json")
+    return 0
+
 EMBED_TZ=ZoneInfo("America/Denver")
 EMBED='<script type="application/json" id="niwot-events" data-built="%s">%s</script>'%(
     dt.datetime.now(EMBED_TZ).strftime("%Y-%m-%d %H:%M"),json.dumps(events,ensure_ascii=False,separators=(",",":")))
@@ -82,7 +162,7 @@ for path in ("index.html","events/index.html"):
     # data-built stamp would commit noise every day.
     if re.sub(r' data-built="[^"]*"','',t2)!=re.sub(r' data-built="[^"]*"','',t):
         wr(path,t2); rebuilt.add(path)
-print("event records:",len(events),"embedded"+(" (changed)" if rebuilt else ""))
+if not CHECK: print("event records:",len(events),"embedded"+(" (changed)" if rebuilt else ""))
 def postal(e):
     """The record's address as schema.org wants it. A venue with no street
     address gets the locality alone — which is true — rather than nothing."""
@@ -122,6 +202,8 @@ def date_label(e):
 def last_date(e):
     r=e.get("recurrence"); return r["until"] if r else e["startDate"]
 def page_url(e): return f"{SITE}/events/{e['id']}/"
+if CHECK: sys.exit(verify())
+
 def deep_link(e):
     r=e.get("recurrence"); date=e["startDate"]
     if r:  # next occurrence on/after today, else first

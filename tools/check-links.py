@@ -11,8 +11,16 @@ this from anywhere, on a machine with ordinary internet access:
     python3 tools/check-links.py --timeout 30         # slow hosts
     python3 tools/check-links.py --workers 4          # be gentler
 
+    python3 tools/check-links.py --tries 1          # no retries (quick pass)
+
 Exit status is 1 if anything is BROKEN, so CI can fail on it. Redirects and
 sites that merely dislike robots are reported but do not fail the run.
+
+A host that answers is believed at once — an HTTP status is a fact about the
+link. A connection that dies before any answer is tried again, twice, a few
+seconds apart, because that failure can belong to the network the check is
+running on rather than to the site. Without it one reset fails the run, and a
+check that cries wolf is one nobody reads.
 
 What it does NOT do: judge whether a page still says what the listing claims
 it says. That is an editorial check and belongs to a person.
@@ -25,6 +33,7 @@ import os
 import re
 import ssl
 import sys
+import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -81,11 +90,13 @@ def opener(timeout):
                                        urllib.request.HTTPSHandler(context=ctx))
 
 
-def check(url, timeout):
-    """Return (status, detail, final_url).
+def attempt(url, timeout):
+    """One pass at a URL: HEAD, then GET if HEAD is refused.
 
-    status is OK, REDIRECT, BLOCKED or BROKEN. A host that refuses HEAD is
-    retried with GET before anything is called broken.
+    Returns (status, detail, final_url, answered). `answered` is True when a
+    server actually replied — an HTTP status is a fact about the link and is
+    never retried. False means nothing answered: a reset, a timeout, a DNS
+    or TLS failure, which may be about the network this is running on.
     """
     op = opener(timeout)
     last = None
@@ -95,21 +106,41 @@ def check(url, timeout):
             with op.open(req, timeout=timeout) as resp:
                 final = resp.geturl()
                 if final.rstrip("/") != url.rstrip("/"):
-                    return "REDIRECT", f"{resp.status} → {final}", final
-                return "OK", str(resp.status), final
+                    return "REDIRECT", f"{resp.status} → {final}", final, True
+                return "OK", str(resp.status), final, True
         except urllib.error.HTTPError as e:
             # 403/405/429 usually means "not to a robot", not "not there".
             if e.code in (403, 405, 429, 999):
-                last = ("BLOCKED", f"HTTP {e.code} ({method})", url)
+                last = ("BLOCKED", f"HTTP {e.code} ({method})", url, True)
                 continue
-            last = ("BROKEN", f"HTTP {e.code} {e.reason}", url)
+            last = ("BROKEN", f"HTTP {e.code} {e.reason}", url, True)
             if method == "GET":
                 return last
         except urllib.error.URLError as e:
-            last = ("BROKEN", f"{type(e.reason).__name__}: {e.reason}", url)
+            last = ("BROKEN", f"{type(e.reason).__name__}: {e.reason}", url, False)
         except Exception as e:            # socket, ssl, decoding, redirect loops
-            last = ("BROKEN", f"{type(e).__name__}: {e}", url)
-    return last or ("BROKEN", "no response", url)
+            last = ("BROKEN", f"{type(e).__name__}: {e}", url, False)
+    return last or ("BROKEN", "no response", url, False)
+
+
+def check(url, timeout, tries=3):
+    """Return (status, detail, final_url), retrying only what never answered.
+
+    Exit status gates a deploy, so a run that calls a live site broken is
+    worse than no run at all: the next real breakage reads as more noise.
+    A host that answers — 404, 500, 403 — has told us about the link and is
+    taken at its word. A connection that dies before any answer has told us
+    nothing, so it is tried again after a pause. A site that is genuinely
+    gone simply fails three times and is still reported BROKEN, with the
+    attempt count in the detail so a reader can tell the two apart.
+    """
+    for n in range(1, tries + 1):
+        status, detail, final, answered = attempt(url, timeout)
+        if answered:
+            return status, detail, final
+        if n < tries:
+            time.sleep(n * 2)             # 2s, then 4s
+    return status, f"{detail} (no answer in {tries} attempts)", final
 
 
 def main():
@@ -117,6 +148,8 @@ def main():
     ap.add_argument("--timeout", type=int, default=20, help="seconds per request")
     ap.add_argument("--workers", type=int, default=8, help="parallel requests")
     ap.add_argument("--json", metavar="FILE", help="also write a JSON report")
+    ap.add_argument("--tries", type=int, default=3,
+                    help="attempts at a host that never answers (default 3)")
     args = ap.parse_args()
 
     links = collect()
@@ -125,7 +158,7 @@ def main():
 
     results = {}
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        futures = {pool.submit(check, u, args.timeout): u for u in links}
+        futures = {pool.submit(check, u, args.timeout, args.tries): u for u in links}
         for fut, url in futures.items():
             status, detail, final = fut.result()
             results[url] = {"status": status, "detail": detail,
