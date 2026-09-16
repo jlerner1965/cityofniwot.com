@@ -25,3 +25,6 @@ jobs:
           python-version: '3.12'
       - name: Every hashed filename must match its bytes
         run: python3 tools/rehash-assets.py --check
+
+      - name: The directory page must match data/directory.json
+        run: python3 tools/build-directory.py --check

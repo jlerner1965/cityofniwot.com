@@ -20,12 +20,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Look for expired claims
+      - name: Look for expired claims and overdue reviews
         id: check
         run: |
           set +e
           python3 tools/check-dated-content.py | tee findings.md
-          echo "expired=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+          a=${PIPESTATUS[0]}
+          echo >> findings.md
+          echo "## Records past their review date" >> findings.md
+          echo >> findings.md
+          echo '```' >> findings.md
+          python3 tools/check-review-dates.py | tee -a findings.md
+          b=${PIPESTATUS[0]}
+          echo '```' >> findings.md
+          echo "expired=$(( a || b ))" >> "$GITHUB_OUTPUT"
 
       - name: Put the findings in the run summary
         if: always()

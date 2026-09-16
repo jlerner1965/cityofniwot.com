@@ -7,6 +7,17 @@
      browser silently drops the whole declaration, with no console warning.
    - border-radius is 0 everywhere in this design. No exceptions. */
 
+/* ---- type: self-hosted ----
+   Instrument Serif and Instrument Sans, both SIL Open Font License, served
+   from /assets/fonts rather than from Google. Same files, same subsets; one
+   fewer third party on every page, and the privacy page says so. */
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-normal-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-normal-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-italic-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-italic-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/assets/fonts/instrument-sans-normal-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/assets/fonts/instrument-sans-normal-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
 :root {
   --n-white: #FAF8F2;
   --n-paper: #EEE7D9;
@@ -65,6 +76,7 @@ a:hover { color: var(--n-red-ink); }
 .n-wrap { width: 100%; max-width: var(--n-max); margin-inline: auto; padding-inline: var(--n-gutter); }
 .n-skip { position: fixed; z-index: 200; left: 16px; top: -64px; background: var(--n-forest); color: var(--n-white); padding: 12px 18px; text-decoration: none; }
 .n-skip:focus { top: 12px; }
+main:focus { outline: none; }
 
 /* ---- sticky header ---- */
 .n-head { position: sticky; top: 0; z-index: 100; background: var(--n-evergreen); border-bottom: 3px solid var(--n-red); }
@@ -182,7 +194,9 @@ a:hover { color: var(--n-red-ink); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none; animation: none; }
+  /* !important, because the refresh rules further down set their own
+     transitions with more specificity than a bare universal selector. */
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 
 /* Sticky header is ~63px, so in-page anchor targets need clearance or the
@@ -361,7 +375,10 @@ a { text-underline-offset: 4px; }
   vertical-align: .15em;
 }
 
-.n-nav { gap: 4px clamp(14px, 1.8vw, 28px); }
+/* Seven labels, the action and the wordmark with its identifier have to
+   share the 1144px inside the gutters; 22px between labels is what lets
+   them, and it still reads as a bar rather than a run of words. */
+.n-nav { gap: 4px clamp(14px, 1.4vw, 20px); }
 
 .n-nav a {
   position: relative;
@@ -654,11 +671,19 @@ a { text-underline-offset: 4px; }
 .n-foot .n-disclaim,
 .n-foot .n-foot-meta { color: #AABCB5; }
 
-/* Wide enough for the bar, the secondary pair is in the footer instead:
-   six items is what fits on one line without the labels crowding. Declared
-   before the collapse block, which has the same weight and would otherwise
-   lose to it on source order. */
-.n-nav-more { display: none; }
+/* The bar carries the seven sections and one action. The action is set as a
+   small outlined button so it reads as a task, not an eighth section; the
+   identifier beside the wordmark steps aside below 1300px to make the room. */
+.n-nav a.n-nav-cta { padding: 9px 12px; border: 1px solid var(--n-ink); color: var(--n-ink); }
+.n-nav a.n-nav-cta::after { display: none; }
+.n-nav a.n-nav-cta:hover, .n-nav a.n-nav-cta.n-on { background: var(--n-evergreen); border-color: var(--n-evergreen); color: var(--n-white); }
+/* Beside the wordmark the identifier is 230px the bar cannot spare, so
+   while the bar is shown it sits under the wordmark instead, on its own
+   line, where it costs no width. The mark is then about 170px wide. */
+@media (min-width: 1181px) {
+  .n-mark { line-height: 1; }
+  .n-mark small { display: block; margin: 6px 0 0; font-size: .6875rem; letter-spacing: .07em; vertical-align: baseline; white-space: nowrap; }
+}
 
 .n-burger span { transition: transform .18s ease, opacity .18s ease; }
 
@@ -687,12 +712,10 @@ a { text-underline-offset: 4px; }
   .n-head.n-open .n-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .n-head.n-open .n-burger span:nth-child(2) { opacity: 0; }
   .n-head.n-open .n-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-  /* Below the collapse the menu has the room the bar does not, so the two
-     pages that do not fit the bar are reachable here, set a tier back. */
-  .n-nav-more { display: block; }
-  .n-nav .n-nav-more { color: var(--n-muted); }
-  .n-nav a:not(.n-nav-more) + .n-nav-more { border-top: 2px solid var(--n-ink); margin-top: 10px; }
-  .n-nav .n-nav-more.n-on { color: var(--n-red-ink); }
+  /* In the collapsed menu the action is the last row, set a tier back
+     behind a rule, in the same words as everywhere else. */
+  .n-nav a.n-nav-cta { margin-top: 10px; padding: 15px 0; border: 0; border-top: 2px solid var(--n-ink); border-bottom: 1px solid var(--n-rule); color: var(--n-muted); background: none; }
+  .n-nav a.n-nav-cta:hover, .n-nav a.n-nav-cta.n-on { color: var(--n-red-ink); background: none; }
 }
 
 @media (max-width: 900px) {

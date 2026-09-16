@@ -12,6 +12,12 @@
    field they belong to and tied to it with aria-describedby, and a summary
    is announced. */
 
+/* Submission milestones, for whatever analytics the site adopts: nothing
+   listens today. A form view is not a milestone and is never emitted. */
+function track(name, detail) {
+  document.dispatchEvent(new CustomEvent('niwot:track', { detail: Object.assign({ event: name }, detail || {}) }));
+}
+
 function outcomeNode(form, selector, text) {
   const template = form.parentElement.querySelector(selector);
   if (!template) return null;
@@ -110,6 +116,9 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
 
     event.preventDefault();
     clearFieldErrors(form);
+    const kindField = form.querySelector('[name="kind"]');
+    const kindValue = kindField ? kindField.value : '';
+    track('listing_submit_start', { kind: kindValue });
     const old = form.querySelector('[data-form-error]');
     if (old) old.remove();
     setBusy(form, true);
@@ -140,6 +149,7 @@ document.querySelectorAll('[data-contact-form]').forEach((form) => {
     setBusy(form, false);
 
     if (ok) {
+      track(/correction/i.test(kindValue) ? 'correction_submit_success' : 'listing_submit_success', { kind: kindValue });
       show(form, outcomeNode(form, '[data-form-success]'));
       return;
     }

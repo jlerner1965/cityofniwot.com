@@ -3,14 +3,17 @@
 # what search engines and anyone without JavaScript read, and it goes stale
 # on its own as events pass — no edit required.
 #
-# Runs every Monday morning, and whenever you press the button:
+# Runs every morning, and whenever you press the button:
 # GitHub → Actions → "Refresh event pages" → "Run workflow".
+# Daily rather than weekly: the pre-rendered homepage cards are what a
+# crawler reads, and a weekly rebuild left finished events sitting there as
+# "upcoming" for up to six days.
 name: Refresh event pages
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 12 * * 1'   # Mondays, 12:00 UTC (06:00 Mountain)
+    - cron: '0 12 * * *'   # daily, 12:00 UTC (06:00 Mountain)
 
 permissions:
   contents: write
@@ -29,8 +32,17 @@ jobs:
         with:
           python-version: '3.12'
 
+      # The calendar is pre-rendered through the same JavaScript module the
+      # browser runs (tools/render-calendar.mjs), so Node is required.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Rebuild the event pages and sitemap
         run: python3 tools/build-event-pages.py
+
+      - name: Check review dates on time-sensitive records
+        run: python3 tools/check-review-dates.py || true
 
       - name: Commit only if something actually changed
         run: |
@@ -43,8 +55,9 @@ jobs:
           git add -A
           git commit -m "Refresh event pages and sitemap
 
-          Rebuilt by the weekly job: the upcoming-event lists and sitemap
-          dates move as events pass, with no edit to the calendar."
+          Rebuilt by the daily job: the upcoming-event lists, the month
+          grid and the sitemap dates move as events pass, with no edit to
+          the calendar."
           git push
           echo "Pushed a refresh."
 

@@ -54,6 +54,64 @@ CHECKS = [
               "Contact, which means editing the nav in every HTML file.",
     },
     {
+        "after": "2026-11-03",
+        "file": "civic/index.html",
+        "phrase": "voters inside a proposed boundary decide whether that should change",
+        "what": "The civic hub still describes the incorporation vote as ahead.",
+        "do": "Rewrite the lead and the \"Current election\" band in past tense with "
+              "the official status (preliminary, then certified), relabel the band "
+              "\"Recent election\", and keep the link to the election page.",
+    },
+    {
+        "after": "2026-11-03",
+        "file": "our-story/index.html",
+        "phrase": "in November 2026 voters inside a proposed boundary decide",
+        "what": "Our Story's \"Today\" entry still says the November 2026 vote is to come.",
+        "do": "Say what voters decided, citing the certified result, in both the "
+              "timeline entry and the \"Niwot today\" band below it.",
+    },
+    {
+        "after": "2026-11-03",
+        "file": "community/index.html",
+        "phrase": "to administer the November 2026 incorporation election",
+        "what": "The Niwot Election Commission card still describes its job in the present tense.",
+        "do": "Say the Commission administered the November 3, 2026 election, and "
+              "note whether it still exists once the court's order is entered.",
+    },
+    {
+        "after": "2026-11-03",
+        "file": "llms.txt",
+        "phrase": "neutral voter information with links to official election authorities",
+        "what": "llms.txt still describes the election page as voter information.",
+        "do": "Describe it as the record of the 2026 election and its result.",
+    },
+    {
+        "after": "2026-11-03",
+        "file": "civic/incorporation-election/index.html",
+        "phrase": "Before you vote",
+        "what": "The election page still opens with voting tasks.",
+        "do": "Follow docs/election-transition.md: remove the voting tasks, add "
+              "the dated status band, label results preliminary until certified, "
+              "and add the archive label once certified.",
+    },
+    {
+        "after": "2026-09-18",
+        "file": "civic/incorporation-election/index.html",
+        "phrase": "Open until noon, Friday, September 18, 2026",
+        "what": "The comment-deadline panel is past.",
+        "do": "Replace it with what the Commission published after its September 18 "
+              "meeting, or remove it.",
+    },
+    {
+        "after": "2026-09-29",
+        "file": "data/events.json",
+        "phrase": "\"until\": \"2026-09-29\"",
+        "what": "The weekly Trivia Night record has run out of read dates.",
+        "do": "Re-read https://niwot.com/events/trivia-night/ and extend `until` to "
+              "the last Tuesday shown, or retire the record if the listing is gone. "
+              "Then run tools/build-event-pages.py.",
+    },
+    {
         "after": "2026-09-11",
         "file": "civic/incorporation-election/index.html",
         "phrase": "This page will carry a dated note when it is",
