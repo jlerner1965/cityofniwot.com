@@ -4,18 +4,68 @@
   "cleanUrls": false,
   "redirects": [
     {
-      "source": "/events/tree-carving-fundraiser-trivia-night-2026-09-15/",
-      "destination": "/events/trivia-night-2026/",
+      "source": "/eat-shop{/}?",
+      "destination": "https://insideniwot.com/eat-drink/",
       "permanent": true
     },
     {
-      "source": "/events/trivia-night-2026-09-15/",
-      "destination": "/events/trivia-night-2026/",
+      "source": "/explore{/}?",
+      "destination": "https://insideniwot.com/things-to-do/",
       "permanent": true
     },
     {
-      "source": "/events/tree-carving-fundraiser-2026-09-15/",
-      "destination": "/explore/#tree-carvings",
+      "source": "/plan-a-visit{/}?",
+      "destination": "https://insideniwot.com/articles/explore-niwot-in-walking-order/",
+      "permanent": true
+    },
+    {
+      "source": "/our-story{/}?",
+      "destination": "https://insideniwot.com/articles/how-niwot-got-here/",
+      "permanent": true
+    },
+    {
+      "source": "/community{/}?",
+      "destination": "https://insideniwot.com/articles/who-runs-what-in-niwot/",
+      "permanent": true
+    },
+    {
+      "source": "/civic/incorporation-election{/}?",
+      "destination": "https://insideniwot.com/articles/2026-incorporation-election/",
+      "permanent": true
+    },
+    {
+      "source": "/civic{/}?",
+      "destination": "https://insideniwot.com/articles/2026-incorporation-election/",
+      "permanent": true
+    },
+    {
+      "source": "/events{/}?",
+      "destination": "https://insideniwot.com/events/",
+      "permanent": true
+    },
+    {
+      "source": "/contact{/}?",
+      "destination": "https://insideniwot.com/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/thanks{/}?",
+      "destination": "https://insideniwot.com/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy{/}?",
+      "destination": "https://insideniwot.com/about/",
+      "permanent": true
+    },
+    {
+      "source": "/events/:slug*",
+      "destination": "https://insideniwot.com/events/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://insideniwot.com/:path*",
       "permanent": true
     }
   ],
