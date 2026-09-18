@@ -4,6 +4,11 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://insideniwot.com/",
+      "permanent": true
+    },
+    {
       "source": "/eat-shop{/}?",
       "destination": "https://insideniwot.com/eat-drink/",
       "permanent": true
@@ -59,13 +64,13 @@
       "permanent": true
     },
     {
-      "source": "/events/:slug*",
+      "source": "/events/:slug*{/}?",
       "destination": "https://insideniwot.com/events/",
       "permanent": true
     },
     {
-      "source": "/:path*",
-      "destination": "https://insideniwot.com/:path*",
+      "source": "/:path*{/}?",
+      "destination": "https://insideniwot.com/",
       "permanent": true
     }
   ],
