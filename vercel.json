@@ -60,7 +60,32 @@
     },
     {
       "source": "/privacy{/}?",
-      "destination": "https://insideniwot.com/about/",
+      "destination": "https://insideniwot.com/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/events/basin-design-open-house-2026-09-19{/}?",
+      "destination": "https://insideniwot.com/events/basin-design-open-house-2026-09-19/",
+      "permanent": true
+    },
+    {
+      "source": "/events/enchanted-evening-2026{/}?",
+      "destination": "https://insideniwot.com/events/enchanted-evening-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/events/first-friday-art-walk-2026-12-04{/}?",
+      "destination": "https://insideniwot.com/events/first-friday-art-walk-2026-12-04/",
+      "permanent": true
+    },
+    {
+      "source": "/events/holiday-parade-2026{/}?",
+      "destination": "https://insideniwot.com/events/holiday-parade-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/events/lets-wine-about-winter-2027{/}?",
+      "destination": "https://insideniwot.com/events/lets-wine-about-winter-2027/",
       "permanent": true
     },
     {
